@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "units-converter",
+    "slug": "units-converter",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/blue-wood.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#FEF9B0"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/first-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2e9a8d4e-9f6e-41de-8ecf-c9ddc908f338"
+      }
+    },
+    "owner": "julio.salas"
+  }
+}

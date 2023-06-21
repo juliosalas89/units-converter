@@ -1,0 +1,8 @@
+{
+    "languages": ["English", "Español", "Deutsch"],
+    "languagesEnglish": ["English", "Spanish", "German"],
+    "phrases": {
+        "Language": ["Language", "Idioma", "Sprache"],
+        "Theme": ["Theme", "Tema", "Thema"]
+    }
+}

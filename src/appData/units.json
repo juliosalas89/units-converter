@@ -1,0 +1,179 @@
+{
+    "units":[
+        {
+         "alias": "fm",
+         "unit": "fm",
+         "descriptionEN": "fentometers",
+         "descriptionES": "fentometros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "pm",
+         "unit": "pm",
+         "descriptionEN": "picometers",
+         "descriptionES": "picometros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "nm",
+         "unit": "nm",
+         "descriptionEN": "nanometers",
+         "descriptionES": "nanometros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "µm",
+         "unit": "µm",
+         "descriptionEN": "micrometers",
+         "descriptionES": "micrometros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "mm",
+         "unit": "mm",
+         "descriptionEN": "milimeters",
+         "descriptionES": "milimetros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "cm",
+         "unit": "cm",
+         "descriptionEN": "centimeters",
+         "descriptionES": "centimetros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "dm",
+         "unit": "dm",
+         "descriptionEN": "decimeters",
+         "descriptionES": "decimetros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "m",
+         "unit": "m",
+         "descriptionEN": "meters",
+         "descriptionES": "metros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "dam",
+         "unit": "dam",
+         "descriptionEN": "decameters",
+         "descriptionES": "decametros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "hm",
+         "unit": "hm",
+         "descriptionEN": "hectometers",
+         "descriptionES": "hectometros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "km",
+         "unit": "km",
+         "descriptionEN": "kilometers",
+         "descriptionES": "kilometros",
+         "group": "metric systemn"
+        },
+        {
+         "alias": "twip",
+         "unit": "twip",
+         "descriptionEN": "twips",
+         "descriptionES": "twip",
+         "group": "american system"
+        },
+        {
+         "alias": "mil",
+         "unit": "mil",
+         "descriptionEN": "mil",
+         "descriptionES": "mil",
+         "group": "american system"
+        },
+        {
+         "alias": "p",
+         "unit": "p",
+         "descriptionEN": "points",
+         "descriptionES": "punto tipografico",
+         "group": "american system"
+        },
+        {
+         "alias": "P",
+         "unit": "P",
+         "descriptionEN": "pica",
+         "descriptionES": "pica",
+         "group": "american system"
+        },
+        {
+         "alias": "in",
+         "unit": "in",
+         "descriptionEN": "inches",
+         "descriptionES": "pulgadas",
+         "group": "american system"
+        },
+        {
+         "alias": "ft",
+         "unit": "ft",
+         "descriptionEN": "foots",
+         "descriptionES": "pie",
+         "group": "american system"
+        },
+        {
+         "alias": "yd",
+         "unit": "yd",
+         "descriptionEN": "yards",
+         "descriptionES": "yarda",
+         "group": "american system"
+        },
+        {
+         "alias": "mi",
+         "unit": "mi",
+         "descriptionEN": "miles",
+         "descriptionES": "milla",
+         "group": "american system"
+        },
+        {
+         "alias": "nmi",
+         "unit": "nmi",
+         "descriptionEN": "nautic miles",
+         "descriptionES": "millas nauticas",
+         "group": "american system"
+        },
+        {
+         "alias": "le",
+         "unit": "le",
+         "descriptionEN": "leagues",
+         "descriptionES": "leguas",
+         "group": "american system"
+        },
+        {
+         "alias": "AU",
+         "unit": "AU",
+         "descriptionEN": "astronomic units",
+         "descriptionES": "unidades astronomicas",
+         "group": "special"
+        },
+        {
+         "alias": "ly",
+         "unit": "ly",
+         "descriptionEN": "light-years",
+         "descriptionES": "años luz",
+         "group": "special"
+        },
+        {
+         "alias": "pc",
+         "unit": "pc",
+         "descriptionEN": "parsec",
+         "descriptionES": "parsec",
+         "group": "special"
+        },
+        {
+         "alias": "Å",
+         "unit": "Å",
+         "descriptionEN": "Angstrom",
+         "descriptionES": "Angstrom",
+         "group": "special"
+        }
+       ]
+}
