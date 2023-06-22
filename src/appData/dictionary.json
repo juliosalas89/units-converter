@@ -1,6 +1,18 @@
 {
-    "languages": ["English", "Español", "Deutsch"],
-    "languagesEnglish": ["English", "Spanish", "German"],
+    "languages": [
+        {
+            "original": "English",
+            "english": "English"
+        },
+        {
+            "original": "Español",
+            "english": "Spanish"
+        },
+        {
+            "original": "Deutsch",
+            "english": "German"
+        }
+    ],
     "phrases": {
         "Language": ["Language", "Idioma", "Sprache"],
         "Theme": ["Theme", "Tema", "Thema"]

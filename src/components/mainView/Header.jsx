@@ -1,21 +1,27 @@
 import st, { colors } from "../Styles"
 import Svg, { Path } from 'react-native-svg';
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import langData from '../../appData/dictionary.json'
+import { saveUserPreferencesThunk } from "../../store/slices/localParams.slice";
 import { 
     View, 
     StyleSheet, 
     Text, 
     TouchableOpacity, 
     Modal,
-    Pressable
+    Pressable,
+    FlatList
 } from "react-native"
 
+
 const Header = () => {
+    const dispatch = useDispatch()
     const [modalVisible, setModalVisible] = useState(false)
+    const [languageModalVisible, setLanguageModalVisible] = useState(false)
     const userPreferences = useSelector(state => state.localParams.userPreferences);
     const screenSize = useSelector(state => state.localParams.screenSize);
+    
     const styles = StyleSheet.create({
         title: {
             color: 'white', 
@@ -32,9 +38,30 @@ const Header = () => {
             color: colors.main1,
             left: screenSize.width - 205,
             top: 5
+        },
+        languageModal: {
+            padding: 10,
+            borderWidth: 1,
+            borderColor: colors.sec1,
+            borderRadius: 5,
+            width: screenSize.width - 30,
+            height: 800,
+            backgroundColor: 'white',
+            color: colors.main1,
+            left: 15,
+            top: 20
         }
     })
-    console.log(langData)
+
+    const Item = ({language}) => (
+        <View>
+          <Text>{`${language.original} (${language.english})`}</Text>
+        </View>
+      );
+
+    console.log("userPreferences.language", userPreferences.language)
+    console.log("langData.phrases", langData.phrases)
+
     return (
         <View style={{...st.container, backgroundColor: colors.main1,}}>
             <Text style={styles.title}>
@@ -60,9 +87,25 @@ const Header = () => {
                     <Pressable>
                         <Text>{langData.phrases['Theme'][userPreferences.language]}</Text>
                     </Pressable>
-                    <Pressable>
-                        <Text>{`${langData.phrases['Language'][userPreferences.language]}${userPreferences.language ? ' (Language): ' : ': '}${langData.languages[userPreferences.language]}`}</Text>
+                    <Pressable onPress={() => setLanguageModalVisible(true)}>
+                        <Text>{`${langData.phrases['Language'][userPreferences.language]}${userPreferences.language ? ' (Language): ' : ': '}${langData.languages[userPreferences.language].original}`}</Text>
                     </Pressable>
+                </View>
+            </Modal>
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={languageModalVisible}
+                onRequestClose={() => {
+                    setLanguageModalVisible(!languageModalVisible);
+                }}
+            >   
+                <View style={styles.languageModal}>
+                    <FlatList
+                        data={langData.languages}
+                        renderItem={({item}) => <Item language={item} />}
+                        keyExtractor={item => item.original+item.english}
+                    />
                 </View>
             </Modal>
         </View>

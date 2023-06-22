@@ -6,21 +6,23 @@ import MainView from './mainView/MainView';
 import { Dimensions } from 'react-native';
 import {colors} from './Styles'
 import { useEffect } from 'react';
-import { setScreenSize } from '../store/slices/localParams.slice.js';
+import { setScreenSize, getUserPreferencesThunk } from '../store/slices/localParams.slice.js';
 
 const Main = () => {
     const dispatch = useDispatch()
     const screenSize = useSelector(state => state.localParams.screenSize);
+    const prefFetched = useSelector(state => state.localParams.prefFetched);
     // const [fontsLoaded] = useFonts({
     //   'Main-Font': require('./assets/fonts/SheilaCrayon-1vWg.ttf'),
     // })
   
     useEffect(() => {
+        dispatch(getUserPreferencesThunk())
         const screen = Dimensions.get('screen')
         dispatch(setScreenSize(screen))
     });
 
-    return !screenSize ? null : (
+    return !screenSize || !prefFetched ? null : (
         <SafeAreaProvider>
         <StatusBar
             backgroundColor={colors.main1}
