@@ -1,5 +1,5 @@
-import { Pressable, Text, View, StyleSheet } from "react-native"
 import FavStar from "../general/FavStar"
+import { Pressable, Text, View, StyleSheet } from "react-native"
 import { colors } from "../Styles"
 
 const Card = ({item}) => {
@@ -9,7 +9,9 @@ const Card = ({item}) => {
                 <Text style={styles.valuesText}>{item.value}</Text>
             </View>
             <View style={styles.unitsBox}>
-                <Text style={styles.unitsText}>{item.unit}</Text>
+                <View style={styles.unitsSubBox}>
+                    <Text style={styles.unitsText}>{`${item.unit} `}</Text><Text style={styles.descriptionText}>{`- ${item.descriptionEN}`}</Text>
+                </View>
                 <View style={{ paddingTop: 4 }}>
                     <Pressable>
                         <FavStar/>
@@ -42,9 +44,18 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         flex: 0.5,
     },
+    unitsSubBox: {
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        alignItems: 'flex-end'
+    },
     unitsText: {
         fontSize: 20,
         color: colors.sec1,
+    },
+    descriptionText: {
+        color: colors.sec1,
+        marginBottom: 2
     },
     valuesText: {
         fontSize: 20,

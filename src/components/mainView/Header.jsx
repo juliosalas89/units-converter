@@ -1,9 +1,5 @@
-import st, { colors } from "../Styles"
-import Svg, { Path } from 'react-native-svg';
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+// Tools:
 import langData from '../../appData/dictionary.json'
-import { saveUserPreferencesThunk } from "../../store/slices/localParams.slice";
 import { 
     View, 
     StyleSheet, 
@@ -13,14 +9,20 @@ import {
     Pressable,
     FlatList
 } from "react-native"
-
+import Svg, { Path } from 'react-native-svg';
+import { useState } from "react";
+// Store:
+import { useSelector, useDispatch } from "react-redux";
+import { saveUserPreferencesThunk } from "../../store/slices/localParams.slice";
+// Style:
+import st, { colors } from "../Styles"
 
 const Header = () => {
     const dispatch = useDispatch()
     const [modalVisible, setModalVisible] = useState(false)
     const [languageModalVisible, setLanguageModalVisible] = useState(false)
     const userPreferences = useSelector(state => state.localParams.userPreferences);
-    const screenSize = useSelector(state => state.localParams.screenSize);
+    const windowSize = useSelector(state => state.localParams.windowSize);
     
     const styles = StyleSheet.create({
         title: {
@@ -36,7 +38,7 @@ const Header = () => {
             height: 120,
             backgroundColor: 'white',
             color: colors.main1,
-            left: screenSize.width - 205,
+            left: windowSize.width - 205,
             top: 5
         },
         languageModal: {
@@ -44,12 +46,12 @@ const Header = () => {
             borderWidth: 1,
             borderColor: colors.sec1,
             borderRadius: 5,
-            width: screenSize.width - 30,
-            height: 800,
+            width: 300,
+            height: 300,
             backgroundColor: 'white',
             color: colors.main1,
-            left: 15,
-            top: 20
+            left: (windowSize.width - 300)/2,
+            top: 200
         }
     })
 
@@ -58,9 +60,6 @@ const Header = () => {
           <Text>{`${language.original} (${language.english})`}</Text>
         </View>
       );
-
-    console.log("userPreferences.language", userPreferences.language)
-    console.log("langData.phrases", langData.phrases)
 
     return (
         <View style={{...st.container, backgroundColor: colors.main1,}}>

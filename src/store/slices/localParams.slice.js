@@ -9,7 +9,7 @@ const localParamsSlice = createSlice({
             theme: null
         },
         prefFetched: false,
-        screenSize: null,
+        windowSize: null,
         safeArea: { top: 0, right: 0, bottom: 0, left: 0 }
     },
     reducers: {
@@ -25,8 +25,8 @@ const localParamsSlice = createSlice({
         setPrefFetched (state, action) {
             return {...state, prefFetched: action.payload }
         },
-        setScreenSize (state, action) {
-            return {...state, screenSize: action.payload}
+        setWindowSize (state, action) {
+            return {...state, windowSize: action.payload}
         },
         setSafeArea (state, action) {
             return {...state, safeArea: action.payload}
@@ -34,29 +34,6 @@ const localParamsSlice = createSlice({
 
     }
 })
-
-export const saveUserPreferencesThunk2 = preferences => {
-    return async dispatch => {
-        dispatch(addProduct());
-        try {
-            await axiosClient.post('/products', newProduct);
-            dispatch(addProductSuccess(newProduct));
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: 'Product added correctly',
-            })
-        } catch (error) {
-            console.log(error)
-            dispatch(addProductError());
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Something went wrong...',
-            })
-        }
-    }
-}
 
 const saveUserPreferencesThunk = userPreferences => {
     return async (dispatch, getState) => {
@@ -95,7 +72,7 @@ export const {
     setLanguage, 
     setTheme, 
     setPrefFetched, 
-    setScreenSize, 
+    setWindowSize, 
     setSafeArea 
 } = localParamsSlice.actions
 
