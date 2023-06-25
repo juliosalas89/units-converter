@@ -2,7 +2,7 @@ import { TextInput, View, StyleSheet } from "react-native"
 import st, { colors } from '../Styles.js'
 import CButton from "../general/CButton.jsx"
 
-const ValueInput = () => {
+const ValueInput = ({navigation}) => {
     return (
         <View style={st.container}>
             <TextInput
@@ -15,7 +15,7 @@ const ValueInput = () => {
                 color: colors.sec2,
                 backgroundColor: colors.main2,
                 textAlign: 'left'
-            }} title='mm' callBack={()=> console.log('caca')}></CButton>
+            }} title='mm' callBack={()=> navigation.navigate('ModeSelector')}></CButton>
         </View>
     )
 }

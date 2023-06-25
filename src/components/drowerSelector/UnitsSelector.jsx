@@ -1,5 +1,5 @@
 import { View } from "react-native"
-import st from '../../Styles.js'
+import st from '../Styles.js'
 
 const UnitsSelector = () => {
     return (
