@@ -8,17 +8,17 @@ import { Dimensions, StyleSheet, View } from 'react-native';
 import { Drawer } from 'react-native-drawer-layout';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useEffect } from 'react';
-import { useState } from 'react';
 // Store:
 import { useSelector, useDispatch } from 'react-redux';
 import { setWindowSize, getUserPreferencesThunk } from '../store/slices/localParams.slice.js';
+import { setDrowerVisible } from '../store/slices/generalData.slice';
 // Style:
 import {colors} from './Styles'
 
 const Home = ({navigation}) => {
-    const [open, setOpen] = useState(false);
     const insets = useSafeAreaInsets()
     const dispatch = useDispatch()
+    const drowerVisible = useSelector(state => state.generalData.drowerVisible);
     const windowSize = useSelector(state => state.localParams.windowSize);
     const prefFetched = useSelector(state => state.localParams.prefFetched);
     // const [fontsLoaded] = useFonts({
@@ -42,23 +42,25 @@ const Home = ({navigation}) => {
     })
 
     return !windowSize || !prefFetched ? null : (
+        <>
+            <StatusBar
+                backgroundColor={colors.main1}
+                barStyle='light-content'
+            />
             <Drawer
                 drawerPosition="right"
-                open={open}
-                onOpen={() => setOpen(true)}
-                onClose={() => setOpen(false)}
+                open={drowerVisible}
+                onOpen={() => dispatch(setDrowerVisible(true))}
+                onClose={() => dispatch(setDrowerVisible(false))}
                 renderDrawerContent={() => {
                 return <ModeSelector/>;
                 }}
             >
-                <StatusBar
-                    backgroundColor={colors.main1}
-                    barStyle='light-content'
-                />
                 <View style={styles.safeView}>
                     <MainView style={{ height: '100%', fontSize: 30, color: 'white' }} navigation={navigation}></MainView>
                 </View>
             </Drawer>
+        </>
     );
 }
 

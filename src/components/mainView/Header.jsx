@@ -1,5 +1,5 @@
 // Tools:
-import langData from '../../appData/dictionary.json'
+import langData from '../../appData/traduction.json'
 import { 
     View, 
     StyleSheet, 
