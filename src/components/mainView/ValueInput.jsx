@@ -1,11 +1,20 @@
-import { TextInput, View, StyleSheet } from "react-native"
+import { TextInput, View, StyleSheet, BackHandler } from "react-native"
 import st, { colors } from '../Styles.js'
 import CButton from "../general/CButton.jsx"
+import { useEffect } from "react"
+import { useRef } from "react"
 
-const ValueInput = ({navigation}) => {
+const ValueInput = ({navigation, focusInputFlag}) => {
+    const inputRef = useRef(null);
+
+    useEffect(()=> {
+        inputRef.current.focus()
+    }, [focusInputFlag])
+
     return (
         <View style={st.container}>
             <TextInput
+                ref={inputRef}
                 style={styles.valueInput}
                 inputMode='numeric'
                 keyboardType='numeric'
