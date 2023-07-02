@@ -1,12 +1,25 @@
 import FavStar from "../general/FavStar"
 import { Pressable, Text, View, StyleSheet } from "react-native"
 import { colors } from "../Styles"
+import { useState } from "react"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
 
-const Card = ({item}) => {
+const Card = ({item, inputValue, selectedUnit}) => {
+    const [result, setResult] = useState(null)
+
+    useEffect(()=>{
+        setResult(selectedUnit ? inputValue * selectedUnit.factor / item.factor : null)
+    }, [inputValue])
+
+    useEffect(()=>{
+        setResult(null)
+    }, [selectedUnit])
+
     return (
         <View style={styles.unitsLine}>
             <View style={styles.valuesBox}>
-                <Text style={styles.valuesText}>{item.value}</Text>
+                <Text style={styles.valuesText}>{result}</Text>
             </View>
             <View style={styles.unitsBox}>
                 <View style={styles.unitsSubBox}>

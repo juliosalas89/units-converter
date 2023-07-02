@@ -7,12 +7,16 @@ import { MaterialCommunityIcons, Octicons } from '@expo/vector-icons'
 import { colors } from "../Styles"
 import { useDispatch } from "react-redux"
 import { setDrowerVisible } from "../../store/slices/generalData.slice"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const MainView = ({navigation}) => {
+    const [inputValue, setInputValue] = useState(null)
     const [focusInputFlag, setFocusInputFlag] = useState(false)
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize);
+    const selectedType = useSelector(store => store.generalData.selectedType)
+    const selectedUnit = useSelector(store => store.generalData.selectedUnit)
+
 
     const styles = StyleSheet.create({
         container: {
@@ -31,8 +35,8 @@ const MainView = ({navigation}) => {
         <View style={{ height: '100%', backgroundColor: 'inherit'}}>
             <View style={styles.container}>
                 <Header/>
-                <ValueInput navigation={navigation} focusInputFlag={focusInputFlag}></ValueInput>
-                <UnitsResultList/>
+                <ValueInput navigation={navigation} focusInputFlag={focusInputFlag} inputValue={inputValue} setInputValue={setInputValue}></ValueInput>
+                <UnitsResultList inputValue={inputValue}/>
             </View>
             <View style={styles.footer}>
                 <TouchableOpacity onPress={() => dispatch(setDrowerVisible(true))}>

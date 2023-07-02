@@ -1,7 +1,7 @@
 // import { useFonts } from 'expo-font'
 // Components:
 import MainView from './mainView/MainView';
-import ModeSelector from './drowerSelector/ModeSelector';
+import TypeSelector from './drowerSelector/TypeSelector';
 // Tools:
 import { StatusBar } from 'expo-status-bar';
 import { Dimensions, StyleSheet, View } from 'react-native';
@@ -53,7 +53,7 @@ const Home = ({navigation}) => {
                 onOpen={() => dispatch(setDrowerVisible(true))}
                 onClose={() => dispatch(setDrowerVisible(false))}
                 renderDrawerContent={() => {
-                return <ModeSelector/>;
+                return <TypeSelector/>;
                 }}
             >
                 <View style={styles.safeView}>

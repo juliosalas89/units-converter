@@ -1,179 +1,164 @@
 {
-    "units":[
+    "length":[
         {
-         "alias": "fm",
-         "unit": "fm",
-         "descriptionEN": "fentometers",
-         "descriptionES": "fentometros",
-         "group": "metric systemn"
-        },
-        {
-         "alias": "pm",
-         "unit": "pm",
-         "descriptionEN": "picometers",
-         "descriptionES": "picometros",
-         "group": "metric systemn"
-        },
-        {
-         "alias": "nm",
-         "unit": "nm",
-         "descriptionEN": "nanometers",
-         "descriptionES": "nanometros",
-         "group": "metric systemn"
-        },
-        {
-         "alias": "µm",
-         "unit": "µm",
-         "descriptionEN": "micrometers",
-         "descriptionES": "micrometros",
-         "group": "metric systemn"
-        },
-        {
-         "alias": "mm",
          "unit": "mm",
+         "formule": "false",
          "descriptionEN": "milimeters",
          "descriptionES": "milimetros",
-         "group": "metric systemn"
+         "descriptionGE": "millimeter",
+         "factor": 0.001
         },
         {
-         "alias": "cm",
          "unit": "cm",
+         "formule": "false",
          "descriptionEN": "centimeters",
          "descriptionES": "centimetros",
-         "group": "metric systemn"
+         "descriptionGE": "zentimeter",
+         "factor": 0.01
         },
         {
-         "alias": "dm",
-         "unit": "dm",
-         "descriptionEN": "decimeters",
-         "descriptionES": "decimetros",
-         "group": "metric systemn"
-        },
-        {
-         "alias": "m",
          "unit": "m",
+         "formule": "false",
          "descriptionEN": "meters",
          "descriptionES": "metros",
-         "group": "metric systemn"
+         "descriptionGE": "meter",
+         "factor": 1
         },
         {
-         "alias": "dam",
-         "unit": "dam",
-         "descriptionEN": "decameters",
-         "descriptionES": "decametros",
-         "group": "metric systemn"
-        },
-        {
-         "alias": "hm",
-         "unit": "hm",
-         "descriptionEN": "hectometers",
-         "descriptionES": "hectometros",
-         "group": "metric systemn"
-        },
-        {
-         "alias": "km",
          "unit": "km",
+         "formule": "false",
          "descriptionEN": "kilometers",
          "descriptionES": "kilometros",
-         "group": "metric systemn"
+         "descriptionGE": "kilometer",
+         "factor": 1000
         },
         {
-         "alias": "twip",
-         "unit": "twip",
-         "descriptionEN": "twips",
-         "descriptionES": "twip",
-         "group": "american system"
-        },
-        {
-         "alias": "mil",
-         "unit": "mil",
-         "descriptionEN": "mil",
-         "descriptionES": "mil",
-         "group": "american system"
-        },
-        {
-         "alias": "p",
-         "unit": "p",
-         "descriptionEN": "points",
-         "descriptionES": "punto tipografico",
-         "group": "american system"
-        },
-        {
-         "alias": "P",
-         "unit": "P",
-         "descriptionEN": "pica",
-         "descriptionES": "pica",
-         "group": "american system"
-        },
-        {
-         "alias": "in",
          "unit": "in",
+         "formule": "false",
          "descriptionEN": "inches",
          "descriptionES": "pulgadas",
-         "group": "american system"
+         "descriptionGE": "zoll",
+         "factor": 0.0254
         },
         {
-         "alias": "ft",
          "unit": "ft",
+         "formule": "false",
          "descriptionEN": "foots",
          "descriptionES": "pie",
-         "group": "american system"
+         "descriptionGE": "fuß",
+         "factor": 0.30479
         },
         {
-         "alias": "yd",
          "unit": "yd",
+         "formule": "false",
          "descriptionEN": "yards",
          "descriptionES": "yarda",
-         "group": "american system"
+         "descriptionGE": "hof",
+         "factor": 0.9144
         },
         {
-         "alias": "mi",
          "unit": "mi",
+         "formule": "false",
          "descriptionEN": "miles",
          "descriptionES": "milla",
-         "group": "american system"
+         "descriptionGE": "meile",
+         "factor": 1609.34
         },
         {
-         "alias": "nmi",
          "unit": "nmi",
+         "formule": "false",
          "descriptionEN": "nautic miles",
          "descriptionES": "millas nauticas",
-         "group": "american system"
+         "descriptionGE": "seemeile",
+         "factor": 1852
         },
         {
-         "alias": "le",
-         "unit": "le",
-         "descriptionEN": "leagues",
-         "descriptionES": "leguas",
-         "group": "american system"
+         "unit": "fm",
+         "formule": "false",
+         "descriptionEN": "fentometers",
+         "descriptionES": "fentometros",
+         "descriptionGE": "fetometer",
+         "factor": 1E-15
         },
         {
-         "alias": "AU",
+         "unit": "pm",
+         "formule": "false",
+         "descriptionEN": "picometers",
+         "descriptionES": "picometros",
+         "descriptionGE": "pikometer",
+         "factor": 1E-12
+        },
+        {
+         "unit": "nm",
+         "formule": "false",
+         "descriptionEN": "nanometers",
+         "descriptionES": "nanometros",
+         "descriptionGE": "nanometer",
+         "factor": 1E-09
+        },
+        {
+         "unit": "µm",
+         "formule": "false",
+         "descriptionEN": "micrometers",
+         "descriptionES": "micrometros",
+         "descriptionGE": "mikrometer",
+         "factor": 1E-06
+        },
+        {
+         "unit": "dm",
+         "formule": "false",
+         "descriptionEN": "decimeters",
+         "descriptionES": "decimetros",
+         "descriptionGE": "dezimeter",
+         "factor": 0.1
+        },
+        {
+         "unit": "dam",
+         "formule": "false",
+         "descriptionEN": "decameters",
+         "descriptionES": "decametros",
+         "descriptionGE": "dekameter",
+         "factor": 10
+        },
+        {
+         "unit": "hm",
+         "formule": "false",
+         "descriptionEN": "hectometers",
+         "descriptionES": "hectometros",
+         "descriptionGE": "hektometer",
+         "factor": 100
+        },
+        {
          "unit": "AU",
+         "formule": "false",
          "descriptionEN": "astronomic units",
          "descriptionES": "unidades astronomicas",
-         "group": "special"
+         "descriptionGE": "astronomische einheiten",
+         "factor": 149600000000000
         },
         {
-         "alias": "ly",
          "unit": "ly",
+         "formule": "false",
          "descriptionEN": "light-years",
          "descriptionES": "años luz",
-         "group": "special"
+         "descriptionGE": "lichtjahre",
+         "factor": 9.461E+18
         },
         {
-         "alias": "pc",
          "unit": "pc",
+         "formule": "false",
          "descriptionEN": "parsec",
          "descriptionES": "parsec",
-         "group": "special"
+         "descriptionGE": "parsec",
+         "factor": 3.086E+19
         },
         {
-         "alias": "Å",
          "unit": "Å",
+         "formule": "false",
          "descriptionEN": "Angstrom",
          "descriptionES": "Angstrom",
-         "group": "special"
+         "descriptionGE": "angström",
+         "factor": 1E-10
         }
        ]
 }
