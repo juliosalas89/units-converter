@@ -1,57 +1,57 @@
 {
-    "modes":[
+    "types":[
         {
             "id": "001",
             "icon": "ruler",
-            "name": "Length",
+            "name": "length",
             "group": "MaterialCommunityIcons"
         },
         {
             "id": "002",
             "icon": "speedometer",
-            "name": "Speed",
+            "name": "speed",
             "group": "MaterialCommunityIcons"
         },
         {
             "id": "003",
             "icon": "weight-kilogram",
-            "name": "Weight",
+            "name": "weight",
             "group": "MaterialCommunityIcons"
         },
         {
             "id": "004",
             "icon": "compress",
-            "name": "Presure",
+            "name": "presure",
             "group": "MaterialIcons"
         },
         {
             "id": "005",
             "icon": "cube-outline",
-            "name": "Volume",
+            "name": "volume",
             "group": "Ionicons"
         },
         {
             "id": "006",
             "icon": "ios-alarm-outline",
-            "name": "Time",
+            "name": "time",
             "group": "Ionicons"
         },
         {
             "id": "007",
             "icon": "energy",
-            "name": "Energy",
+            "name": "energy",
             "group": "SimpleLineIcons"
         },
         {
             "id": "008",
             "icon": "engine-outline",
-            "name": "Power",
+            "name": "power",
             "group": "MaterialCommunityIcons"
         },
         {
             "id": "009",
             "icon": "screw-machine-round-top",
-            "name": "Bolts Systems",
+            "name": "bolts",
             "group": "MaterialCommunityIcons"
         }
     ]

@@ -1,13 +1,14 @@
 import { TextInput, View, StyleSheet, BackHandler } from "react-native"
 import st, { colors } from '../Styles.js'
 import CButton from "../general/CButton.jsx"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useRef } from "react"
 
-const ValueInput = ({navigation, focusInputFlag}) => {
+const ValueInput = ({navigation, focusInputFlag, inputValue, setInputValue}) => {
     const inputRef = useRef(null);
 
     useEffect(()=> {
+        inputRef.current.blur()
         inputRef.current.focus()
     }, [focusInputFlag])
 
@@ -15,16 +16,18 @@ const ValueInput = ({navigation, focusInputFlag}) => {
         <View style={st.container}>
             <TextInput
                 ref={inputRef}
-                style={styles.valueInput}
+                style={styles.measureInput}
                 inputMode='numeric'
                 keyboardType='numeric'
+                onChangeText={setInputValue}
+                value={inputValue}
             />
             <CButton styles={{
                 width: '49%',
                 color: colors.sec2,
                 backgroundColor: colors.main2,
                 textAlign: 'left'
-            }} title='mm' callBack={()=> navigation.navigate('ModeSelector')}></CButton>
+            }} title='mm' callBack={()=> console.log('caca')}></CButton>
         </View>
     )
 }
@@ -32,7 +35,7 @@ const ValueInput = ({navigation, focusInputFlag}) => {
 export default ValueInput
 
 const styles = StyleSheet.create({
-    valueInput: {
+    measureInput: {
         width: '49%',
         padding: 7,
         color: colors.main1,
