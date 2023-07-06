@@ -1,164 +1,538 @@
 {
-    "length":[
+    "force": [
         {
-         "unit": "mm",
-         "formule": "false",
-         "descriptionEN": "milimeters",
-         "descriptionES": "milimetros",
-         "descriptionGE": "millimeter",
-         "factor": 0.001
+            "unit": "N",
+            "formule": "false",
+            "factor": 1
         },
         {
-         "unit": "cm",
-         "formule": "false",
-         "descriptionEN": "centimeters",
-         "descriptionES": "centimetros",
-         "descriptionGE": "zentimeter",
-         "factor": 0.01
+            "unit": "dyn (Dina)",
+            "formule": "false",
+            "factor": 1E-05
         },
         {
-         "unit": "m",
-         "formule": "false",
-         "descriptionEN": "meters",
-         "descriptionES": "metros",
-         "descriptionGE": "meter",
-         "factor": 1
+            "unit": "daN",
+            "formule": "false",
+            "factor": 10
         },
         {
-         "unit": "km",
-         "formule": "false",
-         "descriptionEN": "kilometers",
-         "descriptionES": "kilometros",
-         "descriptionGE": "kilometer",
-         "factor": 1000
+            "unit": "kN",
+            "formule": "false",
+            "factor": 1000
         },
         {
-         "unit": "in",
-         "formule": "false",
-         "descriptionEN": "inches",
-         "descriptionES": "pulgadas",
-         "descriptionGE": "zoll",
-         "factor": 0.0254
+            "unit": "kgf",
+            "formule": "false",
+            "factor": 9.80665
         },
         {
-         "unit": "ft",
-         "formule": "false",
-         "descriptionEN": "foots",
-         "descriptionES": "pie",
-         "descriptionGE": "fuß",
-         "factor": 0.30479
+            "unit": "lbf",
+            "formule": "false",
+            "factor": 4.448222
         },
         {
-         "unit": "yd",
-         "formule": "false",
-         "descriptionEN": "yards",
-         "descriptionES": "yarda",
-         "descriptionGE": "hof",
-         "factor": 0.9144
-        },
-        {
-         "unit": "mi",
-         "formule": "false",
-         "descriptionEN": "miles",
-         "descriptionES": "milla",
-         "descriptionGE": "meile",
-         "factor": 1609.34
-        },
-        {
-         "unit": "nmi",
-         "formule": "false",
-         "descriptionEN": "nautic miles",
-         "descriptionES": "millas nauticas",
-         "descriptionGE": "seemeile",
-         "factor": 1852
-        },
-        {
-         "unit": "fm",
-         "formule": "false",
-         "descriptionEN": "fentometers",
-         "descriptionES": "fentometros",
-         "descriptionGE": "fetometer",
-         "factor": 1E-15
-        },
-        {
-         "unit": "pm",
-         "formule": "false",
-         "descriptionEN": "picometers",
-         "descriptionES": "picometros",
-         "descriptionGE": "pikometer",
-         "factor": 1E-12
-        },
-        {
-         "unit": "nm",
-         "formule": "false",
-         "descriptionEN": "nanometers",
-         "descriptionES": "nanometros",
-         "descriptionGE": "nanometer",
-         "factor": 1E-09
-        },
-        {
-         "unit": "µm",
-         "formule": "false",
-         "descriptionEN": "micrometers",
-         "descriptionES": "micrometros",
-         "descriptionGE": "mikrometer",
-         "factor": 1E-06
-        },
-        {
-         "unit": "dm",
-         "formule": "false",
-         "descriptionEN": "decimeters",
-         "descriptionES": "decimetros",
-         "descriptionGE": "dezimeter",
-         "factor": 0.1
-        },
-        {
-         "unit": "dam",
-         "formule": "false",
-         "descriptionEN": "decameters",
-         "descriptionES": "decametros",
-         "descriptionGE": "dekameter",
-         "factor": 10
-        },
-        {
-         "unit": "hm",
-         "formule": "false",
-         "descriptionEN": "hectometers",
-         "descriptionES": "hectometros",
-         "descriptionGE": "hektometer",
-         "factor": 100
-        },
-        {
-         "unit": "AU",
-         "formule": "false",
-         "descriptionEN": "astronomic units",
-         "descriptionES": "unidades astronomicas",
-         "descriptionGE": "astronomische einheiten",
-         "factor": 149600000000000
-        },
-        {
-         "unit": "ly",
-         "formule": "false",
-         "descriptionEN": "light-years",
-         "descriptionES": "años luz",
-         "descriptionGE": "lichtjahre",
-         "factor": 9.461E+18
-        },
-        {
-         "unit": "pc",
-         "formule": "false",
-         "descriptionEN": "parsec",
-         "descriptionES": "parsec",
-         "descriptionGE": "parsec",
-         "factor": 3.086E+19
-        },
-        {
-         "unit": "Å",
-         "formule": "false",
-         "descriptionEN": "Angstrom",
-         "descriptionES": "Angstrom",
-         "descriptionGE": "angström",
-         "factor": 1E-10
+            "unit": "kip",
+            "formule": "false",
+            "factor": 4448.22162
         }
-       ]
+    ],
+    "length": [
+        {
+            "unit": "mm",
+            "formule": "false",
+            "factor": 0.001
+        },
+        {
+            "unit": "cm",
+            "formule": "false",
+            "factor": 0.01
+        },
+        {
+            "unit": "m",
+            "formule": "false",
+            "factor": 1
+        },
+        {
+            "unit": "km",
+            "formule": "false",
+            "factor": 1000
+        },
+        {
+            "unit": "in",
+            "formule": "false",
+            "factor": 0.0254
+        },
+        {
+            "unit": "ft",
+            "formule": "false",
+            "factor": 0.30479
+        },
+        {
+            "unit": "yd",
+            "formule": "false",
+            "factor": 0.9144
+        },
+        {
+            "unit": "mi",
+            "formule": "false",
+            "factor": 1609.34
+        },
+        {
+            "unit": "nmi",
+            "formule": "false",
+            "factor": 1852
+        },
+        {
+            "unit": "fm",
+            "formule": "false",
+            "factor": 1E-15
+        },
+        {
+            "unit": "pm",
+            "formule": "false",
+            "factor": 1E-12
+        },
+        {
+            "unit": "nm",
+            "formule": "false",
+            "factor": 1E-09
+        },
+        {
+            "unit": "µm",
+            "formule": "false",
+            "factor": 1E-06
+        },
+        {
+            "unit": "dm",
+            "formule": "false",
+            "factor": 0.1
+        },
+        {
+            "unit": "dam",
+            "formule": "false",
+            "factor": 10
+        },
+        {
+            "unit": "hm",
+            "formule": "false",
+            "factor": 100
+        },
+        {
+            "unit": "AU",
+            "formule": "false",
+            "factor": 149600000000000
+        },
+        {
+            "unit": "ly",
+            "formule": "false",
+            "factor": 9.461E+18
+        },
+        {
+            "unit": "pc",
+            "formule": "false",
+            "factor": 3.086E+19
+        },
+        {
+            "unit": "Å",
+            "formule": "false",
+            "factor": 1E-10
+        }
+    ],
+    "weight": [
+        {
+            "unit": "µg",
+            "formule": "false",
+            "factor": 1E-06
+        },
+        {
+            "unit": "mg",
+            "formule": "false",
+            "factor": 0.001
+        },
+        {
+            "unit": "g",
+            "formule": "false",
+            "factor": 1
+        },
+        {
+            "unit": "kg",
+            "formule": "false",
+            "factor": 1000
+        },
+        {
+            "unit": "lb (pound)",
+            "formule": "false",
+            "factor": 453.59237
+        },
+        {
+            "unit": "oz",
+            "formule": "false",
+            "factor": 28.349523125
+        },
+        {
+            "unit": "oz t",
+            "formule": "false",
+            "factor": 31.103477
+        },
+        {
+            "unit": "grain",
+            "formule": "false",
+            "factor": 0.064799
+        },
+        {
+            "unit": "tonne",
+            "formule": "false",
+            "factor": 1000000
+        },
+        {
+            "unit": "ton (UK)",
+            "formule": "false",
+            "factor": 1016046.91
+        },
+        {
+            "unit": "ton (US)",
+            "formule": "false",
+            "factor": 907184.74
+        },
+        {
+            "unit": "stone (UK)",
+            "formule": "false",
+            "factor": 6350.29318
+        },
+        {
+            "unit": "cwt",
+            "formule": "false",
+            "factor": 50802.3454
+        },
+        {
+            "unit": "carat",
+            "formule": "false",
+            "factor": 0.2
+        }
+    ],
+    "power": [
+        {
+            "unit": "W",
+            "formule": "false",
+            "factor": 1
+        },
+        {
+            "unit": "kW",
+            "formule": "false",
+            "factor": 1000
+        },
+        {
+            "unit": "MW",
+            "formule": "false",
+            "factor": 1000000
+        },
+        {
+            "unit": "kcal\/s",
+            "formule": "false",
+            "factor": 4184
+        },
+        {
+            "unit": "kcal\/h",
+            "formule": "false",
+            "factor": 1.162222
+        },
+        {
+            "unit": "HP",
+            "formule": "false",
+            "factor": 745.7
+        },
+        {
+            "unit": "cv",
+            "formule": "false",
+            "factor": 735.5
+        },
+        {
+            "unit": "BTU\/h",
+            "formule": "false",
+            "factor": 0.293071
+        },
+        {
+            "unit": "TR",
+            "formule": "false",
+            "factor": 3514.50003
+        },
+        {
+            "unit": "dBm",
+            "formule": "false",
+            "factor": 0.001259
+        }
+    ],
+    "pressure": [
+        {
+            "unit": "atm",
+            "formule": "false",
+            "factor": 1.01325
+        },
+        {
+            "unit": "Pa",
+            "formule": "false",
+            "factor": 1E-05
+        },
+        {
+            "unit": "hPa (mbar)",
+            "formule": "false",
+            "factor": 0.001
+        },
+        {
+            "unit": "kPa (kN\/m2)",
+            "formule": "false",
+            "factor": 0.01
+        },
+        {
+            "unit": "Mpa",
+            "formule": "false",
+            "factor": 10
+        },
+        {
+            "unit": "bar",
+            "formule": "false",
+            "factor": 1
+        },
+        {
+            "unit": "psi (lb\/in2)",
+            "formule": "false",
+            "factor": 0.0689476
+        },
+        {
+            "unit": "psf (lb\/ft2)",
+            "formule": "false",
+            "factor": 0.0004788
+        },
+        {
+            "unit": "ksi",
+            "formule": "false",
+            "factor": 68.9476
+        },
+        {
+            "unit": "(kg\/cm2)",
+            "formule": "false",
+            "factor": 0.980665
+        },
+        {
+            "unit": "(kg\/m2)",
+            "formule": "false",
+            "factor": 9.80665E-05
+        },
+        {
+            "unit": "mmHg (Torr)",
+            "formule": "false",
+            "factor": 0.00133322
+        },
+        {
+            "unit": "cmHg",
+            "formule": "false",
+            "factor": 0.013332199999999999
+        },
+        {
+            "unit": "inchHg",
+            "formule": "false",
+            "factor": 0.0338639
+        },
+        {
+            "unit": "mmH2O",
+            "formule": "false",
+            "factor": 9.80638E-05
+        },
+        {
+            "unit": "cmH2O",
+            "formule": "false",
+            "factor": 0.000980638
+        },
+        {
+            "unit": "inchH2O",
+            "formule": "false",
+            "factor": 0.00249082052
+        },
+        {
+            "unit": "mTorr",
+            "formule": "false",
+            "factor": 1.33322E-06
+        }
+    ],
+    "speed": [
+        {
+            "unit": "m\/s",
+            "formule": "false",
+            "factor": 1
+        },
+        {
+            "unit": "km\/s",
+            "formule": "false",
+            "factor": 1000
+        },
+        {
+            "unit": "km\/h",
+            "formule": "false",
+            "factor": 0.277778
+        },
+        {
+            "unit": "m\/min",
+            "formule": "false",
+            "factor": 0.016667
+        },
+        {
+            "unit": "ft\/s",
+            "formule": "false",
+            "factor": 0.3048
+        },
+        {
+            "unit": "ft\/min",
+            "formule": "false",
+            "factor": 0.00508
+        },
+        {
+            "unit": "km\/min",
+            "formule": "false",
+            "factor": 16.666667
+        },
+        {
+            "unit": "mph (mi\/h)",
+            "formule": "false",
+            "factor": 0.44704
+        },
+        {
+            "unit": "knot",
+            "formule": "false",
+            "factor": 0.514444
+        },
+        {
+            "unit": "mach",
+            "formule": "false",
+            "factor": 340
+        }
+    ],
+    "work-energy": [
+        {
+            "unit": "J",
+            "formule": "false",
+            "factor": 1
+        },
+        {
+            "unit": "kJ",
+            "formule": "false",
+            "factor": 1000
+        },
+        {
+            "unit": "cal",
+            "formule": "false",
+            "factor": 4.184
+        },
+        {
+            "unit": "kcal (Cal)",
+            "formule": "false",
+            "factor": 4184
+        },
+        {
+            "unit": "kW.h",
+            "formule": "false",
+            "factor": 3600000
+        },
+        {
+            "unit": "kg.m",
+            "formule": "false",
+            "factor": 9.80665
+        },
+        {
+            "unit": "in.lb",
+            "formule": "false",
+            "factor": 0.112985
+        },
+        {
+            "unit": "ft.lb",
+            "formule": "false",
+            "factor": 1.355818
+        },
+        {
+            "unit": "BTU",
+            "formule": "false",
+            "factor": 1055.05585
+        },
+        {
+            "unit": "toe",
+            "formule": "false",
+            "factor": 41870000000
+        }
+    ],
+    "volume": [
+        {
+            "unit": "ml (cm3)",
+            "formule": "false",
+            "factor": 0.001
+        },
+        {
+            "unit": "cl",
+            "formule": "false",
+            "factor": 0.01
+        },
+        {
+            "unit": "dl",
+            "formule": "false",
+            "factor": 0.1
+        },
+        {
+            "unit": "L (dm3)",
+            "formule": "false",
+            "factor": 1
+        },
+        {
+            "unit": "mm3",
+            "formule": "false",
+            "factor": 1E-06
+        },
+        {
+            "unit": "m3",
+            "formule": "false",
+            "factor": 10000
+        },
+        {
+            "unit": "in3",
+            "formule": "false",
+            "factor": 0.016387
+        },
+        {
+            "unit": "ft3",
+            "formule": "false",
+            "factor": 28.316847
+        },
+        {
+            "unit": "yd3",
+            "formule": "false",
+            "factor": 764.554858
+        },
+        {
+            "unit": "gal (UK)",
+            "formule": "false",
+            "factor": 4.54609
+        },
+        {
+            "unit": "gal (US)",
+            "formule": "false",
+            "factor": 3.785412
+        },
+        {
+            "unit": "bbl",
+            "formule": "false",
+            "factor": 158.987295
+        },
+        {
+            "unit": "pt (UK)",
+            "formule": "false",
+            "factor": 0.568261
+        },
+        {
+            "unit": "pt (US)",
+            "formule": "false",
+            "factor": 0.473176
+        },
+        {
+            "unit": "fl oz (US)",
+            "formule": "false",
+            "factor": 0.029574
+        }
+    ]
 }

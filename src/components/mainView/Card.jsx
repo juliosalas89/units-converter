@@ -23,7 +23,8 @@ const Card = ({item, inputValue, selectedUnit}) => {
             </View>
             <View style={styles.unitsBox}>
                 <View style={styles.unitsSubBox}>
-                    <Text style={styles.unitsText}>{`${item.unit} `}</Text><Text style={styles.descriptionText}>{`- ${item.descriptionEN}`}</Text>
+                    <Text style={styles.unitsText}>{`${item.unit} `}</Text>
+                    {/* <Text style={styles.descriptionText}>{`- ${item.descriptionEN}`}</Text> */}
                 </View>
                 <View style={{ paddingTop: 4 }}>
                     <Pressable>

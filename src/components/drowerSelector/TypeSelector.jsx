@@ -4,12 +4,17 @@ import { colors } from "../Styles"
 import { useSelector } from "react-redux"
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import langData from '../../appData/traduction.json'
-import { setSelectedType } from "../../store/slices/generalData.slice";
+import { setDrowerVisible, setSelectedType } from "../../store/slices/generalData.slice";
 import typesData from '../../appData/types.json'
 import { useDispatch } from "react-redux";
 
 const ModeOption = ({option}) => {
     const dispatch = useDispatch()
+
+    const handlePress = (typeName) => {
+        dispatch(setSelectedType(typeName))
+        dispatch(setDrowerVisible(false))
+    }
 
     const modeStyles = StyleSheet.create({
         modeOption: {
@@ -27,7 +32,7 @@ const ModeOption = ({option}) => {
         <View style={modeStyles.modeContainer}>
             <TouchableOpacity 
                 style={modeStyles.modeOption}
-                onPress={()=> dispatch(setSelectedType(option.name))}
+                onPress={()=> handlePress(option.name)}
             >
                 {option.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={option.icon} size={50} color={colors.main1}/> : null}
                 {option.group === 'MaterialIcons' ? <MaterialIcons name={option.icon} size={50} color={colors.main1}/> : null}
@@ -62,5 +67,18 @@ const TypeSelector = () => {
         </View>
     )
 }
+
+// {
+//     "id": "006",
+//     "icon": "ios-alarm-outline",
+//     "name": "time",
+//     "group": "Ionicons"
+// },
+// {
+//     "id": "009",
+//     "icon": "screw-machine-round-top",
+//     "name": "bolts",
+//     "group": "MaterialCommunityIcons"
+// }
 
 export default TypeSelector
