@@ -24,7 +24,6 @@ const Home = ({navigation}) => {
     // const [fontsLoaded] = useFonts({
     //   'Main-Font': require('./assets/fonts/SheilaCrayon-1vWg.ttf'),
     // })
-    console.log("insets",insets.bottom)
   
     useEffect(() => {
         dispatch(getUserPreferencesThunk())

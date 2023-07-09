@@ -1,7 +1,7 @@
 import { Pressable, Text, StyleSheet, Platform } from "react-native"
 import { colors } from "../Styles"
 
-const CButton = ({styles = {}, pressedColor = colors.main1, callBack, title})=> {
+const CButton = ({styles = {}, pressedColor = colors.main1, callBack, title })=> {
 
     const st = StyleSheet.create({
         styles: {
@@ -18,7 +18,7 @@ const CButton = ({styles = {}, pressedColor = colors.main1, callBack, title})=> 
     })
     
     const buttonStyles = (pressed) => {
-        return pressed ? Platform.OS === 'ios' ? { ...st.styles, backgroundColor: pressedColor } : { ...st.styles ,backgroundColor: pressedColor } : st.styles
+        return pressed && Platform.OS === 'ios' ? { ...st.styles, backgroundColor: pressedColor } : st.styles
     }
 
     return (
