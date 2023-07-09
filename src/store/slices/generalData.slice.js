@@ -7,7 +7,13 @@ const generalDataSlice = createSlice({
         drowerVisible: false,
         selectedType: 'length',
         selectedUnitsIndexes: {
-            length: 0
+            length: 0,
+            speed: 0,
+            weight: 0,
+            pressure: 0,
+            volume: 0,
+            "work-energy": 0,
+            power: 0
         }
     },
     reducers: {
@@ -18,7 +24,7 @@ const generalDataSlice = createSlice({
             return {...state, selectedType: action.payload }
         },
         setSelectedUnitsIndexes (state, action) {
-            return {...state, selectedUnitIndexes: action.payload }
+            return {...state, selectedUnitsIndexes: {...state.selectedUnitsIndexes, ...action.payload } }
         },
     }
 })

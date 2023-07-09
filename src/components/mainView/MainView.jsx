@@ -5,6 +5,7 @@ import Header from "./Header"
 import { useSelector } from "react-redux"
 import { MaterialCommunityIcons, Octicons } from '@expo/vector-icons'
 import { colors } from "../Styles"
+import unitsData from '../../appData/units.json'
 import { useDispatch } from "react-redux"
 import { setDrowerVisible } from "../../store/slices/generalData.slice"
 import { useState, useEffect } from "react"
@@ -12,15 +13,25 @@ import { useState, useEffect } from "react"
 const MainView = ({navigation}) => {
     const [inputValue, setInputValue] = useState(null)
     const [focusInputFlag, setFocusInputFlag] = useState(false)
+    const [units, setUnits] = useState(unitsData.length)
+    const [selectedUnit, setSelectedUnit] = useState(null)
+    
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize);
     const selectedType = useSelector(store => store.generalData.selectedType)
-    const selectedUnit = useSelector(store => store.generalData.selectedUnit)
+    const selectedUnitsIndexes = useSelector(store => store.generalData.selectedUnitsIndexes)
 
+    useEffect(()=> {
+        setUnits(unitsData[selectedType])
+    }, [selectedType])
+
+    useEffect(()=> {
+        setSelectedUnit(units[selectedUnitsIndexes[selectedType]])
+    }, [selectedUnitsIndexes, selectedType])
 
     const styles = StyleSheet.create({
         container: {
-            height: windowSize.height - 50    
+            height: windowSize.height - 50
         },
         footer: {
             backgroundColor: colors.main1,
@@ -31,12 +42,24 @@ const MainView = ({navigation}) => {
         }
     })
 
-    return (
+    return !selectedUnit ? null : (
         <View style={{ height: '100%', backgroundColor: 'inherit'}}>
             <View style={styles.container}>
                 <Header/>
-                <ValueInput navigation={navigation} focusInputFlag={focusInputFlag} inputValue={inputValue} setInputValue={setInputValue}></ValueInput>
-                <UnitsResultList inputValue={inputValue}/>
+                <ValueInput 
+                    selectedUnit={selectedUnit} 
+                    navigation={navigation} 
+                    units={units} 
+                    focusInputFlag={focusInputFlag} 
+                    inputValue={inputValue} 
+                    setInputValue={setInputValue}
+                    selectedType={selectedType}
+                />
+                <UnitsResultList 
+                    selectedUnit={selectedUnit} 
+                    units={units} 
+                    inputValue={inputValue}
+                />
             </View>
             <View style={styles.footer}>
                 <TouchableOpacity onPress={() => dispatch(setDrowerVisible(true))}>
