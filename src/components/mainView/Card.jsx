@@ -1,20 +1,38 @@
 import FavStar from "../general/FavStar"
 import { Pressable, Text, View, StyleSheet } from "react-native"
 import { colors } from "../Styles"
-import { useState } from "react"
-import { useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useState, useEffect } from "react"
+import Decimal from "decimal.js"
 
 const Card = ({item, inputValue, selectedUnit}) => {
     const [result, setResult] = useState(null)
 
     useEffect(()=>{
-        setResult(selectedUnit ? inputValue * selectedUnit.factor / item.factor : null)
-    }, [inputValue])
-
-    useEffect(()=>{
         setResult(null)
     }, [selectedUnit])
+    
+    useEffect(()=>{
+        calculateResult()
+    }, [inputValue])
+
+    const calculateResult = () => {
+        if(!inputValue || !selectedUnit) return setResult(null)
+
+        const newResult =  new Decimal(inputValue.toString()).times(selectedUnit.factor.toString()).dividedBy(item.factor.toString())
+
+        //Too big or too small numbers need exponential notation
+        const expCondition = newResult.greaterThan(new Decimal('9999999999')) || newResult.lessThan(new Decimal('0.000000001'))
+
+        //Long numbers (with several decimal positions) need to be trimmed
+        const decimals = newResult.decimalPlaces()
+        const integers = newResult.toFixed(0).toString().length
+
+        const parsedResult = expCondition ? newResult.toExponential(4) : 
+            integers > 2 && decimals > 2 ? newResult.toFixed(2) : 
+            integers === 2 && decimals > 4 ? newResult.toFixed(4) : 
+            integers === 1 && decimals > 9 ? newResult.toFixed(9) : Number(newResult.toString())
+        setResult(parsedResult)
+    }
 
     return (
         <View style={styles.unitsLine}>

@@ -7,17 +7,18 @@ import langData from '../../appData/traduction.json'
 import { setDrowerVisible, setSelectedType } from "../../store/slices/generalData.slice";
 import typesData from '../../appData/types.json'
 import { useDispatch } from "react-redux";
+import CButton from "../general/CButton";
 
-const ModeOption = ({option}) => {
+const TypeOption = ({option}) => {
     const dispatch = useDispatch()
 
     const handlePress = (typeName) => {
-        dispatch(setSelectedType(typeName))
+        typeName && dispatch(setSelectedType(typeName))
         dispatch(setDrowerVisible(false))
     }
 
     const modeStyles = StyleSheet.create({
-        modeOption: {
+        typeOption: {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center'
@@ -31,7 +32,7 @@ const ModeOption = ({option}) => {
     return (
         <View style={modeStyles.modeContainer}>
             <TouchableOpacity 
-                style={modeStyles.modeOption}
+                style={modeStyles.typeOption}
                 onPress={()=> handlePress(option.name)}
             >
                 {option.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={option.icon} size={50} color={colors.main1}/> : null}
@@ -46,24 +47,35 @@ const ModeOption = ({option}) => {
 }
 
 const TypeSelector = () => {
+    const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize)
     const userPreferences = useSelector(state => state.localParams.userPreferences)
     const insets = useSafeAreaInsets()
 
     const styles = StyleSheet.create({
-        container: {
-            padding: 15,
-            paddingTop: insets.top + 30,
+        drowerContainer: {
             height: windowSize.height,
+            paddingTop: insets.top + 30,
+            paddingBottom: insets.bottom + 30,
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+        },
+        typesGrid: {
+            padding: 15,
+            height: windowSize.height - 100,
             width: '100%',
+            overflow: 'scroll',
             flexDirection: 'row',
             flexWrap: 'wrap'
         }
     })
 
     return (
-        <View style={styles.container}>
-            {typesData.types.map(option => <ModeOption option={option} key={option.id}/>)}
+        <View style={styles.drowerContainer}>        
+            <View style={styles.typesGrid}>
+                {typesData.types.map(option => <TypeOption option={option} key={option.id}/>)}
+            </View>
+            <CButton title='Close' styles={{margin: 10}} callBack={() => dispatch(setDrowerVisible(false))} />
         </View>
     )
 }

@@ -7,7 +7,7 @@ import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { setSelectedUnitsIndexes } from "../../store/slices/generalData.slice.js"
 
-const ValueInput = ({navigation, focusInputFlag, inputValue, setInputValue, units, selectedUnit, selectedType}) => {
+const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputValue, units, selectedUnit, selectedType}) => {
     const [unitsModalVisible, setUnitsModalVisible] = useState(false)
     const inputRef = useRef(null);
     
@@ -102,7 +102,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, setInputValue, unit
                 style={styles.measureInput}
                 inputMode='numeric'
                 keyboardType='numeric'
-                onChangeText={setInputValue}
+                onChangeText={handleChangeInputValue}
                 value={inputValue}
             />
             <CButton 
