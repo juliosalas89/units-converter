@@ -3,7 +3,7 @@ import UnitsResultList from "./UnitsResultsList"
 import ValueInput from "./ValueInput"
 import Header from "./Header"
 import { useSelector } from "react-redux"
-import { MaterialCommunityIcons, Octicons } from '@expo/vector-icons'
+import { MaterialCommunityIcons, Octicons, Entypo } from '@expo/vector-icons'
 import { colors } from "../Styles"
 import unitsData from '../../appData/units.json'
 import { useDispatch } from "react-redux"
@@ -27,7 +27,12 @@ const MainView = ({navigation}) => {
 
     useEffect(()=> {
         setSelectedUnit(units[selectedUnitsIndexes[selectedType]])
-    }, [selectedUnitsIndexes, selectedType])
+    }, [selectedUnitsIndexes, selectedType, units])
+    
+    const handleChangeInputValue = (input) => {
+        if (isNaN(input)) return
+        setInputValue(input)
+    }
 
     const styles = StyleSheet.create({
         container: {
@@ -39,6 +44,12 @@ const MainView = ({navigation}) => {
             flexDirection: 'row',
             justifyContent: 'space-evenly',
             alignItems: 'center'
+        },
+        footerButtons: {
+            height: '100%',
+            width: 70,
+            textAlign: 'center',
+            padding: 10
         }
     })
 
@@ -52,7 +63,7 @@ const MainView = ({navigation}) => {
                     units={units} 
                     focusInputFlag={focusInputFlag} 
                     inputValue={inputValue} 
-                    setInputValue={setInputValue}
+                    handleChangeInputValue={handleChangeInputValue}
                     selectedType={selectedType}
                 />
                 <UnitsResultList 
@@ -62,11 +73,14 @@ const MainView = ({navigation}) => {
                 />
             </View>
             <View style={styles.footer}>
-                <TouchableOpacity onPress={() => dispatch(setDrowerVisible(true))}>
+                <TouchableOpacity style={styles.footerButtons}>
                     <Octicons name='arrow-switch' size={30} color='#ffff'/>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={()=> setFocusInputFlag(!focusInputFlag)}>
+                <TouchableOpacity style={styles.footerButtons} onPress={()=> setFocusInputFlag(!focusInputFlag)}>
                     <MaterialCommunityIcons name='keyboard-outline' size={30} color='#ffff'/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.footerButtons} onPress={() => dispatch(setDrowerVisible(true))}>
+                    <Entypo name='grid' size={30} color='#ffff'/>
                 </TouchableOpacity>
             </View>
         </View>
