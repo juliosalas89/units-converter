@@ -1,11 +1,10 @@
 import { TextInput, Text, View, StyleSheet, FlatList, Modal } from "react-native"
-import st, { colors } from '../Styles.js'
 import CButton from "../general/CButton.jsx"
 import { useEffect, useState } from "react"
 import { useRef } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { setSelectedUnitsIndexes } from "../../store/slices/generalData.slice.js"
+import { saveGeneralDataThunk, setSelectedUnitsIndexes } from "../../store/slices/generalData.slice.js"
 
 const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputValue, units, selectedUnit, selectedType}) => {
     const [unitsModalVisible, setUnitsModalVisible] = useState(false)
@@ -13,6 +12,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
     
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize);
+    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
     
     useEffect(()=> {
         inputRef.current.blur()
@@ -31,6 +31,15 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
             color: colors.main1,
             left: (windowSize.width - 300)/2,
             top: 100
+        },
+        container: {
+            width: '100%',
+            flexDirection: 'row', 
+            justifyContent: 'space-between',
+            paddingLeft: 18, 
+            paddingRight: 18,
+            paddingTop: 7, 
+            paddingBottom: 7
         },
         measureInput: {
             width: '49%',
@@ -58,6 +67,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
 
     const handelSelect = (index)=> {
         dispatch(setSelectedUnitsIndexes({[selectedType]: index }))
+        dispatch(saveGeneralDataThunk())
         setUnitsModalVisible(false)
     }
 
@@ -96,7 +106,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
     }
 
     return (
-        <View style={st.container}>
+        <View style={styles.container}>
             <TextInput
                 ref={inputRef}
                 style={styles.measureInput}

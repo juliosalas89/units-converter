@@ -11,9 +11,7 @@ import { useEffect } from 'react';
 // Store:
 import { useSelector, useDispatch } from 'react-redux';
 import { setWindowSize, getUserPreferencesThunk } from '../store/slices/localParams.slice.js';
-import { setDrowerVisible } from '../store/slices/generalData.slice';
-// Style:
-import {colors} from './Styles'
+import { getGeneralDataThunk, setDrowerVisible } from '../store/slices/generalData.slice';
 
 const Home = ({navigation}) => {
     const insets = useSafeAreaInsets()
@@ -21,12 +19,15 @@ const Home = ({navigation}) => {
     const drowerVisible = useSelector(state => state.generalData.drowerVisible);
     const windowSize = useSelector(state => state.localParams.windowSize);
     const prefFetched = useSelector(state => state.localParams.prefFetched);
+    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
+    const generalDataFetched = useSelector(state => state.generalData.generalDataFetched);
     // const [fontsLoaded] = useFonts({
     //   'Main-Font': require('./assets/fonts/SheilaCrayon-1vWg.ttf'),
     // })
   
     useEffect(() => {
         dispatch(getUserPreferencesThunk())
+        dispatch(getGeneralDataThunk())
         const window = Dimensions.get('window')
         dispatch(setWindowSize(window))
     });
@@ -40,7 +41,7 @@ const Home = ({navigation}) => {
         }
     })
 
-    return !windowSize || !prefFetched ? null : (
+    return !windowSize || !prefFetched || !generalDataFetched ? null : (
         <>
             <StatusBar
                 backgroundColor={colors.main1}

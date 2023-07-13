@@ -1,11 +1,13 @@
 import FavStar from "../general/FavStar"
 import { Pressable, Text, View, StyleSheet } from "react-native"
-import { colors } from "../Styles"
 import { useState, useEffect } from "react"
 import Decimal from "decimal.js"
+import { useSelector } from "react-redux"
 
 const Card = ({item, inputValue, selectedUnit}) => {
     const [result, setResult] = useState(null)
+
+    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
 
     useEffect(()=>{
         setResult(null)
@@ -13,7 +15,7 @@ const Card = ({item, inputValue, selectedUnit}) => {
     
     useEffect(()=>{
         calculateResult()
-    }, [inputValue])
+    }, [inputValue, selectedUnit])
 
     const calculateResult = () => {
         if(!inputValue || !selectedUnit) return setResult(null)
@@ -33,6 +35,46 @@ const Card = ({item, inputValue, selectedUnit}) => {
             integers === 1 && decimals > 9 ? newResult.toFixed(9) : Number(newResult.toString())
         setResult(parsedResult)
     }
+
+    const styles = StyleSheet.create({
+        unitsLine: {
+            borderBottomWidth: 1,
+            borderBottomColor: colors.sec1,
+            flexDirection: 'row',
+            padding: 5,
+        },
+        valuesBox: {
+            paddingRight: 5,
+            borderRightWidth: 1,
+            borderRightColor: colors.sec1,
+            flex: 0.5,
+        },
+        unitsBox: {
+            paddingRight: 7,
+            paddingLeft: 5,
+            flexDirection: 'row',
+            justifyContent: "space-between",
+            flex: 0.5,
+        },
+        unitsSubBox: {
+            flexDirection: 'row',
+            justifyContent: "space-between",
+            alignItems: 'flex-end'
+        },
+        unitsText: {
+            fontSize: 20,
+            color: colors.sec1,
+        },
+        descriptionText: {
+            color: colors.sec1,
+            marginBottom: 2
+        },
+        valuesText: {
+            fontSize: 20,
+            color: colors.sec1,
+            textAlign: 'right'
+        }
+    })
 
     return (
         <View style={styles.unitsLine}>
@@ -56,42 +98,3 @@ const Card = ({item, inputValue, selectedUnit}) => {
 
 export default Card
 
-const styles = StyleSheet.create({
-    unitsLine: {
-        borderBottomWidth: 1,
-        borderBottomColor: colors.sec1,
-        flexDirection: 'row',
-        padding: 5,
-    },
-    valuesBox: {
-        paddingRight: 5,
-        borderRightWidth: 1,
-        borderRightColor: colors.sec1,
-        flex: 0.5,
-    },
-    unitsBox: {
-        paddingRight: 7,
-        paddingLeft: 5,
-        flexDirection: 'row',
-        justifyContent: "space-between",
-        flex: 0.5,
-    },
-    unitsSubBox: {
-        flexDirection: 'row',
-        justifyContent: "space-between",
-        alignItems: 'flex-end'
-    },
-    unitsText: {
-        fontSize: 20,
-        color: colors.sec1,
-    },
-    descriptionText: {
-        color: colors.sec1,
-        marginBottom: 2
-    },
-    valuesText: {
-        fontSize: 20,
-        color: colors.sec1,
-        textAlign: 'right'
-    }
-})

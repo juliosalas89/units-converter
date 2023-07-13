@@ -4,7 +4,6 @@ import ValueInput from "./ValueInput"
 import Header from "./Header"
 import { useSelector } from "react-redux"
 import { MaterialCommunityIcons, Octicons, Entypo } from '@expo/vector-icons'
-import { colors } from "../Styles"
 import unitsData from '../../appData/units.json'
 import { useDispatch } from "react-redux"
 import { setDrowerVisible } from "../../store/slices/generalData.slice"
@@ -20,19 +19,18 @@ const MainView = ({navigation}) => {
     const windowSize = useSelector(state => state.localParams.windowSize);
     const selectedType = useSelector(store => store.generalData.selectedType)
     const selectedUnitsIndexes = useSelector(store => store.generalData.selectedUnitsIndexes)
+    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
 
     useEffect(()=> {
         setUnits(unitsData[selectedType])
+        setInputValue(null)
     }, [selectedType])
 
     useEffect(()=> {
         setSelectedUnit(units[selectedUnitsIndexes[selectedType]])
     }, [selectedUnitsIndexes, selectedType, units])
     
-    const handleChangeInputValue = (input) => {
-        if (isNaN(input)) return
-        setInputValue(input)
-    }
+    const handleChangeInputValue = input => !isNaN(input) && setInputValue(input)
 
     const styles = StyleSheet.create({
         container: {

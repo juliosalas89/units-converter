@@ -1,5 +1,7 @@
 // Tools:
 import langData from '../../appData/traduction.json'
+import themesData from '../../appData/themes.json'
+import { translate } from '../../utils/languageUtils';
 import { 
     View, 
     StyleSheet, 
@@ -14,15 +16,15 @@ import { useState } from "react";
 // Store:
 import { useSelector, useDispatch } from "react-redux";
 import { saveUserPreferencesThunk } from "../../store/slices/localParams.slice";
-// Style:
-import st, { colors } from "../Styles"
 
 const Header = () => {
     const dispatch = useDispatch()
     const [modalVisible, setModalVisible] = useState(false)
     const [languageModalVisible, setLanguageModalVisible] = useState(false)
-    const userPreferences = useSelector(state => state.localParams.userPreferences);
+    const [themeModalVisible, setThemeModalVisible] = useState(false)
+    const language = useSelector(state => state.localParams.userPreferences.language);
     const windowSize = useSelector(state => state.localParams.windowSize);
+    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
     
     const styles = StyleSheet.create({
         title: {
@@ -52,21 +54,37 @@ const Header = () => {
             color: colors.main1,
             left: (windowSize.width - 300)/2,
             top: 200
+        },
+        container: {
+            width: '100%',
+            flexDirection: 'row', 
+            justifyContent: 'space-between',
+            paddingLeft: 18, 
+            paddingRight: 18,
+            paddingTop: 7, 
+            paddingBottom: 7,
+            backgroundColor: colors.main1
         }
     })
 
-    const Item = ({language}) => (
+    const LanguageItem = ({language}) => (
         <View>
           <Text>{`${language.original} (${language.english})`}</Text>
         </View>
-      );
+    );
+
+    const ThemeItem = ({theme}) => (
+        <View>
+          <Text>{`${theme.name}`}</Text>
+        </View>
+    );
 
     return (
-        <View style={{...st.container, backgroundColor: colors.main1,}}>
+        <View style={styles.container}>
             <Text style={styles.title}>
                 Units Converter
             </Text>
-            <TouchableOpacity onPress={()=> setModalVisible(!modalVisible)}>
+            <TouchableOpacity onPress={()=> setModalVisible(true)}>
                 <Svg width="26" height="40" viewBox="0 0 18 18">
                     <Path
                         d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
@@ -79,15 +97,15 @@ const Header = () => {
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
-                    setModalVisible(!modalVisible);
+                    setModalVisible(false);
                 }}
             >
                 <View style={styles.optionsModal}>
-                    <Pressable>
-                        <Text>{langData.phrases['Theme'][userPreferences.language]}</Text>
+                    <Pressable onPress={() => setThemeModalVisible(true)}>
+                        <Text>{translate(language, 'Theme')}</Text>
                     </Pressable>
                     <Pressable onPress={() => setLanguageModalVisible(true)}>
-                        <Text>{`${langData.phrases['Language'][userPreferences.language]}${userPreferences.language ? ' (Language): ' : ': '}${langData.languages[userPreferences.language].original}`}</Text>
+                        <Text>{`${translate(language, 'Language')}${language ? ' (Language): ' : ': '}${langData.languages[language].original}`}</Text>
                     </Pressable>
                 </View>
             </Modal>
@@ -96,14 +114,30 @@ const Header = () => {
                 transparent={true}
                 visible={languageModalVisible}
                 onRequestClose={() => {
-                    setLanguageModalVisible(!languageModalVisible);
+                    setLanguageModalVisible(false);
                 }}
             >   
                 <View style={styles.languageModal}>
                     <FlatList
                         data={langData.languages}
-                        renderItem={({item}) => <Item language={item} />}
+                        renderItem={({item}) => <LanguageItem language={item} />}
                         keyExtractor={item => item.original+item.english}
+                    />
+                </View>
+            </Modal>
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={themeModalVisible}
+                onRequestClose={() => {
+                    setThemeModalVisible(false);
+                }}
+            >   
+                <View style={styles.languageModal}>
+                    <FlatList
+                        data={themesData.themes}
+                        renderItem={({item}) => <ThemeItem theme={item} />}
+                        keyExtractor={(item, index) => item.name + index.toString()}
                     />
                 </View>
             </Modal>

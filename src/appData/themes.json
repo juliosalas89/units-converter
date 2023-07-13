@@ -1,0 +1,54 @@
+{
+    "themes": [
+        {
+            "name": "Default",
+            "colors": {
+                "main1": "#394a51",
+                "main2": "#7fa99b",
+                "sec1": "#fdc57b",
+                "sec2": "#fbf2d5"
+            },
+            "fontName": "Notes-Alarm"
+        },
+        {
+            "name": "Grey Orange",
+            "colors": {
+                "main1": "#393e51",
+                "main2": "#566683",
+                "sec1": "#ca6144",
+                "sec2": "#e9e6c9"
+            },
+            "fontName": "Sans-Serif"
+        },
+        {
+            "name": "Blue",
+            "colors": {
+                "main1": "#183661",
+                "main2": "#1c4b82",
+                "sec1": "#566683",
+                "sec2": "#dae1e7"
+            },
+            "fontName": "Sans-Serif"
+        },
+        {
+            "name": "Grey Green",
+            "colors": {
+                "main1": "#475762",
+                "main2": "#00ad7c",
+                "sec1": "#fdc57b",
+                "sec2": "#eceff4"
+            },
+            "fontName": "Sans-Serif"
+        },
+        {
+            "name": "Orange Green",
+            "colors": {
+                "main1": "#303841",
+                "main2": "#3a4750",
+                "sec1": "#e38929",
+                "sec2": "#eeeeee"
+            },
+            "fontName": "Sans-Serif"
+        }
+    ]
+}
