@@ -14,7 +14,7 @@
         }
     ],
     "phrases": {
-        "Language": ["Language", "Idioma", "Sprache"],
-        "Theme": ["Theme", "Tema", "Thema"]
+        "Language": ["Idioma", "Sprache"],
+        "Theme": ["Tema", "Thema"]
     }
 }

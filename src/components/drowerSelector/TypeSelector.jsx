@@ -1,19 +1,20 @@
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native"
 import {MaterialCommunityIcons, MaterialIcons, Ionicons, SimpleLineIcons} from '@expo/vector-icons'
-import { colors } from "../Styles"
 import { useSelector } from "react-redux"
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import langData from '../../appData/traduction.json'
-import { setDrowerVisible, setSelectedType } from "../../store/slices/generalData.slice";
+import { saveGeneralDataThunk, setDrowerVisible, setSelectedType } from "../../store/slices/generalData.slice";
 import typesData from '../../appData/types.json'
 import { useDispatch } from "react-redux";
 import CButton from "../general/CButton";
 
 const TypeOption = ({option}) => {
     const dispatch = useDispatch()
+    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
 
     const handlePress = (typeName) => {
         typeName && dispatch(setSelectedType(typeName))
+        dispatch(saveGeneralDataThunk(typeName))
         dispatch(setDrowerVisible(false))
     }
 
