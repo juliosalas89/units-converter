@@ -15,6 +15,10 @@
     ],
     "phrases": {
         "Language": ["Idioma", "Sprache"],
-        "Theme": ["Tema", "Thema"]
+        "Theme": ["Tema", "Thema"],
+        "Choose Language": ["Seleccionar Idioma", "Sprache wählen"],
+        "Choose Theme": ["Seleccionar Tema", "Thema wählen"],
+        "Confirm": ["Confirmar", "Bestätigen"],
+        "Cancel": ["Cancelar", "Stornieren"]
     }
 }

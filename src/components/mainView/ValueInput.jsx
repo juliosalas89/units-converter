@@ -80,7 +80,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
             }} 
             pressedColor={colors.sec1} 
             title={item.unit}
-            callBack={ () =>  handelSelect(index)}
+            onPress={ () =>  handelSelect(index)}
         />
     );
     
@@ -123,7 +123,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
                     textAlign: 'left'
                 }} 
                 title={selectedUnit.unit} 
-                callBack={()=> setUnitsModalVisible(true)}
+                onPress={()=> setUnitsModalVisible(true)}
             />
             <UnitsModal/>
         </View>

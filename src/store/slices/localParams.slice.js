@@ -27,7 +27,7 @@ const localParamsSlice = createSlice({
             return {...state, userPreferences: { language, theme } }
         },
         setLanguage (state, action) {
-            const language = action.payload || state.userPreferences.language
+            const language = action.payload || action.payload === 0 ? action.payload : state.userPreferences.language
             return {...state, userPreferences: {...state.userPreferences, language } }
         },
         setTheme (state, action) {
@@ -47,14 +47,26 @@ const localParamsSlice = createSlice({
     }
 })
 
-const saveUserPreferencesThunk = userPreferences => {
+const saveLanguageThunk = language => {
     return async (dispatch, getState) => {
         try {
-            const jsonPayload = JSON.stringify(userPreferences)
+            const userPreferences = getState().localParams.userPreferences
+            const jsonPayload = JSON.stringify({...userPreferences, language })
             await AsyncStorage.setItem('user-preferences', jsonPayload);
-            dispatch(setUserPreferences(userPreferences))
+            dispatch(setLanguage(language))
         } catch (error) {
-            dispatch(setUserPreferences(userPreferences))
+            console.log(error)
+        }
+    }
+}
+
+const saveThemeThunk = theme => {
+    return async (dispatch, getState) => {
+        try {
+            const userPreferences = getState().localParams.userPreferences
+            const jsonPayload = JSON.stringify({...userPreferences, theme })
+            await AsyncStorage.setItem('user-preferences', jsonPayload);
+        } catch (error) {
             console.log(error)
         }
     }
@@ -84,7 +96,8 @@ export const {
 } = localParamsSlice.actions
 
 export { 
-    saveUserPreferencesThunk, 
+    saveThemeThunk,
+    saveLanguageThunk,
     getUserPreferencesThunk 
 }
 

@@ -1,7 +1,7 @@
 import { Pressable, Text, StyleSheet, Platform } from "react-native"
 import { useSelector } from "react-redux";
 
-const CButton = ({styles = {}, pressedColor, callBack, title })=> {
+const CButton = ({styles = {}, pressedColor, onPress, title })=> {
     const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
 
     const st = StyleSheet.create({
@@ -25,7 +25,7 @@ const CButton = ({styles = {}, pressedColor, callBack, title })=> {
     return (
         <Pressable
             style={({pressed}) => buttonStyles(pressed)}
-            onPress={callBack}
+            onPress={onPress}
             android_ripple={{ color: pressedColor || colors.main1 }}
         >
             <Text style={st.textStyle}>{title}</Text>

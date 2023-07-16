@@ -2,7 +2,7 @@ import { View, StyleSheet, Text, TouchableOpacity } from "react-native"
 import {MaterialCommunityIcons, MaterialIcons, Ionicons, SimpleLineIcons} from '@expo/vector-icons'
 import { useSelector } from "react-redux"
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import langData from '../../appData/traduction.json'
+import langData from '../../appData/translation.json'
 import { saveGeneralDataThunk, setDrowerVisible, setSelectedType } from "../../store/slices/generalData.slice";
 import typesData from '../../appData/types.json'
 import { useDispatch } from "react-redux";
@@ -76,7 +76,7 @@ const TypeSelector = () => {
             <View style={styles.typesGrid}>
                 {typesData.types.map(option => <TypeOption option={option} key={option.id}/>)}
             </View>
-            <CButton title='Close' styles={{margin: 10}} callBack={() => dispatch(setDrowerVisible(false))} />
+            <CButton title='Close' styles={{margin: 10}} onPress={() => dispatch(setDrowerVisible(false))} />
         </View>
     )
 }
