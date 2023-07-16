@@ -19,7 +19,7 @@ const MainView = ({navigation}) => {
     const windowSize = useSelector(state => state.localParams.windowSize);
     const selectedType = useSelector(store => store.generalData.selectedType)
     const selectedUnitsIndexes = useSelector(store => store.generalData.selectedUnitsIndexes)
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
+    const colors = useSelector(state => state.localParams.theme.colors);
 
     useEffect(()=> {
         setUnits(unitsData[selectedType])

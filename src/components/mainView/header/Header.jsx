@@ -18,13 +18,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 const Header = () => {
-    const dispatch = useDispatch()
     const [modalVisible, setModalVisible] = useState(false)
     const [languageModalVisible, setLanguageModalVisible] = useState(false)
     const [themeModalVisible, setThemeModalVisible] = useState(false)
-    const language = useSelector(state => state.localParams.userPreferences.language);
+    const language = useSelector(state => state.localParams.language);
     const windowSize = useSelector(state => state.localParams.windowSize);
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
+    const colors = useSelector(state => state.localParams.theme.colors);
     
     const styles = StyleSheet.create({
         title: {
@@ -43,8 +42,8 @@ const Header = () => {
             top: 5
         },
         optionText : {
-            margin: 5,
-            fontSize: 15,
+            margin: 10,
+            fontSize: 17,
         },
         container: {
             width: '100%',
@@ -91,7 +90,7 @@ const Header = () => {
                         setLanguageModalVisible(true)
                         setModalVisible(false)
                     }}>
-                        <Text style={styles.optionText}>{`${translate(language, 'Language')}${language ? ' (Language): ' : ': '}${langData.languages[language].original}`}</Text>
+                        <Text style={styles.optionText}>{`${translate(language, 'Language')}${language ? ' (Language)' : ''}`}</Text>
                     </Pressable>
                 </View>
             </Modal>

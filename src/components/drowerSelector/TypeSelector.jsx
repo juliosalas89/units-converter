@@ -7,10 +7,12 @@ import { saveGeneralDataThunk, setDrowerVisible, setSelectedType } from "../../s
 import typesData from '../../appData/types.json'
 import { useDispatch } from "react-redux";
 import CButton from "../general/CButton";
+import { translate } from '../../utils/languageUtils.js'
 
 const TypeOption = ({option}) => {
     const dispatch = useDispatch()
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
+    const colors = useSelector(state => state.localParams.theme.colors);
+    const language = useSelector(state => state.localParams.language);
 
     const handlePress = (typeName) => {
         typeName && dispatch(setSelectedType(typeName))
@@ -40,7 +42,7 @@ const TypeOption = ({option}) => {
                 {option.group === 'MaterialIcons' ? <MaterialIcons name={option.icon} size={50} color={colors.main1}/> : null}
                 {option.group === 'Ionicons' ? <Ionicons name={option.icon} size={50} color={colors.main1}/> : null}
                 {option.group === 'SimpleLineIcons' ? <SimpleLineIcons name={option.icon} size={50} color={colors.main1}/> : null}
-                <Text>{option.name}</Text>
+                <Text>{translate(language, option.name)}</Text>
                 {/* <Text>{langData.phrases[option.name][userPreferences.language]}</Text> */}
             </TouchableOpacity>
         </View>
@@ -50,7 +52,7 @@ const TypeOption = ({option}) => {
 const TypeSelector = () => {
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize)
-    const userPreferences = useSelector(state => state.localParams.userPreferences)
+    const language = useSelector(state => state.localParams.language);
     const insets = useSafeAreaInsets()
 
     const styles = StyleSheet.create({
@@ -76,7 +78,7 @@ const TypeSelector = () => {
             <View style={styles.typesGrid}>
                 {typesData.types.map(option => <TypeOption option={option} key={option.id}/>)}
             </View>
-            <CButton title='Close' styles={{margin: 10}} onPress={() => dispatch(setDrowerVisible(false))} />
+            <CButton title={translate(language, 'Close')} styles={{margin: 10}} onPress={() => dispatch(setDrowerVisible(false))} />
         </View>
     )
 }

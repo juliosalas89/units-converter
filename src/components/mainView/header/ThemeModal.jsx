@@ -10,9 +10,9 @@ import { saveThemeThunk, setTheme } from '../../../store/slices/localParams.slic
 
 const ThemeModal = ({setThemeModalVisible}) => {
     const dispatch = useDispatch()
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
-    const language = useSelector(state => state.localParams.userPreferences.language);
-    const theme = useSelector(state => state.localParams.userPreferences.theme);
+    const colors = useSelector(state => state.localParams.theme.colors);
+    const language = useSelector(state => state.localParams.language);
+    const theme = useSelector(state => state.localParams.theme);
     const windowSize = useSelector(state => state.localParams.windowSize);
 
     const [currentTheme, setCurrentTheme] = useState(theme)
@@ -34,11 +34,15 @@ const ThemeModal = ({setThemeModalVisible}) => {
             borderColor: colors.sec1,
             borderRadius: 5,
             width: 300,
-            height: 300,
+            height: 400,
             backgroundColor: 'white',
             color: colors.main1,
             left: (windowSize.width - 300)/2,
             top: 200
+        },
+        scrollView: {
+            height: 300,
+            overflow: 'scroll' 
         },
         modalTitle: {
             fontSize: 20,
@@ -62,7 +66,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
         },
         buttonsContainer: {
             flexDirection: 'row',
-            marginBottom: 15
+            marginTop: 5
         },
         buttonFrame: {
             width: '50%',
@@ -72,13 +76,13 @@ const ThemeModal = ({setThemeModalVisible}) => {
 
     return (
         <View style={styles.themeModal}>
-            <View>
+            <View style={styles.scrollView}>
                 <Text style={styles.modalTitle}>{translate(language, 'Choose Theme') + ':'}</Text>
                 <FlatList
                     data={themesData.themes}
                     renderItem={({item}) => (
-                        <Pressable onPress={()=> dispatch(setTheme(item))} style={item.name === currentTheme.name ? styles.selectedItemView : styles.itemView}>
-                            <Text style={item.name === currentTheme.name ? styles.selectedItemText : styles.itemText}>{`${item.name}`}</Text>
+                        <Pressable onPress={()=> dispatch(setTheme(item))} style={item.name === theme.name ? styles.selectedItemView : styles.itemView}>
+                            <Text style={item.name === theme.name ? styles.selectedItemText : styles.itemText}>{`${item.name}`}</Text>
                         </Pressable>)
                     }
                     keyExtractor={(item, index) => item.name + index.toString()}

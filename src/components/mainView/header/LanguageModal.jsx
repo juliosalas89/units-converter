@@ -4,19 +4,19 @@ import { useSelector } from "react-redux"
 import langData from '../../../appData/translation.json'
 import CButton from '../../general/CButton'
 import { useState } from "react"
-import { saveLanguageThunk } from '../../../store/slices/localParams.slice.js'
+import { setAndSaveLanguageThunk } from '../../../store/slices/localParams.slice.js'
 import { useDispatch } from "react-redux"
 
 const LanguageModal = ({setLanguageModalVisible}) => {
     const dispatch = useDispatch()
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
-    const language = useSelector(state => state.localParams.userPreferences.language);
+    const colors = useSelector(state => state.localParams.theme.colors);
+    const language = useSelector(state => state.localParams.language);
     const windowSize = useSelector(state => state.localParams.windowSize);
 
     const [selectedLanguage, setSelectedLanguage] = useState(language) 
 
     const handleConfirm = ()=> {
-        dispatch(saveLanguageThunk(selectedLanguage))
+        dispatch(setAndSaveLanguageThunk(selectedLanguage))
         setLanguageModalVisible(false)
     }
 
@@ -62,7 +62,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
     return (
         <View style={styles.languageModal}>
             <View>
-                <Text style={styles.modalTitle}>{translate(language, 'Choose Language') + ' (Select Language):'}</Text>
+                <Text style={styles.modalTitle}>{`${translate(language, 'Choose Language')} ${!language ? '' : ' (Choose Language):'}`}</Text>
                 <FlatList
                     data={langData.languages}
                     renderItem={({item, index}) => (
@@ -76,7 +76,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
             <View style={styles.buttonsContainer}>
                 <View style={styles.buttonFrame}>
                     <CButton 
-                        title={translate(language, 'Cancel') + ' (Cancel)'}
+                        title={`${translate(language, 'Cancel')} ${!language ? '' : ' (Cancel)'}`}
                         onPress={()=> setLanguageModalVisible(false)} 
                         styles={{
                             paddingTop: 15, 
@@ -89,7 +89,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                 </View>
                 <View style={styles.buttonFrame}>
                     <CButton 
-                        title={translate(language, 'Confirm') + ' (OK)'}
+                        title={`${translate(language, 'Confirm')} ${!language ? '' : ' (OK)'}`}
                         onPress={handleConfirm} 
                         styles={{ 
                             paddingTop: 15, 

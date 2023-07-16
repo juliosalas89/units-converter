@@ -12,7 +12,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
     
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize);
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
+    const colors = useSelector(state => state.localParams.theme.colors);
     
     useEffect(()=> {
         inputRef.current.blur()

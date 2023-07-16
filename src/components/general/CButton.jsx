@@ -2,7 +2,7 @@ import { Pressable, Text, StyleSheet, Platform } from "react-native"
 import { useSelector } from "react-redux";
 
 const CButton = ({styles = {}, pressedColor, onPress, title })=> {
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
+    const colors = useSelector(state => state.localParams.theme.colors);
 
     const st = StyleSheet.create({
         styles: {

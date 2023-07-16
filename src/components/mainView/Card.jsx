@@ -7,7 +7,7 @@ import { useSelector } from "react-redux"
 const Card = ({item, inputValue, selectedUnit}) => {
     const [result, setResult] = useState(null)
 
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
+    const colors = useSelector(state => state.localParams.theme.colors);
 
     useEffect(()=>{
         setResult(null)
