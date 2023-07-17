@@ -1,14 +1,10 @@
-// import { useFonts } from 'expo-font'
-// Components:
 import MainView from './mainView/MainView';
 import TypeSelector from './drowerSelector/TypeSelector';
-// Tools:
 import { StatusBar } from 'expo-status-bar';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Drawer } from 'react-native-drawer-layout';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useEffect } from 'react';
-// Store:
 import { useSelector, useDispatch } from 'react-redux';
 import { setWindowSize, getUserPreferencesThunk } from '../store/slices/localParams.slice.js';
 import { getGeneralDataThunk, setDrowerVisible } from '../store/slices/generalData.slice';

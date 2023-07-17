@@ -7,17 +7,28 @@ import { useDispatch } from "react-redux"
 import { saveGeneralDataThunk, setSelectedUnitsIndexes } from "../../store/slices/generalData.slice.js"
 
 const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputValue, units, selectedUnit, selectedType}) => {
-    const [unitsModalVisible, setUnitsModalVisible] = useState(false)
     const inputRef = useRef(null);
+    const [unitsModalVisible, setUnitsModalVisible] = useState(false)
     
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize);
     const colors = useSelector(state => state.localParams.theme.colors);
     
     useEffect(()=> {
+        focusInput()
+    }, [focusInputFlag, selectedUnit])
+    
+    const focusInput = ()=> {
         inputRef.current.blur()
         inputRef.current.focus()
-    }, [focusInputFlag])
+    }
+
+    const handelSelect = (index)=> {
+        setUnitsModalVisible(false)
+        dispatch(setSelectedUnitsIndexes({[selectedType]: index }))
+        setTimeout(() => focusInput(), 200)
+        dispatch(saveGeneralDataThunk())
+    }
 
     const styles = StyleSheet.create({
         unitsModal: {
@@ -65,12 +76,6 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
         }
     })
 
-    const handelSelect = (index)=> {
-        dispatch(setSelectedUnitsIndexes({[selectedType]: index }))
-        dispatch(saveGeneralDataThunk())
-        setUnitsModalVisible(false)
-    }
-
     const Item = ({item, index}) => (
         <CButton 
             styles={{ 
@@ -80,7 +85,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
             }} 
             pressedColor={colors.sec1} 
             title={item.unit}
-            onPress={ () =>  handelSelect(index)}
+            onPress={() =>  handelSelect(index)}
         />
     );
     

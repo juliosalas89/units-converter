@@ -1,21 +1,10 @@
-// Tools:
-import langData from '../../../appData/translation.json'
 import ThemeModal from './ThemeModal';
 import LanguageModal from './LanguageModal';
 import { translate } from '../../../utils/languageUtils';
-import { 
-    View, 
-    StyleSheet, 
-    Text, 
-    TouchableOpacity, 
-    Modal,
-    Pressable,
-} from "react-native"
 import Svg, { Path } from 'react-native-svg';
 import { useState } from "react";
-// Store:
-import { useSelector, useDispatch } from "react-redux";
-
+import { useSelector } from "react-redux";
+import { View, StyleSheet, Text, TouchableOpacity, Modal, Pressable } from "react-native"
 
 const Header = () => {
     const [modalVisible, setModalVisible] = useState(false)

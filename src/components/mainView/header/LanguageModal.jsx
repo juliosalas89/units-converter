@@ -8,12 +8,12 @@ import { setAndSaveLanguageThunk } from '../../../store/slices/localParams.slice
 import { useDispatch } from "react-redux"
 
 const LanguageModal = ({setLanguageModalVisible}) => {
+    const [selectedLanguage, setSelectedLanguage] = useState(language) 
+
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
     const language = useSelector(state => state.localParams.language);
     const windowSize = useSelector(state => state.localParams.windowSize);
-
-    const [selectedLanguage, setSelectedLanguage] = useState(language) 
 
     const handleConfirm = ()=> {
         dispatch(setAndSaveLanguageThunk(selectedLanguage))

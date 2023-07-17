@@ -2,7 +2,6 @@ import { View, StyleSheet, Text, TouchableOpacity } from "react-native"
 import {MaterialCommunityIcons, MaterialIcons, Ionicons, SimpleLineIcons} from '@expo/vector-icons'
 import { useSelector } from "react-redux"
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import langData from '../../appData/translation.json'
 import { saveGeneralDataThunk, setDrowerVisible, setSelectedType } from "../../store/slices/generalData.slice";
 import typesData from '../../appData/types.json'
 import { useDispatch } from "react-redux";

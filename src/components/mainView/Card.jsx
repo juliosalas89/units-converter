@@ -1,13 +1,18 @@
 import FavStar from "../general/FavStar"
 import { Pressable, Text, View, StyleSheet } from "react-native"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Decimal from "decimal.js"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { setSelectedUnitsIndexes } from "../../store/slices/generalData.slice"
 
-const Card = ({item, inputValue, selectedUnit}) => {
+const Card = ({item, index, inputValue, selectedUnit, selected}) => {
+    const unitPressableRef = useRef(null);
     const [result, setResult] = useState(null)
-
+    
+    const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
+    const selectedType = useSelector(state => state.generalData.selectedType);
+    const windowSize = useSelector(state => state.localParams.windowSize)
 
     useEffect(()=>{
         setResult(null)
@@ -36,12 +41,17 @@ const Card = ({item, inputValue, selectedUnit}) => {
         setResult(parsedResult)
     }
 
+    const handleLongPress = ()=> {
+        dispatch(setSelectedUnitsIndexes({[selectedType]: index }))
+    }
+
     const styles = StyleSheet.create({
         unitsLine: {
             borderBottomWidth: 1,
             borderBottomColor: colors.sec1,
             flexDirection: 'row',
             padding: 5,
+            backgroundColor: selected ? colors.sec1 : colors.sec2,
         },
         valuesBox: {
             paddingRight: 5,
@@ -57,13 +67,14 @@ const Card = ({item, inputValue, selectedUnit}) => {
             flex: 0.5,
         },
         unitsSubBox: {
+            width: (windowSize.width / 2) - 40,
             flexDirection: 'row',
             justifyContent: "space-between",
             alignItems: 'flex-end'
         },
         unitsText: {
             fontSize: 20,
-            color: colors.sec1,
+            color: selected ? colors.sec2 : colors.sec1,
         },
         descriptionText: {
             color: colors.sec1,
@@ -71,7 +82,7 @@ const Card = ({item, inputValue, selectedUnit}) => {
         },
         valuesText: {
             fontSize: 20,
-            color: colors.sec1,
+            color: selected ? colors.sec2 : colors.sec1,
             textAlign: 'right'
         }
     })
@@ -82,10 +93,17 @@ const Card = ({item, inputValue, selectedUnit}) => {
                 <Text style={styles.valuesText}>{result}</Text>
             </View>
             <View style={styles.unitsBox}>
-                <View style={styles.unitsSubBox}>
+                <Pressable 
+                    hitSlop={5}
+                    ref={unitPressableRef}
+                    onPressIn={() => console.log('cosa')}
+                    onLongPress={handleLongPress} 
+                    delayLongPress={300}
+                    style={styles.unitsSubBox}
+                >
                     <Text style={styles.unitsText}>{`${item.unit} `}</Text>
                     {/* <Text style={styles.descriptionText}>{`- ${item.descriptionEN}`}</Text> */}
-                </View>
+                </Pressable>
                 <View style={{ paddingTop: 4 }}>
                     <Pressable>
                         <FavStar/>

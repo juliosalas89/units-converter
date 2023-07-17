@@ -7,15 +7,14 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { saveThemeThunk, setTheme } from '../../../store/slices/localParams.slice.js'
 
-
 const ThemeModal = ({setThemeModalVisible}) => {
+    const [currentTheme, setCurrentTheme] = useState(theme)
+
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
     const language = useSelector(state => state.localParams.language);
     const theme = useSelector(state => state.localParams.theme);
     const windowSize = useSelector(state => state.localParams.windowSize);
-
-    const [currentTheme, setCurrentTheme] = useState(theme)
 
     const handleConfirm = ()=> {
         dispatch(saveThemeThunk(theme))

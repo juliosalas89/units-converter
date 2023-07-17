@@ -34,20 +34,21 @@ const MainView = ({navigation}) => {
 
     const styles = StyleSheet.create({
         container: {
-            height: windowSize.height - 50
+            height: windowSize.height - 60
         },
         footer: {
             backgroundColor: colors.main1,
-            height: 50,
+            height: 60,
             flexDirection: 'row',
             justifyContent: 'space-evenly',
             alignItems: 'center'
         },
         footerButtons: {
             height: '100%',
-            width: 70,
-            textAlign: 'center',
-            padding: 10
+            width: 60,
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignItems: 'center'
         }
     })
 
@@ -65,6 +66,7 @@ const MainView = ({navigation}) => {
                     selectedType={selectedType}
                 />
                 <UnitsResultList 
+                    selectedIndex={selectedUnitsIndexes[selectedType]}
                     selectedUnit={selectedUnit} 
                     units={units} 
                     inputValue={inputValue}

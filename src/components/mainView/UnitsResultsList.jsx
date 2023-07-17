@@ -1,14 +1,13 @@
 import { FlatList } from "react-native"
 import Card from "./Card";
   
-  const UnitsResultList = ({inputValue, selectedUnit, units}) => {
-
+  const UnitsResultList = ({inputValue, selectedIndex, selectedUnit, units}) => {
     return (
         <FlatList
             data={units}
             keyExtractor={(item, index) => item.unit + index}
-            renderItem={({ item }) => (
-                <Card item={item} inputValue={inputValue} selectedUnit={selectedUnit}></Card>
+            renderItem={({ item, index }) => (
+                <Card item={item} inputValue={inputValue} index={index} selected={index === selectedIndex} selectedUnit={selectedUnit}></Card>
               )}
         >
         </FlatList>
