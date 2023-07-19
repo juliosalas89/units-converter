@@ -1,4 +1,4 @@
-import { View, StyleSheet, TouchableOpacity } from "react-native"
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native"
 import UnitsResultList from "./UnitsResultsList"
 import ValueInput from "./ValueInput"
 import Header from "./header/Header"
@@ -16,10 +16,11 @@ const MainView = ({navigation}) => {
     const [selectedUnit, setSelectedUnit] = useState(null)
     
     const dispatch = useDispatch()
-    const windowSize = useSelector(state => state.localParams.windowSize);
+    const windowSize = useSelector(state => state.localParams.windowSize)
     const selectedType = useSelector(store => store.generalData.selectedType)
-    const selectedUnitsIndexes = useSelector(store => store.generalData.selectedUnitsIndexes)
-    const colors = useSelector(state => state.localParams.theme.colors);
+    const selectedUnitsIds = useSelector(store => store.generalData.selectedUnitsIds)
+    const colors = useSelector(state => state.localParams.theme.colors)
+    const allFavUnits = useSelector(state => state.generalData.favUnits)
 
     useEffect(()=> {
         setUnits(unitsData[selectedType])
@@ -27,10 +28,13 @@ const MainView = ({navigation}) => {
     }, [selectedType])
 
     useEffect(()=> {
-        setSelectedUnit(units[selectedUnitsIndexes[selectedType]])
-    }, [selectedUnitsIndexes, selectedType, units])
+        const selected = units.find(unit => unit.id === selectedUnitsIds[selectedType])
+        setSelectedUnit(selected)
+    }, [selectedUnitsIds, selectedType, units])
     
-    const handleChangeInputValue = input => !isNaN(input) && setInputValue(input)
+    const handleChangeInputValue = input => {
+        !isNaN(input) && setInputValue(input.trim())
+    }
 
     const styles = StyleSheet.create({
         container: {
@@ -66,7 +70,8 @@ const MainView = ({navigation}) => {
                     selectedType={selectedType}
                 />
                 <UnitsResultList 
-                    selectedIndex={selectedUnitsIndexes[selectedType]}
+                    favUnits={allFavUnits[selectedType]}
+                    selectedId={selectedUnitsIds[selectedType]}
                     selectedUnit={selectedUnit} 
                     units={units} 
                     inputValue={inputValue}

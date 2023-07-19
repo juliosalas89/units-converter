@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useRef } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { saveGeneralDataThunk, setSelectedUnitsIndexes } from "../../store/slices/generalData.slice.js"
+import { saveGeneralDataThunk, setSelectedUnitsIds } from "../../store/slices/generalData.slice.js"
 
 const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputValue, units, selectedUnit, selectedType}) => {
     const inputRef = useRef(null);
@@ -23,9 +23,9 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
         inputRef.current.focus()
     }
 
-    const handelSelect = (index)=> {
+    const handelSelect = (unitId)=> {
         setUnitsModalVisible(false)
-        dispatch(setSelectedUnitsIndexes({[selectedType]: index }))
+        dispatch(setSelectedUnitsIds({[selectedType]: unitId }))
         setTimeout(() => focusInput(), 200)
         dispatch(saveGeneralDataThunk())
     }
@@ -76,7 +76,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
         }
     })
 
-    const Item = ({item, index}) => (
+    const Item = ({item}) => (
         <CButton 
             styles={{ 
                 backgroundColor: '#ffff', 
@@ -85,7 +85,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
             }} 
             pressedColor={colors.sec1} 
             title={item.unit}
-            onPress={() =>  handelSelect(index)}
+            onPress={() =>  handelSelect(item.id)}
         />
     );
     
@@ -102,8 +102,8 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
                 <View style={styles.unitsModal}>
                     <FlatList
                         data={units}
-                        renderItem={({item, index}) => <Item item={item} index={index} />}
-                        keyExtractor={(item, index) => item.unit + index.toString() }
+                        renderItem={({item}) => <Item item={item}/>}
+                        keyExtractor={(item) => item.id }
                     />
                 </View>
             </Modal>

@@ -7,14 +7,23 @@ const generalDataSlice = createSlice({
         drowerVisible: false,
         selectedType: 'length',
         generalDataFetched: false,
-        selectedUnitsIndexes: {
-            length: 0,
-            speed: 0,
-            weight: 0,
-            pressure: 0,
-            volume: 0,
-            "work-energy": 0,
-            power: 0
+        selectedUnitsIds: {
+            length: '01',
+            speed: '01',
+            weight: '01',
+            pressure: '01',
+            volume: '01',
+            "work-energy": '01',
+            power: '01'
+        },
+        favUnits: {
+            length: [],
+            speed: [],
+            weight: [],
+            pressure: [],
+            volume: [],
+            "work-energy": [],
+            power: []
         }
     },
     reducers: {
@@ -27,9 +36,15 @@ const generalDataSlice = createSlice({
         setGeneralDataFetched (state, action) {
             return {...state, generalDataFetched: action.payload }
         },
-        setSelectedUnitsIndexes (state, action) {
+        setSelectedUnitsIds (state, action) {
             const payload = action.payload || {}
-            return {...state, selectedUnitsIndexes: {...state.selectedUnitsIndexes, ...payload } }
+            return {...state, selectedUnitsIds: {...state.selectedUnitsIds, ...payload } }
+        },
+        setAllFavUnits (state, action) {
+            return !action.payload ? state : {...state, favUnits: action.payload }
+        },
+        setFavUnits (state, action) {
+            return {...state, favUnits: {...state.favUnits, [state.selectedType]: action.payload || [] } }
         },
     }
 })
@@ -50,8 +65,9 @@ const getGeneralDataThunk = () => {
     return async (dispatch, getState) => {
         try {
             const value = JSON.parse(await AsyncStorage.getItem('general-data'));
-            value && value.selectedUnitsIndexes && dispatch(setSelectedUnitsIndexes(value.selectedUnitsIndexes))
+            value && value.selectedUnitsIds && dispatch(setSelectedUnitsIds(value.selectedUnitsIds))
             value && value.selectedType && dispatch(setSelectedType(value.selectedType))
+            value && value.favUnits && dispatch(setAllFavUnits(value.favUnits))
             dispatch(setGeneralDataFetched(true))
         } catch (error) {
             console.log(error)
@@ -63,7 +79,9 @@ export const {
     setDrowerVisible,
     setSelectedType,
     setGeneralDataFetched,
-    setSelectedUnitsIndexes
+    setSelectedUnitsIds,
+    setAllFavUnits,
+    setFavUnits
 } = generalDataSlice.actions
 
 export {

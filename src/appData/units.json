@@ -1,538 +1,642 @@
 {
-    "force": [
+	"force": [
         {
-            "unit": "N",
-            "formule": "false",
-            "factor": 1
+        "id": "01",
+        "unit": "N",
+        "formule": "false",
+        "factor": 1
         },
         {
-            "unit": "dyn (Dina)",
-            "formule": "false",
-            "factor": 1E-05
+        "id": "02",
+        "unit": "dyn (Dina)",
+        "formule": "false",
+        "factor": 1E-05
         },
         {
-            "unit": "daN",
-            "formule": "false",
-            "factor": 10
+        "id": "03",
+        "unit": "daN",
+        "formule": "false",
+        "factor": 10
         },
         {
-            "unit": "kN",
-            "formule": "false",
-            "factor": 1000
+        "id": "04",
+        "unit": "kN",
+        "formule": "false",
+        "factor": 1000
         },
         {
-            "unit": "kgf",
-            "formule": "false",
-            "factor": 9.80665
+        "id": "05",
+        "unit": "kgf",
+        "formule": "false",
+        "factor": 9.80665
         },
         {
-            "unit": "lbf",
-            "formule": "false",
-            "factor": 4.448222
+        "id": "06",
+        "unit": "lbf",
+        "formule": "false",
+        "factor": 4.448222
         },
         {
-            "unit": "kip",
-            "formule": "false",
-            "factor": 4448.22162
+        "id": "07",
+        "unit": "kip",
+        "formule": "false",
+        "factor": 4448.22162
         }
     ],
     "length": [
         {
-            "unit": "mm",
-            "formule": "false",
-            "factor": 0.001
+        "id": "01",
+        "unit": "mm",
+        "formule": "false",
+        "factor": 0.001
         },
         {
-            "unit": "cm",
-            "formule": "false",
-            "factor": 0.01
+        "id": "02",
+        "unit": "cm",
+        "formule": "false",
+        "factor": 0.01
         },
         {
-            "unit": "m",
-            "formule": "false",
-            "factor": 1
+        "id": "03",
+        "unit": "m",
+        "formule": "false",
+        "factor": 1
         },
         {
-            "unit": "km",
-            "formule": "false",
-            "factor": 1000
+        "id": "04",
+        "unit": "km",
+        "formule": "false",
+        "factor": 1000
         },
         {
-            "unit": "in",
-            "formule": "false",
-            "factor": 0.0254
+        "id": "05",
+        "unit": "in",
+        "formule": "false",
+        "factor": 0.0254
         },
         {
-            "unit": "ft",
-            "formule": "false",
-            "factor": 0.30479
+        "id": "06",
+        "unit": "ft",
+        "formule": "false",
+        "factor": 0.30479
         },
         {
-            "unit": "yd",
-            "formule": "false",
-            "factor": 0.9144
+        "id": "07",
+        "unit": "yd",
+        "formule": "false",
+        "factor": 0.9144
         },
         {
-            "unit": "mi",
-            "formule": "false",
-            "factor": 1609.34
+        "id": "08",
+        "unit": "mi",
+        "formule": "false",
+        "factor": 1609.34
         },
         {
-            "unit": "nmi",
-            "formule": "false",
-            "factor": 1852
+        "id": "09",
+        "unit": "nmi",
+        "formule": "false",
+        "factor": 1852
         },
         {
-            "unit": "fm",
-            "formule": "false",
-            "factor": 1E-15
+        "id": "10",
+        "unit": "fm",
+        "formule": "false",
+        "factor": 1E-15
         },
         {
-            "unit": "pm",
-            "formule": "false",
-            "factor": 1E-12
+        "id": "11",
+        "unit": "pm",
+        "formule": "false",
+        "factor": 1E-12
         },
         {
-            "unit": "nm",
-            "formule": "false",
-            "factor": 1E-09
+        "id": "12",
+        "unit": "nm",
+        "formule": "false",
+        "factor": 1E-09
         },
         {
-            "unit": "µm",
-            "formule": "false",
-            "factor": 1E-06
+        "id": "13",
+        "unit": "µm",
+        "formule": "false",
+        "factor": 1E-06
         },
         {
-            "unit": "dm",
-            "formule": "false",
-            "factor": 0.1
+        "id": "14",
+        "unit": "dm",
+        "formule": "false",
+        "factor": 0.1
         },
         {
-            "unit": "dam",
-            "formule": "false",
-            "factor": 10
+        "id": "15",
+        "unit": "dam",
+        "formule": "false",
+        "factor": 10
         },
         {
-            "unit": "hm",
-            "formule": "false",
-            "factor": 100
+        "id": "16",
+        "unit": "hm",
+        "formule": "false",
+        "factor": 100
         },
         {
-            "unit": "AU",
-            "formule": "false",
-            "factor": 149600000000000
+        "id": "17",
+        "unit": "AU",
+        "formule": "false",
+        "factor": 149600000000000
         },
         {
-            "unit": "ly",
-            "formule": "false",
-            "factor": 9.461E+18
+        "id": "18",
+        "unit": "ly",
+        "formule": "false",
+        "factor": 9.461E+18
         },
         {
-            "unit": "pc",
-            "formule": "false",
-            "factor": 3.086E+19
+        "id": "19",
+        "unit": "pc",
+        "formule": "false",
+        "factor": 3.086E+19
         },
         {
-            "unit": "Å",
-            "formule": "false",
-            "factor": 1E-10
+        "id": "20",
+        "unit": "Å",
+        "formule": "false",
+        "factor": 1E-10
         }
     ],
     "weight": [
         {
-            "unit": "µg",
-            "formule": "false",
-            "factor": 1E-06
+        "id": "01",
+        "unit": "µg",
+        "formule": "false",
+        "factor": 1E-06
         },
         {
-            "unit": "mg",
-            "formule": "false",
-            "factor": 0.001
+        "id": "02",
+        "unit": "mg",
+        "formule": "false",
+        "factor": 0.001
         },
         {
-            "unit": "g",
-            "formule": "false",
-            "factor": 1
+        "id": "03",
+        "unit": "g",
+        "formule": "false",
+        "factor": 1
         },
         {
-            "unit": "kg",
-            "formule": "false",
-            "factor": 1000
+        "id": "04",
+        "unit": "kg",
+        "formule": "false",
+        "factor": 1000
         },
         {
-            "unit": "lb (pound)",
-            "formule": "false",
-            "factor": 453.59237
+        "id": "05",
+        "unit": "lb (pound)",
+        "formule": "false",
+        "factor": 453.59237
         },
         {
-            "unit": "oz",
-            "formule": "false",
-            "factor": 28.349523125
+        "id": "06",
+        "unit": "oz",
+        "formule": "false",
+        "factor": 28.349523125
         },
         {
-            "unit": "oz t",
-            "formule": "false",
-            "factor": 31.103477
+        "id": "07",
+        "unit": "oz t",
+        "formule": "false",
+        "factor": 31.103477
         },
         {
-            "unit": "grain",
-            "formule": "false",
-            "factor": 0.064799
+        "id": "08",
+        "unit": "grain",
+        "formule": "false",
+        "factor": 0.064799
         },
         {
-            "unit": "tonne",
-            "formule": "false",
-            "factor": 1000000
+        "id": "09",
+        "unit": "tonne",
+        "formule": "false",
+        "factor": 1000000
         },
         {
-            "unit": "ton (UK)",
-            "formule": "false",
-            "factor": 1016046.91
+        "id": "10",
+        "unit": "ton (UK)",
+        "formule": "false",
+        "factor": 1016046.91
         },
         {
-            "unit": "ton (US)",
-            "formule": "false",
-            "factor": 907184.74
+        "id": "11",
+        "unit": "ton (US)",
+        "formule": "false",
+        "factor": 907184.74
         },
         {
-            "unit": "stone (UK)",
-            "formule": "false",
-            "factor": 6350.29318
+        "id": "12",
+        "unit": "stone (UK)",
+        "formule": "false",
+        "factor": 6350.29318
         },
         {
-            "unit": "cwt",
-            "formule": "false",
-            "factor": 50802.3454
+        "id": "13",
+        "unit": "cwt",
+        "formule": "false",
+        "factor": 50802.3454
         },
         {
-            "unit": "carat",
-            "formule": "false",
-            "factor": 0.2
+        "id": "14",
+        "unit": "carat",
+        "formule": "false",
+        "factor": 0.2
         }
     ],
     "power": [
         {
-            "unit": "W",
-            "formule": "false",
-            "factor": 1
+        "id": "01",
+        "unit": "W",
+        "formule": "false",
+        "factor": 1
         },
         {
-            "unit": "kW",
-            "formule": "false",
-            "factor": 1000
+        "id": "02",
+        "unit": "kW",
+        "formule": "false",
+        "factor": 1000
         },
         {
-            "unit": "MW",
-            "formule": "false",
-            "factor": 1000000
+        "id": "03",
+        "unit": "MW",
+        "formule": "false",
+        "factor": 1000000
         },
         {
-            "unit": "kcal\/s",
-            "formule": "false",
-            "factor": 4184
+        "id": "04",
+        "unit": "kcal\/s",
+        "formule": "false",
+        "factor": 4184
         },
         {
-            "unit": "kcal\/h",
-            "formule": "false",
-            "factor": 1.162222
+        "id": "05",
+        "unit": "kcal\/h",
+        "formule": "false",
+        "factor": 1.162222
         },
         {
-            "unit": "HP",
-            "formule": "false",
-            "factor": 745.7
+        "id": "06",
+        "unit": "HP",
+        "formule": "false",
+        "factor": 745.7
         },
         {
-            "unit": "cv",
-            "formule": "false",
-            "factor": 735.5
+        "id": "07",
+        "unit": "cv",
+        "formule": "false",
+        "factor": 735.5
         },
         {
-            "unit": "BTU\/h",
-            "formule": "false",
-            "factor": 0.293071
+        "id": "08",
+        "unit": "BTU\/h",
+        "formule": "false",
+        "factor": 0.293071
         },
         {
-            "unit": "TR",
-            "formule": "false",
-            "factor": 3514.50003
+        "id": "09",
+        "unit": "TR",
+        "formule": "false",
+        "factor": 3514.50003
         },
         {
-            "unit": "dBm",
-            "formule": "false",
-            "factor": 0.001259
+        "id": "10",
+        "unit": "dBm",
+        "formule": "false",
+        "factor": 0.001259
         }
     ],
     "pressure": [
         {
-            "unit": "atm",
-            "formule": "false",
-            "factor": 1.01325
+        "id": "01",
+        "unit": "atm",
+        "formule": "false",
+        "factor": 1.01325
         },
         {
-            "unit": "Pa",
-            "formule": "false",
-            "factor": 1E-05
+        "id": "02",
+        "unit": "Pa",
+        "formule": "false",
+        "factor": 1E-05
         },
         {
-            "unit": "hPa (mbar)",
-            "formule": "false",
-            "factor": 0.001
+        "id": "03",
+        "unit": "hPa (mbar)",
+        "formule": "false",
+        "factor": 0.001
         },
         {
-            "unit": "kPa (kN\/m2)",
-            "formule": "false",
-            "factor": 0.01
+        "id": "04",
+        "unit": "kPa (kN\/m2)",
+        "formule": "false",
+        "factor": 0.01
         },
         {
-            "unit": "Mpa",
-            "formule": "false",
-            "factor": 10
+        "id": "05",
+        "unit": "Mpa",
+        "formule": "false",
+        "factor": 10
         },
         {
-            "unit": "bar",
-            "formule": "false",
-            "factor": 1
+        "id": "06",
+        "unit": "bar",
+        "formule": "false",
+        "factor": 1
         },
         {
-            "unit": "psi (lb\/in2)",
-            "formule": "false",
-            "factor": 0.0689476
+        "id": "07",
+        "unit": "psi (lb\/in2)",
+        "formule": "false",
+        "factor": 0.0689476
         },
         {
-            "unit": "psf (lb\/ft2)",
-            "formule": "false",
-            "factor": 0.0004788
+        "id": "08",
+        "unit": "psf (lb\/ft2)",
+        "formule": "false",
+        "factor": 0.0004788
         },
         {
-            "unit": "ksi",
-            "formule": "false",
-            "factor": 68.9476
+        "id": "09",
+        "unit": "ksi",
+        "formule": "false",
+        "factor": 68.9476
         },
         {
-            "unit": "(kg\/cm2)",
-            "formule": "false",
-            "factor": 0.980665
+        "id": "10",
+        "unit": "(kg\/cm2)",
+        "formule": "false",
+        "factor": 0.980665
         },
         {
-            "unit": "(kg\/m2)",
-            "formule": "false",
-            "factor": 9.80665E-05
+        "id": "11",
+        "unit": "(kg\/m2)",
+        "formule": "false",
+        "factor": 9.80665E-05
         },
         {
-            "unit": "mmHg (Torr)",
-            "formule": "false",
-            "factor": 0.00133322
+        "id": "12",
+        "unit": "mmHg (Torr)",
+        "formule": "false",
+        "factor": 0.00133322
         },
         {
-            "unit": "cmHg",
-            "formule": "false",
-            "factor": 0.013332199999999999
+        "id": "13",
+        "unit": "cmHg",
+        "formule": "false",
+        "factor": 0.013332199999999999
         },
         {
-            "unit": "inchHg",
-            "formule": "false",
-            "factor": 0.0338639
+        "id": "14",
+        "unit": "inchHg",
+        "formule": "false",
+        "factor": 0.0338639
         },
         {
-            "unit": "mmH2O",
-            "formule": "false",
-            "factor": 9.80638E-05
+        "id": "15",
+        "unit": "mmH2O",
+        "formule": "false",
+        "factor": 9.80638E-05
         },
         {
-            "unit": "cmH2O",
-            "formule": "false",
-            "factor": 0.000980638
+        "id": "16",
+        "unit": "cmH2O",
+        "formule": "false",
+        "factor": 0.000980638
         },
         {
-            "unit": "inchH2O",
-            "formule": "false",
-            "factor": 0.00249082052
+        "id": "17",
+        "unit": "inchH2O",
+        "formule": "false",
+        "factor": 0.00249082052
         },
         {
-            "unit": "mTorr",
-            "formule": "false",
-            "factor": 1.33322E-06
+        "id": "18",
+        "unit": "mTorr",
+        "formule": "false",
+        "factor": 1.33322E-06
         }
     ],
     "speed": [
         {
-            "unit": "m\/s",
-            "formule": "false",
-            "factor": 1
+        "id": "01",
+        "unit": "m\/s",
+        "formule": "false",
+        "factor": 1
         },
         {
-            "unit": "km\/s",
-            "formule": "false",
-            "factor": 1000
+        "id": "02",
+        "unit": "km\/s",
+        "formule": "false",
+        "factor": 1000
         },
         {
-            "unit": "km\/h",
-            "formule": "false",
-            "factor": 0.277778
+        "id": "03",
+        "unit": "km\/h",
+        "formule": "false",
+        "factor": 0.277778
         },
         {
-            "unit": "m\/min",
-            "formule": "false",
-            "factor": 0.016667
+        "id": "04",
+        "unit": "m\/min",
+        "formule": "false",
+        "factor": 0.016667
         },
         {
-            "unit": "ft\/s",
-            "formule": "false",
-            "factor": 0.3048
+        "id": "05",
+        "unit": "ft\/s",
+        "formule": "false",
+        "factor": 0.3048
         },
         {
-            "unit": "ft\/min",
-            "formule": "false",
-            "factor": 0.00508
+        "id": "06",
+        "unit": "ft\/min",
+        "formule": "false",
+        "factor": 0.00508
         },
         {
-            "unit": "km\/min",
-            "formule": "false",
-            "factor": 16.666667
+        "id": "07",
+        "unit": "km\/min",
+        "formule": "false",
+        "factor": 16.666667
         },
         {
-            "unit": "mph (mi\/h)",
-            "formule": "false",
-            "factor": 0.44704
+        "id": "08",
+        "unit": "mph (mi\/h)",
+        "formule": "false",
+        "factor": 0.44704
         },
         {
-            "unit": "knot",
-            "formule": "false",
-            "factor": 0.514444
+        "id": "09",
+        "unit": "knot",
+        "formule": "false",
+        "factor": 0.514444
         },
         {
-            "unit": "mach",
-            "formule": "false",
-            "factor": 340
+        "id": "10",
+        "unit": "mach",
+        "formule": "false",
+        "factor": 340
         }
     ],
     "work-energy": [
         {
-            "unit": "J",
-            "formule": "false",
-            "factor": 1
+        "id": "01",
+        "unit": "J",
+        "formule": "false",
+        "factor": 1
         },
         {
-            "unit": "kJ",
-            "formule": "false",
-            "factor": 1000
+        "id": "02",
+        "unit": "kJ",
+        "formule": "false",
+        "factor": 1000
         },
         {
-            "unit": "cal",
-            "formule": "false",
-            "factor": 4.184
+        "id": "03",
+        "unit": "cal",
+        "formule": "false",
+        "factor": 4.184
         },
         {
-            "unit": "kcal (Cal)",
-            "formule": "false",
-            "factor": 4184
+        "id": "04",
+        "unit": "kcal (Cal)",
+        "formule": "false",
+        "factor": 4184
         },
         {
-            "unit": "kW.h",
-            "formule": "false",
-            "factor": 3600000
+        "id": "05",
+        "unit": "kW.h",
+        "formule": "false",
+        "factor": 3600000
         },
         {
-            "unit": "kg.m",
-            "formule": "false",
-            "factor": 9.80665
+        "id": "06",
+        "unit": "kg.m",
+        "formule": "false",
+        "factor": 9.80665
         },
         {
-            "unit": "in.lb",
-            "formule": "false",
-            "factor": 0.112985
+        "id": "07",
+        "unit": "in.lb",
+        "formule": "false",
+        "factor": 0.112985
         },
         {
-            "unit": "ft.lb",
-            "formule": "false",
-            "factor": 1.355818
+        "id": "08",
+        "unit": "ft.lb",
+        "formule": "false",
+        "factor": 1.355818
         },
         {
-            "unit": "BTU",
-            "formule": "false",
-            "factor": 1055.05585
+        "id": "09",
+        "unit": "BTU",
+        "formule": "false",
+        "factor": 1055.05585
         },
         {
-            "unit": "toe",
-            "formule": "false",
-            "factor": 41870000000
+        "id": "10",
+        "unit": "toe",
+        "formule": "false",
+        "factor": 41870000000
         }
     ],
     "volume": [
         {
-            "unit": "ml (cm3)",
-            "formule": "false",
-            "factor": 0.001
+        "id": "01",
+        "unit": "ml (cm3)",
+        "formule": "false",
+        "factor": 0.001
         },
         {
-            "unit": "cl",
-            "formule": "false",
-            "factor": 0.01
+        "id": "02",
+        "unit": "cl",
+        "formule": "false",
+        "factor": 0.01
         },
         {
-            "unit": "dl",
-            "formule": "false",
-            "factor": 0.1
+        "id": "03",
+        "unit": "dl",
+        "formule": "false",
+        "factor": 0.1
         },
         {
-            "unit": "L (dm3)",
-            "formule": "false",
-            "factor": 1
+        "id": "04",
+        "unit": "L (dm3)",
+        "formule": "false",
+        "factor": 1
         },
         {
-            "unit": "mm3",
-            "formule": "false",
-            "factor": 1E-06
+        "id": "05",
+        "unit": "mm3",
+        "formule": "false",
+        "factor": 1E-06
         },
         {
-            "unit": "m3",
-            "formule": "false",
-            "factor": 10000
+        "id": "06",
+        "unit": "m3",
+        "formule": "false",
+        "factor": 10000
         },
         {
-            "unit": "in3",
-            "formule": "false",
-            "factor": 0.016387
+        "id": "07",
+        "unit": "in3",
+        "formule": "false",
+        "factor": 0.016387
         },
         {
-            "unit": "ft3",
-            "formule": "false",
-            "factor": 28.316847
+        "id": "08",
+        "unit": "ft3",
+        "formule": "false",
+        "factor": 28.316847
         },
         {
-            "unit": "yd3",
-            "formule": "false",
-            "factor": 764.554858
+        "id": "09",
+        "unit": "yd3",
+        "formule": "false",
+        "factor": 764.554858
         },
         {
-            "unit": "gal (UK)",
-            "formule": "false",
-            "factor": 4.54609
+        "id": "10",
+        "unit": "gal (UK)",
+        "formule": "false",
+        "factor": 4.54609
         },
         {
-            "unit": "gal (US)",
-            "formule": "false",
-            "factor": 3.785412
+        "id": "11",
+        "unit": "gal (US)",
+        "formule": "false",
+        "factor": 3.785412
         },
         {
-            "unit": "bbl",
-            "formule": "false",
-            "factor": 158.987295
+        "id": "12",
+        "unit": "bbl",
+        "formule": "false",
+        "factor": 158.987295
         },
         {
-            "unit": "pt (UK)",
-            "formule": "false",
-            "factor": 0.568261
+        "id": "13",
+        "unit": "pt (UK)",
+        "formule": "false",
+        "factor": 0.568261
         },
         {
-            "unit": "pt (US)",
-            "formule": "false",
-            "factor": 0.473176
+        "id": "14",
+        "unit": "pt (US)",
+        "formule": "false",
+        "factor": 0.473176
         },
         {
-            "unit": "fl oz (US)",
-            "formule": "false",
-            "factor": 0.029574
+        "id": "15",
+        "unit": "fl oz (US)",
+        "formule": "false",
+        "factor": 0.029574
         }
     ]
 }

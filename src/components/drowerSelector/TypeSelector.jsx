@@ -42,7 +42,6 @@ const TypeOption = ({option}) => {
                 {option.group === 'Ionicons' ? <Ionicons name={option.icon} size={50} color={colors.main1}/> : null}
                 {option.group === 'SimpleLineIcons' ? <SimpleLineIcons name={option.icon} size={50} color={colors.main1}/> : null}
                 <Text>{translate(language, option.name)}</Text>
-                {/* <Text>{langData.phrases[option.name][userPreferences.language]}</Text> */}
             </TouchableOpacity>
         </View>
     )

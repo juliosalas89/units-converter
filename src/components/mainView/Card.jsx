@@ -3,11 +3,12 @@ import { Pressable, Text, View, StyleSheet } from "react-native"
 import { useState, useEffect, useRef } from "react"
 import Decimal from "decimal.js"
 import { useSelector, useDispatch } from "react-redux"
-import { setSelectedUnitsIndexes } from "../../store/slices/generalData.slice"
+import { setSelectedUnitsIds, setFavUnits, saveGeneralDataThunk } from "../../store/slices/generalData.slice"
 
-const Card = ({item, index, inputValue, selectedUnit, selected}) => {
+const Card = ({item, inputValue, favUnits, selectedUnit, selected}) => {
     const unitPressableRef = useRef(null);
     const [result, setResult] = useState(null)
+    const [fillStar, setFillStar] = useState(favUnits.includes(item.id))
     
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
@@ -16,7 +17,7 @@ const Card = ({item, index, inputValue, selectedUnit, selected}) => {
 
     useEffect(()=>{
         setResult(null)
-    }, [selectedUnit])
+    }, [])
     
     useEffect(()=>{
         calculateResult()
@@ -42,7 +43,16 @@ const Card = ({item, index, inputValue, selectedUnit, selected}) => {
     }
 
     const handleLongPress = ()=> {
-        dispatch(setSelectedUnitsIndexes({[selectedType]: index }))
+        dispatch(setSelectedUnitsIds({[selectedType]: item.id }))
+    }
+
+    const handleFavStarPress = () => {
+        setFillStar(!fillStar)
+        setTimeout(()=> {
+            const newFavUnits = favUnits.includes(item.id) ? favUnits.filter(favId => favId !== item.id) : [...favUnits, item.id]
+            dispatch(setFavUnits(newFavUnits))
+            dispatch(saveGeneralDataThunk())
+        }, 200)
     }
 
     const styles = StyleSheet.create({
@@ -96,17 +106,16 @@ const Card = ({item, index, inputValue, selectedUnit, selected}) => {
                 <Pressable 
                     hitSlop={5}
                     ref={unitPressableRef}
-                    onPressIn={() => console.log('cosa')}
-                    onLongPress={handleLongPress} 
-                    delayLongPress={300}
+                    onLongPress={() => handleLongPress()} 
+                    delayLongPress={200}
                     style={styles.unitsSubBox}
                 >
                     <Text style={styles.unitsText}>{`${item.unit} `}</Text>
                     {/* <Text style={styles.descriptionText}>{`- ${item.descriptionEN}`}</Text> */}
                 </Pressable>
                 <View style={{ paddingTop: 4 }}>
-                    <Pressable>
-                        <FavStar/>
+                    <Pressable hitSlop={5} onPress={() => handleFavStarPress()}>
+                        <FavStar fill={fillStar ? '#ffe040' : 'none'}/>
                     </Pressable>
                 </View>
             </View>
