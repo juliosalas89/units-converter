@@ -4,20 +4,31 @@ import { useEffect, useState } from "react"
 import { useRef } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { saveGeneralDataThunk, setSelectedUnitsIndexes } from "../../store/slices/generalData.slice.js"
+import { saveGeneralDataThunk, setSelectedUnitsIds } from "../../store/slices/generalData.slice.js"
 
 const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputValue, units, selectedUnit, selectedType}) => {
-    const [unitsModalVisible, setUnitsModalVisible] = useState(false)
     const inputRef = useRef(null);
+    const [unitsModalVisible, setUnitsModalVisible] = useState(false)
     
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize);
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
+    const colors = useSelector(state => state.localParams.theme.colors);
     
     useEffect(()=> {
+        focusInput()
+    }, [focusInputFlag, selectedUnit])
+    
+    const focusInput = ()=> {
         inputRef.current.blur()
         inputRef.current.focus()
-    }, [focusInputFlag])
+    }
+
+    const handelSelect = (unitId)=> {
+        setUnitsModalVisible(false)
+        dispatch(setSelectedUnitsIds({[selectedType]: unitId }))
+        setTimeout(() => focusInput(), 200)
+        dispatch(saveGeneralDataThunk())
+    }
 
     const styles = StyleSheet.create({
         unitsModal: {
@@ -65,13 +76,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
         }
     })
 
-    const handelSelect = (index)=> {
-        dispatch(setSelectedUnitsIndexes({[selectedType]: index }))
-        dispatch(saveGeneralDataThunk())
-        setUnitsModalVisible(false)
-    }
-
-    const Item = ({item, index}) => (
+    const Item = ({item}) => (
         <CButton 
             styles={{ 
                 backgroundColor: '#ffff', 
@@ -80,7 +85,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
             }} 
             pressedColor={colors.sec1} 
             title={item.unit}
-            callBack={ () =>  handelSelect(index)}
+            onPress={() =>  handelSelect(item.id)}
         />
     );
     
@@ -97,8 +102,8 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
                 <View style={styles.unitsModal}>
                     <FlatList
                         data={units}
-                        renderItem={({item, index}) => <Item item={item} index={index} />}
-                        keyExtractor={(item, index) => item.unit + index.toString() }
+                        renderItem={({item}) => <Item item={item}/>}
+                        keyExtractor={(item) => item.id }
                     />
                 </View>
             </Modal>
@@ -123,7 +128,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
                     textAlign: 'left'
                 }} 
                 title={selectedUnit.unit} 
-                callBack={()=> setUnitsModalVisible(true)}
+                onPress={()=> setUnitsModalVisible(true)}
             />
             <UnitsModal/>
         </View>

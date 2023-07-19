@@ -1,7 +1,7 @@
-import { View, StyleSheet, TouchableOpacity } from "react-native"
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native"
 import UnitsResultList from "./UnitsResultsList"
 import ValueInput from "./ValueInput"
-import Header from "./Header"
+import Header from "./header/Header"
 import { useSelector } from "react-redux"
 import { MaterialCommunityIcons, Octicons, Entypo } from '@expo/vector-icons'
 import unitsData from '../../appData/units.json'
@@ -16,10 +16,11 @@ const MainView = ({navigation}) => {
     const [selectedUnit, setSelectedUnit] = useState(null)
     
     const dispatch = useDispatch()
-    const windowSize = useSelector(state => state.localParams.windowSize);
+    const windowSize = useSelector(state => state.localParams.windowSize)
     const selectedType = useSelector(store => store.generalData.selectedType)
-    const selectedUnitsIndexes = useSelector(store => store.generalData.selectedUnitsIndexes)
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
+    const selectedUnitsIds = useSelector(store => store.generalData.selectedUnitsIds)
+    const colors = useSelector(state => state.localParams.theme.colors)
+    const allFavUnits = useSelector(state => state.generalData.favUnits)
 
     useEffect(()=> {
         setUnits(unitsData[selectedType])
@@ -27,27 +28,31 @@ const MainView = ({navigation}) => {
     }, [selectedType])
 
     useEffect(()=> {
-        setSelectedUnit(units[selectedUnitsIndexes[selectedType]])
-    }, [selectedUnitsIndexes, selectedType, units])
+        const selected = units.find(unit => unit.id === selectedUnitsIds[selectedType])
+        setSelectedUnit(selected)
+    }, [selectedUnitsIds, selectedType, units])
     
-    const handleChangeInputValue = input => !isNaN(input) && setInputValue(input)
+    const handleChangeInputValue = input => {
+        !isNaN(input) && setInputValue(input.trim())
+    }
 
     const styles = StyleSheet.create({
         container: {
-            height: windowSize.height - 50
+            height: windowSize.height - 60
         },
         footer: {
             backgroundColor: colors.main1,
-            height: 50,
+            height: 60,
             flexDirection: 'row',
             justifyContent: 'space-evenly',
             alignItems: 'center'
         },
         footerButtons: {
             height: '100%',
-            width: 70,
-            textAlign: 'center',
-            padding: 10
+            width: 60,
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignItems: 'center'
         }
     })
 
@@ -65,6 +70,8 @@ const MainView = ({navigation}) => {
                     selectedType={selectedType}
                 />
                 <UnitsResultList 
+                    favUnits={allFavUnits[selectedType]}
+                    selectedId={selectedUnitsIds[selectedType]}
                     selectedUnit={selectedUnit} 
                     units={units} 
                     inputValue={inputValue}

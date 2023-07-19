@@ -1,0 +1,32 @@
+{
+    "languages": [
+        {
+            "original": "English",
+            "english": "English"
+        },
+        {
+            "original": "Español",
+            "english": "Spanish"
+        },
+        {
+            "original": "Deutsch",
+            "english": "German"
+        }
+    ],
+    "phrases": {
+        "length": ["longitud", "länge"],
+        "speed": ["velocidad", "geschwindigkeit"],
+        "weight": ["peso", "gewicht"],
+        "pressure": ["presion", "druck"],
+        "volume": ["volumen", "volumen"],
+        "work-energy": ["trabajo-energia", "arbeit-energie"],
+        "power": ["potencia", "leistung"],
+        "Language": ["Idioma", "Sprache"],
+        "Theme": ["Tema", "Thema"],
+        "Choose Language": ["Seleccionar Idioma", "Sprache wählen"],
+        "Choose Theme": ["Seleccionar Tema", "Thema wählen"],
+        "Confirm": ["Confirmar", "Bestätigen"],
+        "Cancel": ["Cancelar", "Stornieren"],
+        "Close": ["Cerrar", "Zusperren"]
+    }
+}

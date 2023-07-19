@@ -1,14 +1,10 @@
-// import { useFonts } from 'expo-font'
-// Components:
 import MainView from './mainView/MainView';
 import TypeSelector from './drowerSelector/TypeSelector';
-// Tools:
 import { StatusBar } from 'expo-status-bar';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Drawer } from 'react-native-drawer-layout';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useEffect } from 'react';
-// Store:
 import { useSelector, useDispatch } from 'react-redux';
 import { setWindowSize, getUserPreferencesThunk } from '../store/slices/localParams.slice.js';
 import { getGeneralDataThunk, setDrowerVisible } from '../store/slices/generalData.slice';
@@ -19,15 +15,15 @@ const Home = ({navigation}) => {
     const drowerVisible = useSelector(state => state.generalData.drowerVisible);
     const windowSize = useSelector(state => state.localParams.windowSize);
     const prefFetched = useSelector(state => state.localParams.prefFetched);
-    const colors = useSelector(state => state.localParams.userPreferences.theme.colors);
+    const colors = useSelector(state => state.localParams.theme.colors);
     const generalDataFetched = useSelector(state => state.generalData.generalDataFetched);
     // const [fontsLoaded] = useFonts({
     //   'Main-Font': require('./assets/fonts/SheilaCrayon-1vWg.ttf'),
     // })
   
     useEffect(() => {
-        dispatch(getUserPreferencesThunk())
-        dispatch(getGeneralDataThunk())
+        !generalDataFetched && dispatch(getUserPreferencesThunk())
+        !prefFetched && dispatch(getGeneralDataThunk())
         const window = Dimensions.get('window')
         dispatch(setWindowSize(window))
     });
