@@ -67,7 +67,7 @@ const getGeneralDataThunk = () => {
             const value = JSON.parse(await AsyncStorage.getItem('general-data'));
             value && value.selectedUnitsIds && dispatch(setSelectedUnitsIds(value.selectedUnitsIds))
             value && value.selectedType && dispatch(setSelectedType(value.selectedType))
-            value && value.favUnits && dispatch(setAllFavUnits(value.favUnits))
+            // value && value.favUnits && dispatch(setAllFavUnits(value.favUnits))
             dispatch(setGeneralDataFetched(true))
         } catch (error) {
             console.log(error)

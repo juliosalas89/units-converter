@@ -20,6 +20,10 @@ const Card = ({item, inputValue, favUnits, selectedUnit, selected}) => {
     }, [])
     
     useEffect(()=>{
+        setFillStar(favUnits.includes(item.id))
+    }, [favUnits, item])
+
+    useEffect(()=>{
         calculateResult()
     }, [inputValue, selectedUnit])
 
