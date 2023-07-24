@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setWindowSize, getUserPreferencesThunk } from '../store/slices/localParams.slice.js';
 import { getGeneralDataThunk, setDrowerVisible } from '../store/slices/generalData.slice';
+import { initializeAds } from './ads/adsHelpers';
 
 const Home = ({navigation}) => {
     const insets = useSafeAreaInsets()

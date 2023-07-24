@@ -6,6 +6,7 @@ import CButton from '../../general/CButton'
 import { useState } from "react"
 import { setAndSaveLanguageThunk } from '../../../store/slices/localParams.slice.js'
 import { useDispatch } from "react-redux"
+import Banner from "../../ads/Banner"
 
 const LanguageModal = ({setLanguageModalVisible}) => {
     const dispatch = useDispatch()
@@ -56,6 +57,10 @@ const LanguageModal = ({setLanguageModalVisible}) => {
         buttonFrame: {
             width: '50%',
             padding: 7
+        },
+        bannerContainer: {
+            flexDirection: 'row',
+            justifyContent: 'space-around',
         }
     })
 
@@ -72,6 +77,9 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                     )}
                     keyExtractor={item => item.original+item.english}
                 />
+            </View>
+            <View style={styles.bannerContainer}>
+                <Banner type={'MEDIUM_RECTANGLE'}></Banner>
             </View>
             <View style={styles.buttonsContainer}>
                 <View style={styles.buttonFrame}>
