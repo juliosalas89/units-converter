@@ -1,12 +1,13 @@
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native"
-import UnitsResultList from "./UnitsResultsList"
-import ValueInput from "./ValueInput"
-import Header from "./header/Header"
+import UnitsResultList from "./UnitsResultsList.jsx"
+import ValueInput from "./ValueInput.jsx"
+import Header from "./header/Header.jsx"
+import Banner from '../ads/Banner.jsx'
 import { useSelector } from "react-redux"
 import { MaterialCommunityIcons, Octicons, Entypo } from '@expo/vector-icons'
 import unitsData from '../../appData/units.json'
-import { useDispatch } from "react-redux"
 import { setDrowerVisible } from "../../store/slices/generalData.slice"
+import { useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 
 const MainView = ({navigation}) => {
@@ -14,7 +15,7 @@ const MainView = ({navigation}) => {
     const [focusInputFlag, setFocusInputFlag] = useState(false)
     const [units, setUnits] = useState(unitsData.length)
     const [selectedUnit, setSelectedUnit] = useState(null)
-    
+
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize)
     const selectedType = useSelector(store => store.generalData.selectedType)
@@ -38,7 +39,7 @@ const MainView = ({navigation}) => {
 
     const styles = StyleSheet.create({
         container: {
-            height: windowSize.height - 60
+            height: windowSize.height - 120
         },
         footer: {
             backgroundColor: colors.main1,
@@ -77,6 +78,7 @@ const MainView = ({navigation}) => {
                     inputValue={inputValue}
                 />
             </View>
+            <Banner/>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButtons}>
                     <Octicons name='arrow-switch' size={30} color='#ffff'/>
