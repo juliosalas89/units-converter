@@ -8,7 +8,7 @@ import { setSelectedUnitsIds, setFavUnits, saveGeneralDataThunk } from "../../st
 const Card = ({item, inputValue, favUnits, selectedUnit, selected}) => {
     const unitPressableRef = useRef(null);
     const [result, setResult] = useState(null)
-    const [fillStar, setFillStar] = useState(favUnits.includes(item.id))
+    const [fillStar, setFillStar] = useState(false)
     
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
@@ -20,7 +20,7 @@ const Card = ({item, inputValue, favUnits, selectedUnit, selected}) => {
     }, [])
     
     useEffect(()=>{
-        setFillStar(favUnits.includes(item.id))
+        favUnits && item && setFillStar(favUnits.includes(item.id))
     }, [favUnits, item])
 
     useEffect(()=>{
@@ -53,7 +53,9 @@ const Card = ({item, inputValue, favUnits, selectedUnit, selected}) => {
     const handleFavStarPress = () => {
         setFillStar(!fillStar)
         setTimeout(()=> {
-            const newFavUnits = favUnits.includes(item.id) ? favUnits.filter(favId => favId !== item.id) : [...favUnits, item.id]
+            const newFavUnits = item && favUnits && favUnits.includes(item.id) ? 
+                favUnits.filter(favId => favId !== item.id) : 
+                [...favUnits, item.id]
             dispatch(setFavUnits(newFavUnits))
             dispatch(saveGeneralDataThunk())
         }, 200)

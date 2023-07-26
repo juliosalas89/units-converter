@@ -3,43 +3,43 @@
         {
             "id": "001",
             "icon": "ruler",
-            "name": "length",
+            "name": "Distance",
             "group": "MaterialCommunityIcons"
         },
         {
             "id": "002",
             "icon": "speedometer",
-            "name": "speed",
+            "name": "Speed",
             "group": "MaterialCommunityIcons"
         },
         {
             "id": "003",
             "icon": "weight-kilogram",
-            "name": "weight",
+            "name": "Weight",
             "group": "MaterialCommunityIcons"
         },
         {
             "id": "004",
             "icon": "compress",
-            "name": "pressure",
+            "name": "Pressure",
             "group": "MaterialIcons"
         },
         {
             "id": "005",
             "icon": "cube-outline",
-            "name": "volume",
+            "name": "Volume",
             "group": "Ionicons"
         },
         {
             "id": "007",
             "icon": "energy",
-            "name": "work-energy",
+            "name": "Work-Energy",
             "group": "SimpleLineIcons"
         },
         {
             "id": "008",
             "icon": "engine-outline",
-            "name": "power",
+            "name": "Power",
             "group": "MaterialCommunityIcons"
         }
     ]

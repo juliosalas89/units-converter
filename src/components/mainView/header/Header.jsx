@@ -22,7 +22,7 @@ const Header = () => {
         optionsModal: {
             padding: 10,
             borderWidth: 1,
-            borderColor: colors.sec1,
+            borderColor: colors.main1,
             borderRadius: 5,
             width: 200,
             backgroundColor: 'white',
@@ -43,15 +43,21 @@ const Header = () => {
             paddingTop: 7, 
             paddingBottom: 7,
             backgroundColor: colors.main1
+        },
+        modalBackground: {
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            backgroundColor: 'rgba(0,0,0,0.5)'
         }
     })
 
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>
-                Units Converter
-            </Text>
+            <Text style={styles.title}>Units Converter</Text>
             <TouchableOpacity onPress={()=> setModalVisible(true)}>
                 <Svg width="26" height="40" viewBox="0 0 18 18">
                     <Path
@@ -68,20 +74,22 @@ const Header = () => {
                     setModalVisible(false);
                 }}
             >
-                <View style={styles.optionsModal}>
-                    <Pressable onPress={() => {
-                        setThemeModalVisible(true)
-                        setModalVisible(false)
-                    }}>
-                        <Text style={styles.optionText}>{translate(language, 'Theme')}</Text>
+                <Pressable style={styles.modalBackground} onPress={()=> setModalVisible(false)}>
+                    <Pressable style={styles.optionsModal}>
+                        <Pressable onPress={() => {
+                            setThemeModalVisible(true)
+                            setModalVisible(false)
+                        }}>
+                            <Text style={styles.optionText}>{translate(language, 'Theme')}</Text>
+                        </Pressable>
+                        <Pressable onPress={() => {
+                            setLanguageModalVisible(true)
+                            setModalVisible(false)
+                        }}>
+                            <Text style={styles.optionText}>{`${translate(language, 'Language')}${language ? ' (Language)' : ''}`}</Text>
+                        </Pressable>
                     </Pressable>
-                    <Pressable onPress={() => {
-                        setLanguageModalVisible(true)
-                        setModalVisible(false)
-                    }}>
-                        <Text style={styles.optionText}>{`${translate(language, 'Language')}${language ? ' (Language)' : ''}`}</Text>
-                    </Pressable>
-                </View>
+                </Pressable>
             </Modal>
             <Modal
                 animationType="fade"
@@ -90,8 +98,10 @@ const Header = () => {
                 onRequestClose={() => {
                     setThemeModalVisible(false);
                 }}
-            >   
-                <ThemeModal setThemeModalVisible={setThemeModalVisible}/>
+            > 
+                <Pressable style={styles.modalBackground} onPress={()=> setThemeModalVisible(false)}>
+                    <ThemeModal setThemeModalVisible={setThemeModalVisible}/>
+                </Pressable>  
             </Modal>
             <Modal
                 animationType="fade"

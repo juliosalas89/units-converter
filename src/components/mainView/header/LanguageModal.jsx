@@ -33,7 +33,8 @@ const LanguageModal = ({setLanguageModalVisible}) => {
         modalTitle: {
             fontSize: 20,
             textAlign: 'center',
-            margin: 5
+            margin: 5,
+            marginBottom: 20
         },
         itemView: {
             padding: 15,
@@ -59,6 +60,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
             padding: 7
         },
         bannerContainer: {
+            paddingBottom: 20,
             flexDirection: 'row',
             justifyContent: 'space-around',
         }
@@ -78,33 +80,35 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                     keyExtractor={item => item.original+item.english}
                 />
             </View>
-            <View style={styles.bannerContainer}>
-                <Banner type={'MEDIUM_RECTANGLE'}></Banner>
-            </View>
-            <View style={styles.buttonsContainer}>
-                <View style={styles.buttonFrame}>
-                    <CButton 
-                        title={`${translate(language, 'Cancel')} ${!language ? '' : ' (Cancel)'}`}
-                        onPress={()=> setLanguageModalVisible(false)} 
-                        styles={{
-                            paddingTop: 15, 
-                            paddingBottom: 15, 
-                            fontSize: 17, 
-                            backgroundColor: colors.sec2, 
-                            color: colors.main2
-                        }} 
-                    />
+            <View>
+                <View style={styles.bannerContainer}>
+                    <Banner type={'MEDIUM_RECTANGLE'}></Banner>
                 </View>
-                <View style={styles.buttonFrame}>
-                    <CButton 
-                        title={`${translate(language, 'Confirm')} ${!language ? '' : ' (OK)'}`}
-                        onPress={handleConfirm} 
-                        styles={{ 
-                            paddingTop: 15, 
-                            paddingBottom: 15, 
-                            fontSize: 17 
-                        }} 
-                    />
+                <View style={styles.buttonsContainer}>
+                    <View style={styles.buttonFrame}>
+                        <CButton 
+                            title={`${translate(language, 'Cancel')} ${!language ? '' : ' (Cancel)'}`}
+                            onPress={()=> setLanguageModalVisible(false)} 
+                            styles={{
+                                paddingTop: 15, 
+                                paddingBottom: 15, 
+                                fontSize: 17, 
+                                backgroundColor: colors.sec2, 
+                                color: colors.main2
+                            }} 
+                        />
+                    </View>
+                    <View style={styles.buttonFrame}>
+                        <CButton 
+                            title={`${translate(language, 'Confirm')} ${!language ? '' : ' (OK)'}`}
+                            onPress={handleConfirm} 
+                            styles={{ 
+                                paddingTop: 15, 
+                                paddingBottom: 15, 
+                                fontSize: 17 
+                            }} 
+                        />
+                    </View>
                 </View>
             </View>
         </View>

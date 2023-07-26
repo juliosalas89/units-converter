@@ -30,7 +30,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
         themeModal: {
             padding: 10,
             borderWidth: 1,
-            borderColor: colors.sec1,
+            borderColor: colors.main1,
             borderRadius: 5,
             width: 300,
             height: 400,
@@ -74,7 +74,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
     })
 
     return (
-        <View style={styles.themeModal}>
+        <Pressable style={styles.themeModal}>
             <View style={styles.scrollView}>
                 <Text style={styles.modalTitle}>{translate(language, 'Choose Theme') + ':'}</Text>
                 <FlatList
@@ -113,7 +113,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
                     />
                 </View>
             </View>
-        </View>
+        </Pressable>
     )
 }
 

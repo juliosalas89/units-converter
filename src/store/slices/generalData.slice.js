@@ -5,25 +5,25 @@ const generalDataSlice = createSlice({
     name: 'generalData',
     initialState: {
         drowerVisible: false,
-        selectedType: 'length',
+        selectedType: 'Distance',
         generalDataFetched: false,
         selectedUnitsIds: {
-            length: '01',
-            speed: '01',
-            weight: '01',
-            pressure: '01',
-            volume: '01',
-            "work-energy": '01',
-            power: '01'
+            Distance: '01',
+            Speed: '01',
+            Weight: '01',
+            Pressure: '01',
+            Volume: '01',
+            "Work-Energy": '01',
+            Power: '01'
         },
         favUnits: {
-            length: [],
-            speed: [],
-            weight: [],
-            pressure: [],
-            volume: [],
-            "work-energy": [],
-            power: []
+            Distance: [],
+            Speed: [],
+            Weight: [],
+            Pressure: [],
+            Volume: [],
+            "Work-Energy": [],
+            Power: []
         }
     },
     reducers: {
@@ -65,8 +65,8 @@ const getGeneralDataThunk = () => {
     return async (dispatch, getState) => {
         try {
             const value = JSON.parse(await AsyncStorage.getItem('general-data'));
-            value && value.selectedUnitsIds && dispatch(setSelectedUnitsIds(value.selectedUnitsIds))
-            value && value.selectedType && dispatch(setSelectedType(value.selectedType))
+            // value && value.selectedUnitsIds && dispatch(setSelectedUnitsIds(value.selectedUnitsIds))
+            // value && value.selectedType && dispatch(setSelectedType(value.selectedType))
             // value && value.favUnits && dispatch(setAllFavUnits(value.favUnits))
             dispatch(setGeneralDataFetched(true))
         } catch (error) {
