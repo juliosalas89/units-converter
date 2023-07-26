@@ -14,6 +14,7 @@ const localParamsSlice = createSlice({
             },
             fontName: 'Notes-Alarm'
         },
+        drowerPsition: 'right',
         prefFetched: false,
         windowSize: null,
         safeArea: { top: 0, right: 0, bottom: 0, left: 0 }
@@ -26,6 +27,9 @@ const localParamsSlice = createSlice({
         setTheme (state, action) {
             const theme = action.payload || state.theme
             return {...state, theme }
+        },
+        setDrowerPosition (state, action) {
+            return {...state, drowerPsition: action.payload}
         },
         setPrefFetched (state, action) {
             return {...state, prefFetched: action.payload }

@@ -13,10 +13,10 @@
         {
             "name": "Grey Orange",
             "colors": {
-                "main1": "#393e51",
-                "main2": "#566683",
-                "sec1": "#ca6144",
-                "sec2": "#e9e6c9"
+                "main1": "#010409",
+                "main2": "#161b22",
+                "sec2": "#30363d",
+                "sec1": "#6e7681"
             },
             "fontName": "Sans-Serif"
         },

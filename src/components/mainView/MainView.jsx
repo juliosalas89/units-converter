@@ -4,19 +4,17 @@ import ValueInput from "./ValueInput.jsx"
 import Header from "./header/Header.jsx"
 import Banner from '../ads/Banner.jsx'
 import { useSelector } from "react-redux"
-import { MaterialCommunityIcons, Octicons, Entypo, MaterialIcons, Ionicons, SimpleLineIcons } from '@expo/vector-icons'
+import { MaterialCommunityIcons, Octicons, Entypo } from '@expo/vector-icons'
 import unitsData from '../../appData/units.json'
 import { setDrowerVisible } from "../../store/slices/generalData.slice"
 import { useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
-import typesData from '../../appData/types.json'
 
 const MainView = ({navigation}) => {
     const [inputValue, setInputValue] = useState(null)
     const [focusInputFlag, setFocusInputFlag] = useState(false)
     const [units, setUnits] = useState(unitsData.Distance)
     const [selectedUnit, setSelectedUnit] = useState(null)
-    const [selectedTypeData, setSelectedTypeData] = useState(null)
 
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize)
@@ -28,7 +26,6 @@ const MainView = ({navigation}) => {
     useEffect(()=> {
         setUnits(unitsData[selectedType])
         setInputValue(null)
-        setSelectedTypeData(typesData.types.find(type => type.name === selectedType))
     }, [selectedType])
 
     useEffect(()=> {
@@ -57,21 +54,7 @@ const MainView = ({navigation}) => {
             flexDirection: 'row',
             justifyContent: 'space-around',
             alignItems: 'center'
-        },
-        typeTitleContainer: {
-            flexDirection: 'row',
-            justifyContent: 'flex-end'
-        },
-        typeTitle: {
-            color: colors.main1,
-            fontSize: 20,
-            paddingTop: 9,
-            paddingRight: 23
-        },
-        typeTitleIconContainer: {
-            paddingTop: 9,
-            marginRight: 10
-        },
+        }
     })
 
     return !selectedUnit ? null : (
@@ -80,15 +63,6 @@ const MainView = ({navigation}) => {
         <View>
             <View style={styles.container}>
                 <Header/>
-                <View style={styles.typeTitleContainer}>
-                    <View style={styles.typeTitleIconContainer}>
-                        {selectedTypeData.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={selectedTypeData.icon} size={25} color={colors.main1}/> : null}
-                        {selectedTypeData.group === 'MaterialIcons' ? <MaterialIcons name={selectedTypeData.icon} size={25} color={colors.main1}/> : null}
-                        {selectedTypeData.group === 'Ionicons' ? <Ionicons name={selectedTypeData.icon} size={25} color={colors.main1}/> : null}
-                        {selectedTypeData.group === 'SimpleLineIcons' ? <SimpleLineIcons name={selectedTypeData.icon} size={25} color={colors.main1}/> : null}
-                    </View>
-                    <Text style={styles.typeTitle}>{selectedType}</Text>
-                </View>
                 <ValueInput 
                     selectedUnit={selectedUnit} 
                     navigation={navigation} 

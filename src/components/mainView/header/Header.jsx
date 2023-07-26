@@ -2,18 +2,27 @@ import ThemeModal from './ThemeModal';
 import LanguageModal from './LanguageModal';
 import { translate } from '../../../utils/languageUtils';
 import Svg, { Path } from 'react-native-svg';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { MaterialCommunityIcons, MaterialIcons, Ionicons, SimpleLineIcons } from '@expo/vector-icons'
 import { View, StyleSheet, Text, TouchableOpacity, Modal, Pressable } from "react-native"
+import typesData from '../../../appData/types.json'
 
 const Header = () => {
     const [modalVisible, setModalVisible] = useState(false)
     const [languageModalVisible, setLanguageModalVisible] = useState(false)
     const [themeModalVisible, setThemeModalVisible] = useState(false)
+    const [selectedTypeData, setSelectedTypeData] = useState({})
+
     const language = useSelector(state => state.localParams.language);
     const windowSize = useSelector(state => state.localParams.windowSize);
     const colors = useSelector(state => state.localParams.theme.colors);
+    const selectedType = useSelector(store => store.generalData.selectedType)
     
+    useEffect(()=> {
+        setSelectedTypeData(typesData.types.find(type => type.name === selectedType))
+    })
+
     const styles = StyleSheet.create({
         title: {
             color: 'white', 
@@ -51,13 +60,35 @@ const Header = () => {
             left: 0,
             right: 0,
             backgroundColor: 'rgba(0,0,0,0.5)'
-        }
+        },
+        typeTitleContainer: {
+            flexDirection: 'row',
+            justifyContent: 'flex-end'
+        },
+        typeTitle: {
+            color: '#ffff',
+            fontSize: 22,
+            paddingTop: 4,
+            paddingRight: 23
+        },
+        typeTitleIconContainer: {
+            paddingTop: 4,
+            marginRight: 10
+        },
     })
 
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Units Converter</Text>
+            <View style={styles.typeTitleContainer}>
+                <View style={styles.typeTitleIconContainer}>
+                    {selectedTypeData.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
+                    {selectedTypeData.group === 'MaterialIcons' ? <MaterialIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
+                    {selectedTypeData.group === 'Ionicons' ? <Ionicons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
+                    {selectedTypeData.group === 'SimpleLineIcons' ? <SimpleLineIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
+                </View>
+                <Text style={styles.typeTitle}>{selectedType}</Text>
+            </View>
             <TouchableOpacity onPress={()=> setModalVisible(true)}>
                 <Svg width="26" height="40" viewBox="0 0 18 18">
                     <Path
