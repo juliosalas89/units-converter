@@ -1,4 +1,4 @@
-import { TextInput, Text, View, StyleSheet, FlatList, Modal } from "react-native"
+import { TextInput, Text, View, StyleSheet, FlatList, Modal, Pressable } from "react-native"
 import CButton from "../general/CButton.jsx"
 import { useEffect, useState } from "react"
 import { useRef } from "react"
@@ -31,17 +31,25 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
     }
 
     const styles = StyleSheet.create({
+        modalBackground: {
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            backgroundColor: 'rgba(0,0,0,0.3)'
+        },
         unitsModal: {
             padding: 10,
             borderWidth: 1,
             borderColor: colors.main1,
             borderRadius: 5,
             width: 300,
-            height: 500,
+            maxHeight: 500,
             backgroundColor: 'white',
             color: colors.main1,
             left: (windowSize.width - 300)/2,
-            top: 100
+            top: 150
         },
         container: {
             width: '100%',
@@ -95,17 +103,20 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
                 animationType="fade"
                 transparent={true}
                 visible={unitsModalVisible}
+                statusBarTranslucent={true}
                 onRequestClose={() => {
-                    setUnitsModalVisible(!unitsModalVisible);
+                    setUnitsModalVisible(false);
                 }}
             >   
-                <View style={styles.unitsModal}>
-                    <FlatList
-                        data={units}
-                        renderItem={({item}) => <Item item={item}/>}
-                        keyExtractor={(item) => item.id }
-                    />
-                </View>
+                <Pressable style={styles.modalBackground} onPress={()=> setUnitsModalVisible(false)}>
+                    <Pressable style={styles.unitsModal}>
+                        <FlatList
+                            data={units}
+                            renderItem={({item}) => <Item item={item}/>}
+                            keyExtractor={(item) => item.id }
+                            />
+                    </Pressable>
+                </Pressable>
             </Modal>
         )
     }

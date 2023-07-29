@@ -39,6 +39,7 @@
     "android_app_id": "ca-app-pub-1084528575297610~4722773949",
     "ios_app_id": "-",
     "user_tracking_usage_description": "This identifier will be used to deliver personalized ads to you.",
+    "delay_app_measurement_init": true,
     "sk_ad_network_items": [
       "cstr6suwn9.skadnetwork",
       "4fzdc2evr5.skadnetwork",

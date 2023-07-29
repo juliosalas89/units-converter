@@ -2,44 +2,56 @@
     "types":[
         {
             "id": "001",
-            "icon": "ruler",
-            "name": "length",
+            "icon": "tape-measure",
+            "name": "Distance",
             "group": "MaterialCommunityIcons"
         },
         {
             "id": "002",
             "icon": "speedometer",
-            "name": "speed",
+            "name": "Speed",
             "group": "MaterialCommunityIcons"
+        },
+        {
+            "id": "010",
+            "icon": "square-outline",
+            "name": "Area",
+            "group": "Ionicons"
+        },
+        {
+            "id": "005",
+            "icon": "cube-outline",
+            "name": "Volume",
+            "group": "Ionicons"
         },
         {
             "id": "003",
             "icon": "weight-kilogram",
-            "name": "weight",
+            "name": "Weight",
             "group": "MaterialCommunityIcons"
         },
         {
             "id": "004",
             "icon": "compress",
-            "name": "pressure",
+            "name": "Pressure",
             "group": "MaterialIcons"
-        },
-        {
-            "id": "005",
-            "icon": "cube-outline",
-            "name": "volume",
-            "group": "Ionicons"
         },
         {
             "id": "007",
             "icon": "energy",
-            "name": "work-energy",
+            "name": "Work-Energy",
             "group": "SimpleLineIcons"
         },
         {
             "id": "008",
             "icon": "engine-outline",
-            "name": "power",
+            "name": "Power",
+            "group": "MaterialCommunityIcons"
+        },
+        {
+            "id": "009",
+            "icon": "food-turkey",
+            "name": "Cooking",
             "group": "MaterialCommunityIcons"
         }
     ]

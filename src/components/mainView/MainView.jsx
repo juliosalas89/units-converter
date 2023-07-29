@@ -1,4 +1,4 @@
-import { View, StyleSheet, TouchableOpacity, Text } from "react-native"
+import { View, StyleSheet, TouchableOpacity, Text, KeyboardAvoidingView, Platform } from "react-native"
 import UnitsResultList from "./UnitsResultsList.jsx"
 import ValueInput from "./ValueInput.jsx"
 import Header from "./header/Header.jsx"
@@ -13,7 +13,7 @@ import { useState, useEffect } from "react"
 const MainView = ({navigation}) => {
     const [inputValue, setInputValue] = useState(null)
     const [focusInputFlag, setFocusInputFlag] = useState(false)
-    const [units, setUnits] = useState(unitsData.length)
+    const [units, setUnits] = useState(unitsData.Distance)
     const [selectedUnit, setSelectedUnit] = useState(null)
 
     const dispatch = useDispatch()
@@ -38,8 +38,12 @@ const MainView = ({navigation}) => {
     }
 
     const styles = StyleSheet.create({
+        keyboardAvoid: {
+            flex: 1,
+            maxHeight: windowSize.height - 60
+        },
         container: {
-            height: windowSize.height - 120
+            flex: 1
         },
         footer: {
             backgroundColor: colors.main1,
@@ -58,27 +62,32 @@ const MainView = ({navigation}) => {
     })
 
     return !selectedUnit ? null : (
-        <View style={{ height: '100%', backgroundColor: 'inherit'}}>
-            <View style={styles.container}>
-                <Header/>
-                <ValueInput 
-                    selectedUnit={selectedUnit} 
-                    navigation={navigation} 
-                    units={units} 
-                    focusInputFlag={focusInputFlag} 
-                    inputValue={inputValue} 
-                    handleChangeInputValue={handleChangeInputValue}
-                    selectedType={selectedType}
-                />
-                <UnitsResultList 
-                    favUnits={allFavUnits[selectedType]}
-                    selectedId={selectedUnitsIds[selectedType]}
-                    selectedUnit={selectedUnit} 
-                    units={units} 
-                    inputValue={inputValue}
-                />
-            </View>
-            <Banner/>
+        <>
+            <KeyboardAvoidingView
+                style={styles.keyboardAvoid}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            >
+                <View style={styles.container}>
+                    <Header/>
+                    <ValueInput 
+                        selectedUnit={selectedUnit} 
+                        navigation={navigation} 
+                        units={units} 
+                        focusInputFlag={focusInputFlag} 
+                        inputValue={inputValue} 
+                        handleChangeInputValue={handleChangeInputValue}
+                        selectedType={selectedType}
+                    />
+                    <UnitsResultList 
+                        favUnits={allFavUnits[selectedType]}
+                        selectedId={selectedUnitsIds[selectedType]}
+                        selectedUnit={selectedUnit}
+                        units={units}
+                        inputValue={inputValue}
+                    />
+                </View>
+                <Banner/>
+            </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButtons}>
                     <Octicons name='arrow-switch' size={30} color='#ffff'/>
@@ -90,7 +99,7 @@ const MainView = ({navigation}) => {
                     <Entypo name='grid' size={30} color='#ffff'/>
                 </TouchableOpacity>
             </View>
-        </View>
+        </>
     )
 }
 

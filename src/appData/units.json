@@ -1,5 +1,5 @@
 {
-	"force": [
+	"Force": [
         {
         "id": "01",
         "unit": "N",
@@ -43,7 +43,7 @@
         "factor": 4448.22162
         }
     ],
-    "length": [
+    "Distance": [
         {
         "id": "01",
         "unit": "mm",
@@ -165,7 +165,7 @@
         "factor": 1E-10
         }
     ],
-    "weight": [
+    "Weight": [
         {
         "id": "01",
         "unit": "µg",
@@ -251,7 +251,7 @@
         "factor": 0.2
         }
     ],
-    "power": [
+    "Power": [
         {
         "id": "01",
         "unit": "W",
@@ -313,7 +313,7 @@
         "factor": 0.001259
         }
     ],
-    "pressure": [
+    "Pressure": [
         {
         "id": "01",
         "unit": "atm",
@@ -423,7 +423,7 @@
         "factor": 1.33322E-06
         }
     ],
-    "speed": [
+    "Speed": [
         {
         "id": "01",
         "unit": "m\/s",
@@ -485,7 +485,7 @@
         "factor": 340
         }
     ],
-    "work-energy": [
+    "Work-Energy": [
         {
         "id": "01",
         "unit": "J",
@@ -547,7 +547,7 @@
         "factor": 41870000000
         }
     ],
-    "volume": [
+    "Volume": [
         {
         "id": "01",
         "unit": "ml (cm3)",

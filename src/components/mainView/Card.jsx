@@ -1,14 +1,14 @@
 import FavStar from "../general/FavStar"
-import { Pressable, Text, View, StyleSheet } from "react-native"
+import { Pressable, Text, View, StyleSheet, TouchableOpacity } from "react-native"
 import { useState, useEffect, useRef } from "react"
 import Decimal from "decimal.js"
 import { useSelector, useDispatch } from "react-redux"
 import { setSelectedUnitsIds, setFavUnits, saveGeneralDataThunk } from "../../store/slices/generalData.slice"
 
-const Card = ({item, inputValue, favUnits, selectedUnit, selected}) => {
+const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, selected}) => {
     const unitPressableRef = useRef(null);
     const [result, setResult] = useState(null)
-    const [fillStar, setFillStar] = useState(favUnits.includes(item.id))
+    const [fillStar, setFillStar] = useState(false)
     
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
@@ -20,7 +20,7 @@ const Card = ({item, inputValue, favUnits, selectedUnit, selected}) => {
     }, [])
     
     useEffect(()=>{
-        setFillStar(favUnits.includes(item.id))
+        favUnits && item && setFillStar(favUnits.includes(item.id))
     }, [favUnits, item])
 
     useEffect(()=>{
@@ -53,7 +53,9 @@ const Card = ({item, inputValue, favUnits, selectedUnit, selected}) => {
     const handleFavStarPress = () => {
         setFillStar(!fillStar)
         setTimeout(()=> {
-            const newFavUnits = favUnits.includes(item.id) ? favUnits.filter(favId => favId !== item.id) : [...favUnits, item.id]
+            const newFavUnits = item && favUnits && favUnits.includes(item.id) ? 
+                favUnits.filter(favId => favId !== item.id) : 
+                [...favUnits, item.id]
             dispatch(setFavUnits(newFavUnits))
             dispatch(saveGeneralDataThunk())
         }, 200)
@@ -103,15 +105,19 @@ const Card = ({item, inputValue, favUnits, selectedUnit, selected}) => {
 
     return (
         <View style={styles.unitsLine}>
-            <View style={styles.valuesBox}>
+            <TouchableOpacity 
+                onPress={() => result && copyToClipboard(result)} 
+                style={styles.valuesBox}
+            >
                 <Text style={styles.valuesText}>{result}</Text>
-            </View>
+            </TouchableOpacity>
             <View style={styles.unitsBox}>
                 <Pressable 
                     hitSlop={5}
                     ref={unitPressableRef}
                     onLongPress={() => handleLongPress()} 
                     delayLongPress={200}
+                    android_ripple={{ color: colors.sec1 }}
                     style={styles.unitsSubBox}
                 >
                     <Text style={styles.unitsText}>{`${item.unit} `}</Text>
