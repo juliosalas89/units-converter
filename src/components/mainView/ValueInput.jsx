@@ -45,7 +45,7 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
             borderColor: colors.main1,
             borderRadius: 5,
             width: 300,
-            height: 500,
+            maxHeight: 500,
             backgroundColor: 'white',
             color: colors.main1,
             left: (windowSize.width - 300)/2,

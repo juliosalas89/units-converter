@@ -69,7 +69,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
     return (
         <View style={styles.languageModal}>
             <View>
-                <Text style={styles.modalTitle}>{`${translate(language, 'Choose Language')} ${!language ? '' : ' (Choose Language):'}`}</Text>
+                <Text style={styles.modalTitle}>{`${translate('Choose Language')} ${!language ? '' : ' (Choose Language):'}`}</Text>
                 <FlatList
                     data={langData.languages}
                     renderItem={({item, index}) => (
@@ -87,7 +87,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                 <View style={styles.buttonsContainer}>
                     <View style={styles.buttonFrame}>
                         <CButton 
-                            title={`${translate(language, 'Cancel')} ${!language ? '' : ' (Cancel)'}`}
+                            title={`${translate('Cancel')} ${!language ? '' : ' (Cancel)'}`}
                             onPress={()=> setLanguageModalVisible(false)} 
                             styles={{
                                 paddingTop: 15, 
@@ -100,7 +100,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                     </View>
                     <View style={styles.buttonFrame}>
                         <CButton 
-                            title={`${translate(language, 'Confirm')} ${!language ? '' : ' (OK)'}`}
+                            title={`${translate('Confirm')} ${!language ? '' : ' (OK)'}`}
                             onPress={handleConfirm} 
                             styles={{ 
                                 paddingTop: 15, 

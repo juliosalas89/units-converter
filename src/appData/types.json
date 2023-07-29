@@ -2,7 +2,7 @@
     "types":[
         {
             "id": "001",
-            "icon": "ruler",
+            "icon": "tape-measure",
             "name": "Distance",
             "group": "MaterialCommunityIcons"
         },
@@ -11,6 +11,18 @@
             "icon": "speedometer",
             "name": "Speed",
             "group": "MaterialCommunityIcons"
+        },
+        {
+            "id": "010",
+            "icon": "square-outline",
+            "name": "Area",
+            "group": "Ionicons"
+        },
+        {
+            "id": "005",
+            "icon": "cube-outline",
+            "name": "Volume",
+            "group": "Ionicons"
         },
         {
             "id": "003",
@@ -25,12 +37,6 @@
             "group": "MaterialIcons"
         },
         {
-            "id": "005",
-            "icon": "cube-outline",
-            "name": "Volume",
-            "group": "Ionicons"
-        },
-        {
             "id": "007",
             "icon": "energy",
             "name": "Work-Energy",
@@ -40,6 +46,12 @@
             "id": "008",
             "icon": "engine-outline",
             "name": "Power",
+            "group": "MaterialCommunityIcons"
+        },
+        {
+            "id": "009",
+            "icon": "food-turkey",
+            "name": "Cooking",
             "group": "MaterialCommunityIcons"
         }
     ]

@@ -8,11 +8,10 @@ import { useDispatch } from "react-redux"
 import { saveThemeThunk, setTheme } from '../../../store/slices/localParams.slice.js'
 
 const ThemeModal = ({setThemeModalVisible}) => {
-    const [currentTheme, setCurrentTheme] = useState(theme)
+    const [currentTheme] = useState(theme)
 
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
-    const language = useSelector(state => state.localParams.language);
     const theme = useSelector(state => state.localParams.theme);
     const windowSize = useSelector(state => state.localParams.windowSize);
 
@@ -28,25 +27,28 @@ const ThemeModal = ({setThemeModalVisible}) => {
 
     const styles = StyleSheet.create({
         themeModal: {
+            flexDirection: 'column',
+            justifyContent: 'space-between',
             padding: 10,
             borderWidth: 1,
             borderColor: colors.main1,
             borderRadius: 5,
             width: 300,
-            height: 400,
+            height: 450,
             backgroundColor: 'white',
             color: colors.main1,
             left: (windowSize.width - 300)/2,
-            top: 200
+            top: 150
         },
         scrollView: {
-            height: 300,
+            height: 350,
             overflow: 'scroll' 
         },
         modalTitle: {
             fontSize: 20,
             textAlign: 'center',
-            margin: 5
+            marginTop: 10,
+            marginBottom: 25
         },
         itemView: {
             padding: 15,
@@ -76,7 +78,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
     return (
         <Pressable style={styles.themeModal}>
             <View style={styles.scrollView}>
-                <Text style={styles.modalTitle}>{translate(language, 'Choose Theme') + ':'}</Text>
+                <Text style={styles.modalTitle}>{translate('Choose Theme') + ':'}</Text>
                 <FlatList
                     data={themesData.themes}
                     renderItem={({item}) => (
@@ -90,7 +92,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
             <View style={styles.buttonsContainer}>
                 <View style={styles.buttonFrame}>
                     <CButton 
-                        title={translate(language, 'Cancel')}
+                        title={translate('Cancel')}
                         onPress={() => handleCancel()} 
                         styles={{
                             paddingTop: 15, 
@@ -103,7 +105,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
                 </View>
                 <View style={styles.buttonFrame}>
                     <CButton 
-                        title={translate(language, 'Confirm')}
+                        title={translate('Confirm')}
                         onPress={() => handleConfirm()} 
                         styles={{ 
                             paddingTop: 15, 

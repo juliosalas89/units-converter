@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { MaterialCommunityIcons, MaterialIcons, Ionicons, SimpleLineIcons } from '@expo/vector-icons'
 import { View, StyleSheet, Text, TouchableOpacity, Modal, Pressable } from "react-native"
 import typesData from '../../../appData/types.json'
+import { setDrowerVisible } from '../../../store/slices/generalData.slice';
+import { useDispatch } from 'react-redux';
 
 const Header = () => {
     const [modalVisible, setModalVisible] = useState(false)
@@ -14,6 +16,7 @@ const Header = () => {
     const [themeModalVisible, setThemeModalVisible] = useState(false)
     const [selectedTypeData, setSelectedTypeData] = useState({})
 
+    const dispatch = useDispatch()
     const language = useSelector(state => state.localParams.language);
     const windowSize = useSelector(state => state.localParams.windowSize);
     const colors = useSelector(state => state.localParams.theme.colors);
@@ -80,15 +83,15 @@ const Header = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.typeTitleContainer}>
+            <TouchableOpacity onPress={() => dispatch(setDrowerVisible(true))} style={styles.typeTitleContainer}>
                 <View style={styles.typeTitleIconContainer}>
                     {selectedTypeData.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
                     {selectedTypeData.group === 'MaterialIcons' ? <MaterialIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
                     {selectedTypeData.group === 'Ionicons' ? <Ionicons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
                     {selectedTypeData.group === 'SimpleLineIcons' ? <SimpleLineIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
                 </View>
-                <Text style={styles.typeTitle}>{selectedType}</Text>
-            </View>
+                <Text style={styles.typeTitle}>{translate(selectedType)}</Text>
+            </TouchableOpacity>
             <TouchableOpacity onPress={()=> setModalVisible(true)}>
                 <Svg width="26" height="40" viewBox="0 0 18 18">
                     <Path
@@ -111,13 +114,13 @@ const Header = () => {
                             setThemeModalVisible(true)
                             setModalVisible(false)
                         }}>
-                            <Text style={styles.optionText}>{translate(language, 'Theme')}</Text>
+                            <Text style={styles.optionText}>{translate('Theme')}</Text>
                         </Pressable>
                         <Pressable onPress={() => {
                             setLanguageModalVisible(true)
                             setModalVisible(false)
                         }}>
-                            <Text style={styles.optionText}>{`${translate(language, 'Language')}${language ? ' (Language)' : ''}`}</Text>
+                            <Text style={styles.optionText}>{`${translate('Language')}${language ? ' (Language)' : ''}`}</Text>
                         </Pressable>
                     </Pressable>
                 </Pressable>
