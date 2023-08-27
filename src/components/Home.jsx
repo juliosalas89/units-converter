@@ -41,7 +41,7 @@ const Home = ({navigation}) => {
     return !windowSize || !prefFetched || !generalDataFetched ? null : (
         <>
             <StatusBar
-                backgroundColor={colors.main1}
+                backgroundColor={colors.prim1}
                 barStyle='light-content'
             />
             <Drawer

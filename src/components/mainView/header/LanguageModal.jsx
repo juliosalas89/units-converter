@@ -1,12 +1,11 @@
+import CButton from '../../general/CButton'
+import Banner from "../../ads/Banner"
+import langData from '../../../appData/translation.json'
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native"
 import { translate } from "../../../utils/languageUtils"
-import { useSelector } from "react-redux"
-import langData from '../../../appData/translation.json'
-import CButton from '../../general/CButton'
 import { useState } from "react"
 import { setAndSaveLanguageThunk } from '../../../store/slices/localParams.slice.js'
-import { useDispatch } from "react-redux"
-import Banner from "../../ads/Banner"
+import { useSelector, useDispatch } from "react-redux"
 
 const LanguageModal = ({setLanguageModalVisible}) => {
     const dispatch = useDispatch()
@@ -41,7 +40,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
         },
         selectedItemView: {
             padding: 15,
-            backgroundColor: colors.main2,
+            backgroundColor: colors.prim2,
             borderRadius: 5
         },
         itemText: {
@@ -94,7 +93,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                                 paddingBottom: 15, 
                                 fontSize: 17, 
                                 backgroundColor: colors.sec2, 
-                                color: colors.main2
+                                color: colors.prim2
                             }} 
                         />
                     </View>

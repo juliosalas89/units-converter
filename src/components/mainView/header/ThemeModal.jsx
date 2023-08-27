@@ -1,19 +1,18 @@
+import CButton from '../../general/CButton.jsx'
+import themesData from '../../../appData/themes.json'
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native"
 import { translate } from "../../../utils/languageUtils"
-import themesData from '../../../appData/themes.json'
-import { useSelector } from "react-redux"
-import CButton from '../../general/CButton.jsx'
-import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { saveThemeThunk, setTheme } from '../../../store/slices/localParams.slice.js'
 
 const ThemeModal = ({setThemeModalVisible}) => {
-    const [currentTheme] = useState(theme)
-
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
     const theme = useSelector(state => state.localParams.theme);
     const windowSize = useSelector(state => state.localParams.windowSize);
+
+    const currentTheme = useRef(theme)
 
     const handleConfirm = ()=> {
         dispatch(saveThemeThunk(theme))
@@ -21,7 +20,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
     }
     
     const handleCancel = ()=> {
-        dispatch(setTheme(currentTheme))
+        dispatch(setTheme(currentTheme.current))
         setThemeModalVisible(false)
     }
 
@@ -31,12 +30,12 @@ const ThemeModal = ({setThemeModalVisible}) => {
             justifyContent: 'space-between',
             padding: 10,
             borderWidth: 1,
-            borderColor: colors.main1,
+            borderColor: colors.prim1,
             borderRadius: 5,
             width: 300,
             height: 450,
             backgroundColor: 'white',
-            color: colors.main1,
+            color: colors.prim1,
             left: (windowSize.width - 300)/2,
             top: 150
         },
@@ -55,7 +54,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
         },
         selectedItemView: {
             padding: 15,
-            backgroundColor: colors.main2,
+            backgroundColor: colors.prim2,
             borderRadius: 5
         },
         itemText: {
@@ -99,7 +98,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
                             paddingBottom: 15, 
                             fontSize: 17, 
                             backgroundColor: colors.sec2, 
-                            color: colors.main2
+                            color: colors.prim2
                         }} 
                     />
                 </View>

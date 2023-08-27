@@ -7,8 +7,8 @@ const localParamsSlice = createSlice({
         language: 0,
         theme: {
             colors: {
-                main1: '#394a51',
-                main2: '#7fa99b',
+                prim1: '#394a51',
+                prim2: '#7fa99b',
                 sec1: '#fdc57b',
                 sec2: '#fbf2d5'
             },

@@ -6,7 +6,7 @@ const CButton = ({styles = {}, pressedColor, onPress, title })=> {
 
     const st = StyleSheet.create({
         styles: {
-            backgroundColor: colors.main2,
+            backgroundColor: colors.prim2,
             padding: 7,
             borderRadius: 4,
             ...styles
@@ -19,14 +19,14 @@ const CButton = ({styles = {}, pressedColor, onPress, title })=> {
     })
     
     const buttonStyles = (pressed) => {
-        return pressed && Platform.OS === 'ios' ? { ...st.styles, backgroundColor: pressedColor || colors.main1 } : st.styles
+        return pressed && Platform.OS === 'ios' ? { ...st.styles, backgroundColor: pressedColor || colors.prim1 } : st.styles
     }
 
     return (
         <Pressable
             style={({pressed}) => buttonStyles(pressed)}
             onPress={onPress}
-            android_ripple={{ color: pressedColor || colors.main1 }}
+            android_ripple={{ color: pressedColor || colors.prim1 }}
         >
             <Text style={st.textStyle}>{title}</Text>
         </Pressable>

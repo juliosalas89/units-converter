@@ -1,33 +1,24 @@
-import { TextInput, Text, View, StyleSheet, FlatList, Modal, Pressable } from "react-native"
 import CButton from "../general/CButton.jsx"
-import { useEffect, useState } from "react"
-import { useRef } from "react"
+import { TextInput, View, StyleSheet } from "react-native"
+import { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
-import { saveGeneralDataThunk, setSelectedUnitsIds } from "../../store/slices/generalData.slice.js"
 
-const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputValue, units, selectedUnit, selectedType}) => {
+const ValueInput = ({ focusInputFlag, inputValue, setUnitsModalVisible, handleChangeInputValue, selectedUnit }) => {
     const inputRef = useRef(null);
-    const [unitsModalVisible, setUnitsModalVisible] = useState(false)
     
-    const dispatch = useDispatch()
-    const windowSize = useSelector(state => state.localParams.windowSize);
     const colors = useSelector(state => state.localParams.theme.colors);
     
     useEffect(()=> {
         focusInput()
-    }, [focusInputFlag, selectedUnit])
+    }, [focusInputFlag])
+
+    useEffect(()=> {
+        setTimeout(() => focusInput(), 200)
+    }, [selectedUnit])
     
     const focusInput = ()=> {
         inputRef.current.blur()
         inputRef.current.focus()
-    }
-
-    const handelSelect = (unitId)=> {
-        setUnitsModalVisible(false)
-        dispatch(setSelectedUnitsIds({[selectedType]: unitId }))
-        setTimeout(() => focusInput(), 200)
-        dispatch(saveGeneralDataThunk())
     }
 
     const styles = StyleSheet.create({
@@ -38,18 +29,6 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
             left: 0,
             right: 0,
             backgroundColor: 'rgba(0,0,0,0.3)'
-        },
-        unitsModal: {
-            padding: 10,
-            borderWidth: 1,
-            borderColor: colors.main1,
-            borderRadius: 5,
-            width: 300,
-            maxHeight: 500,
-            backgroundColor: 'white',
-            color: colors.main1,
-            left: (windowSize.width - 300)/2,
-            top: 150
         },
         container: {
             width: '100%',
@@ -63,63 +42,14 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
         measureInput: {
             width: '49%',
             padding: 7,
-            color: colors.main1,
+            color: colors.prim1,
             fontSize: 20,
             borderWidth: 1,
-            borderColor: colors.main2,
+            borderColor: colors.prim2,
             borderRadius: 3, 
             textAlign: 'right'
         },
-        unitsButton: {
-            width: '49%',
-            color: colors.sec2,
-            backgroundColor: colors.main2,
-            textAlign: 'start'
-        },
-        itemText: {
-            fontSize: 20
-        },
-        itemContainer: {
-            padding: 5
-        }
     })
-
-    const Item = ({item}) => (
-        <CButton 
-            styles={{ 
-                backgroundColor: '#ffff', 
-                color: colors.main1,
-                textAlign: 'left'
-            }} 
-            pressedColor={colors.sec1} 
-            title={item.unit}
-            onPress={() =>  handelSelect(item.id)}
-        />
-    );
-    
-    const UnitsModal = () => {
-        return (
-            <Modal
-                animationType="fade"
-                transparent={true}
-                visible={unitsModalVisible}
-                statusBarTranslucent={true}
-                onRequestClose={() => {
-                    setUnitsModalVisible(false);
-                }}
-            >   
-                <Pressable style={styles.modalBackground} onPress={()=> setUnitsModalVisible(false)}>
-                    <Pressable style={styles.unitsModal}>
-                        <FlatList
-                            data={units}
-                            renderItem={({item}) => <Item item={item}/>}
-                            keyExtractor={(item) => item.id }
-                            />
-                    </Pressable>
-                </Pressable>
-            </Modal>
-        )
-    }
 
     return (
         <View style={styles.container}>
@@ -135,13 +65,12 @@ const ValueInput = ({navigation, focusInputFlag, inputValue, handleChangeInputVa
                 styles={{
                     width: '49%',
                     color: colors.sec2,
-                    backgroundColor: colors.main2,
+                    backgroundColor: colors.prim2,
                     textAlign: 'left'
                 }} 
                 title={selectedUnit.unit} 
                 onPress={()=> setUnitsModalVisible(true)}
             />
-            <UnitsModal/>
         </View>
     )
 }

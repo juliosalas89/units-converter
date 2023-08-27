@@ -47,12 +47,6 @@
             "icon": "engine-outline",
             "name": "Power",
             "group": "MaterialCommunityIcons"
-        },
-        {
-            "id": "009",
-            "icon": "food-turkey",
-            "name": "Cooking",
-            "group": "MaterialCommunityIcons"
         }
     ]
 }

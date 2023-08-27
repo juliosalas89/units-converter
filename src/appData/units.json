@@ -1,642 +1,1064 @@
 {
-	"Force": [
+    "Area": [
         {
-        "id": "01",
-        "unit": "N",
-        "formule": "false",
-        "factor": 1
+            "id": "01",
+            "unit": "m2",
+            "description0": "square meter",
+            "description1": "metro cuadrado",
+            "description2": "quadratmeter",
+            "formule": "false",
+            "factor": 10000
         },
         {
-        "id": "02",
-        "unit": "dyn (Dina)",
-        "formule": "false",
-        "factor": 1E-05
+            "id": "02",
+            "unit": "cm2",
+            "description0": "square centimeter",
+            "description1": "centimetro cuadrado",
+            "description2": "quadratzentimeter",
+            "formule": "false",
+            "factor": 1
         },
         {
-        "id": "03",
-        "unit": "daN",
-        "formule": "false",
-        "factor": 10
+            "id": "03",
+            "unit": "ha (hm2)",
+            "description0": "hectare (square hectometer)",
+            "description1": "hectarea (hectómetro cuadrado)",
+            "description2": "hektar",
+            "formule": "false",
+            "factor": 100000000
         },
         {
-        "id": "04",
-        "unit": "kN",
-        "formule": "false",
-        "factor": 1000
+            "id": "04",
+            "unit": "acre",
+            "description0": "acre",
+            "description1": "acre",
+            "description2": "acre",
+            "formule": "false",
+            "factor": 40468564.224
         },
         {
-        "id": "05",
-        "unit": "kgf",
-        "formule": "false",
-        "factor": 9.80665
+            "id": "05",
+            "unit": "km2",
+            "description0": "square kilometer",
+            "description1": "kilometro cuadrado",
+            "description2": "quadratkilometer",
+            "formule": "false",
+            "factor": 10000000000
         },
         {
-        "id": "06",
-        "unit": "lbf",
-        "formule": "false",
-        "factor": 4.448222
+            "id": "06",
+            "unit": "in2",
+            "description0": "square inch",
+            "description1": "pulgada cuadrada",
+            "description2": "quadratzoll",
+            "formule": "false",
+            "factor": 6.4516
         },
         {
-        "id": "07",
-        "unit": "kip",
-        "formule": "false",
-        "factor": 4448.22162
+            "id": "07",
+            "unit": "ft2",
+            "description0": "square foot",
+            "description1": "pie cuadrado",
+            "description2": "quadratfuß",
+            "formule": "false",
+            "factor": 929.0304
+        },
+        {
+            "id": "08",
+            "unit": "yd2",
+            "description0": "square yard",
+            "description1": "yarda cuadrada",
+            "description2": "quadrathof",
+            "formule": "false",
+            "factor": 8361.2736
+        },
+        {
+            "id": "09",
+            "unit": "mi2",
+            "description0": "square mile",
+            "description1": "milla cuadrada",
+            "description2": "quadratmeile",
+            "formule": "false",
+            "factor": 25899881103.36
         }
     ],
-    "Distance": [
+    "Force": [
         {
-        "id": "01",
-        "unit": "mm",
-        "formule": "false",
-        "factor": 0.001
+            "id": "01",
+            "unit": "N",
+            "description0": "newton",
+            "description1": "newton",
+            "description2": "newton",
+            "formule": "false",
+            "factor": 1
         },
         {
-        "id": "02",
-        "unit": "cm",
-        "formule": "false",
-        "factor": 0.01
+            "id": "02",
+            "unit": "dyn",
+            "description0": "dyne",
+            "description1": "dina",
+            "description2": "dyn",
+            "formule": "false",
+            "factor": 1E-05
         },
         {
-        "id": "03",
-        "unit": "m",
-        "formule": "false",
-        "factor": 1
+            "id": "03",
+            "unit": "daN",
+            "description0": "decanewton",
+            "description1": "decanewton",
+            "description2": "dekanewton",
+            "formule": "false",
+            "factor": 10
         },
         {
-        "id": "04",
-        "unit": "km",
-        "formule": "false",
-        "factor": 1000
+            "id": "04",
+            "unit": "kN",
+            "description0": "kilonewton",
+            "description1": "kilonewton",
+            "description2": "kilonewton",
+            "formule": "false",
+            "factor": 1000
         },
         {
-        "id": "05",
-        "unit": "in",
-        "formule": "false",
-        "factor": 0.0254
+            "id": "05",
+            "unit": "kp (kgf)",
+            "description0": "kilopond (kg-force)",
+            "description1": "kilopondio (kg-fuerza)",
+            "description2": "kilopond (kraftkilogramm)",
+            "formule": "false",
+            "factor": 9.80665
         },
         {
-        "id": "06",
-        "unit": "ft",
-        "formule": "false",
-        "factor": 0.30479
+            "id": "06",
+            "unit": "lbf",
+            "description0": "pound-force",
+            "description1": "libra-fuerza",
+            "description2": "kraftpound",
+            "formule": "false",
+            "factor": 4.4482
+        }
+    ],
+    "Distance" : [
+        {
+            "id": "01",
+            "unit": "mm",
+            "description0": "milimeter",
+            "description1": "milimetro",
+            "description2": "millimeter",
+            "formule": "false",
+            "factor": 0.001
         },
         {
-        "id": "07",
-        "unit": "yd",
-        "formule": "false",
-        "factor": 0.9144
+            "id": "02",
+            "unit": "cm",
+            "description0": "centimeter",
+            "description1": "centimetro",
+            "description2": "zentimeter",
+            "formule": "false",
+            "factor": 0.01
         },
         {
-        "id": "08",
-        "unit": "mi",
-        "formule": "false",
-        "factor": 1609.34
+            "id": "03",
+            "unit": "m",
+            "description0": "meter",
+            "description1": "metro",
+            "description2": "meter",
+            "formule": "false",
+            "factor": 1
         },
         {
-        "id": "09",
-        "unit": "nmi",
-        "formule": "false",
-        "factor": 1852
+            "id": "04",
+            "unit": "km",
+            "description0": "kilometer",
+            "description1": "kilometro",
+            "description2": "kilometer",
+            "formule": "false",
+            "factor": 1000
         },
         {
-        "id": "10",
-        "unit": "fm",
-        "formule": "false",
-        "factor": 1E-15
+            "id": "05",
+            "unit": "in",
+            "description0": "inche",
+            "description1": "pulgada",
+            "description2": "zoll",
+            "formule": "false",
+            "factor": 0.0254
         },
         {
-        "id": "11",
-        "unit": "pm",
-        "formule": "false",
-        "factor": 1E-12
+            "id": "06",
+            "unit": "ft",
+            "description0": "foot",
+            "description1": "pie",
+            "description2": "fuß",
+            "formule": "false",
+            "factor": 0.30479
         },
         {
-        "id": "12",
-        "unit": "nm",
-        "formule": "false",
-        "factor": 1E-09
+            "id": "07",
+            "unit": "yd",
+            "description0": "yard",
+            "description1": "yarda",
+            "description2": "hof",
+            "formule": "false",
+            "factor": 0.9144
         },
         {
-        "id": "13",
-        "unit": "µm",
-        "formule": "false",
-        "factor": 1E-06
+            "id": "08",
+            "unit": "mi",
+            "description0": "mile",
+            "description1": "milla",
+            "description2": "meile",
+            "formule": "false",
+            "factor": 1609.34
         },
         {
-        "id": "14",
-        "unit": "dm",
-        "formule": "false",
-        "factor": 0.1
+            "id": "09",
+            "unit": "nmi",
+            "description0": "nautic mile",
+            "description1": "milla nautica",
+            "description2": "seemeile",
+            "formule": "false",
+            "factor": 1852
         },
         {
-        "id": "15",
-        "unit": "dam",
-        "formule": "false",
-        "factor": 10
+            "id": "10",
+            "unit": "fm",
+            "description0": "fentometer",
+            "description1": "fentometro",
+            "description2": "fentometer",
+            "formule": "false",
+            "factor": 1E-15
         },
         {
-        "id": "16",
-        "unit": "hm",
-        "formule": "false",
-        "factor": 100
+            "id": "11",
+            "unit": "pm",
+            "description0": "picometer",
+            "description1": "picometro",
+            "description2": "pikometer",
+            "formule": "false",
+            "factor": 1E-12
         },
         {
-        "id": "17",
-        "unit": "AU",
-        "formule": "false",
-        "factor": 149600000000000
+            "id": "12",
+            "unit": "nm",
+            "description0": "nanometer",
+            "description1": "nanometro",
+            "description2": "nanometer",
+            "formule": "false",
+            "factor": 1E-09
         },
         {
-        "id": "18",
-        "unit": "ly",
-        "formule": "false",
-        "factor": 9.461E+18
+            "id": "13",
+            "unit": "µm",
+            "description0": "micrometer",
+            "description1": "micrometro",
+            "description2": "mikrometer",
+            "formule": "false",
+            "factor": 1E-06
         },
         {
-        "id": "19",
-        "unit": "pc",
-        "formule": "false",
-        "factor": 3.086E+19
+            "id": "14",
+            "unit": "dm",
+            "description0": "decimeter",
+            "description1": "decimetro",
+            "description2": "dezimeter",
+            "formule": "false",
+            "factor": 0.1
         },
         {
-        "id": "20",
-        "unit": "Å",
-        "formule": "false",
-        "factor": 1E-10
+            "id": "15",
+            "unit": "dam",
+            "description0": "decameter",
+            "description1": "decametro",
+            "description2": "dekameter",
+            "formule": "false",
+            "factor": 10
+        },
+        {
+            "id": "16",
+            "unit": "hm",
+            "description0": "hectometer",
+            "description1": "hectometro",
+            "description2": "hektometer",
+            "formule": "false",
+            "factor": 100
+        },
+        {
+            "id": "17",
+            "unit": "AU",
+            "description0": "astronomic unit",
+            "description1": "unidad astronomica",
+            "description2": "astronomische einheit",
+            "formule": "false",
+            "factor": 149597870700
+        },
+        {
+            "id": "18",
+            "unit": "ly",
+            "description0": "light-year",
+            "description1": "año luz",
+            "description2": "lichtjahr",
+            "formule": "false",
+            "factor": 9460730472580800
+        },
+        {
+            "id": "19",
+            "unit": "pc",
+            "description0": "parsec",
+            "description1": "pársec",
+            "description2": "parsec",
+            "formule": "false",
+            "factor": 30860000000000000
+        },
+        {
+            "id": "20",
+            "unit": "Å",
+            "description0": "angstrom",
+            "description1": "angstrom",
+            "description2": "angström",
+            "formule": "false",
+            "factor": 1E-10
         }
     ],
     "Weight": [
         {
-        "id": "01",
-        "unit": "µg",
-        "formule": "false",
-        "factor": 1E-06
+            "id": "01",
+            "unit": "µg",
+            "description0": "microgram",
+            "description1": "microgramo",
+            "description2": "mikrogramm",
+            "formule": "false",
+            "factor": 1E-06
         },
         {
-        "id": "02",
-        "unit": "mg",
-        "formule": "false",
-        "factor": 0.001
+            "id": "02",
+            "unit": "mg",
+            "description0": "miligram",
+            "description1": "miligramo",
+            "description2": "milligramm",
+            "formule": "false",
+            "factor": 0.001
         },
         {
-        "id": "03",
-        "unit": "g",
-        "formule": "false",
-        "factor": 1
+            "id": "03",
+            "unit": "g",
+            "description0": "gram",
+            "description1": "gramo",
+            "description2": "gramm",
+            "formule": "false",
+            "factor": 1
         },
         {
-        "id": "04",
-        "unit": "kg",
-        "formule": "false",
-        "factor": 1000
+            "id": "04",
+            "unit": "kg",
+            "description0": "kilogram",
+            "description1": "kilogramo",
+            "description2": "kilogramm",
+            "formule": "false",
+            "factor": 1000
         },
         {
-        "id": "05",
-        "unit": "lb (pound)",
-        "formule": "false",
-        "factor": 453.59237
+            "id": "05",
+            "unit": "pfund",
+            "description0": "german pound",
+            "description1": "libra alemana",
+            "description2": "pfund",
+            "formule": "false",
+            "factor": 500
         },
         {
-        "id": "06",
-        "unit": "oz",
-        "formule": "false",
-        "factor": 28.349523125
+            "id": "06",
+            "unit": "lb",
+            "description0": "pound",
+            "description1": "libra",
+            "description2": "pound",
+            "formule": "false",
+            "factor": 453.59237
         },
         {
-        "id": "07",
-        "unit": "oz t",
-        "formule": "false",
-        "factor": 31.103477
+            "id": "07",
+            "unit": "oz",
+            "description0": "ounce",
+            "description1": "onza",
+            "description2": "unze",
+            "formule": "false",
+            "factor": 28.349523125
         },
         {
-        "id": "08",
-        "unit": "grain",
-        "formule": "false",
-        "factor": 0.064799
+            "id": "08",
+            "unit": "ozt",
+            "description0": "troy-ounce",
+            "description1": "onza troy",
+            "description2": "troy-unze (feinunze)",
+            "formule": "false",
+            "factor": 31.103477
         },
         {
-        "id": "09",
-        "unit": "tonne",
-        "formule": "false",
-        "factor": 1000000
+            "id": "09",
+            "unit": "lbt",
+            "description0": "troy-pound",
+            "description1": "libra troy",
+            "description2": "troy-pound",
+            "formule": "false",
+            "factor": 373.24172
         },
         {
-        "id": "10",
-        "unit": "ton (UK)",
-        "formule": "false",
-        "factor": 1016046.91
+            "id": "10",
+            "unit": "gr",
+            "description0": "grain",
+            "description1": "grano",
+            "description2": "gran",
+            "formule": "false",
+            "factor": 0.064799
         },
         {
-        "id": "11",
-        "unit": "ton (US)",
-        "formule": "false",
-        "factor": 907184.74
+            "id": "11",
+            "unit": "t (Mg)",
+            "description0": "ton (megagram)",
+            "description1": "tonelada (megagramo)",
+            "description2": "tonne (megagramm)",
+            "formule": "false",
+            "factor": 1000000
         },
         {
-        "id": "12",
-        "unit": "stone (UK)",
-        "formule": "false",
-        "factor": 6350.29318
+            "id": "12",
+            "unit": "ton (UK)",
+            "description0": "long ton",
+            "description1": "tonelada larga",
+            "description2": "lange tonne",
+            "formule": "false",
+            "factor": 1016046.91
         },
         {
-        "id": "13",
-        "unit": "cwt",
-        "formule": "false",
-        "factor": 50802.3454
+            "id": "13",
+            "unit": "ton (US)",
+            "description0": "short ton",
+            "description1": "tonelada corta",
+            "description2": "kurze tonne",
+            "formule": "false",
+            "factor": 907184.74
         },
         {
-        "id": "14",
-        "unit": "carat",
-        "formule": "false",
-        "factor": 0.2
+            "id": "14",
+            "unit": "st (UK)",
+            "description0": "stone weight",
+            "description1": "stone",
+            "description2": "stone",
+            "formule": "false",
+            "factor": 6350.29318
+        },
+        {
+            "id": "15",
+            "unit": "cwt (US)",
+            "description0": "cental (short hundredweight)",
+            "description1": "quintal americano",
+            "description2": "kurz zentner",
+            "formule": "false",
+            "factor": 50802.3454
+        },
+        {
+            "id": "16",
+            "unit": "cwt (UK)",
+            "description0": "long hundredweight",
+            "description1": "quintal inglés",
+            "description2": "lange zentner",
+            "formule": "false",
+            "factor": 50802.3454
+        },
+        {
+            "id": "17",
+            "unit": "ct",
+            "description0": "carat",
+            "description1": "quilate",
+            "description2": "metrische karat",
+            "formule": "false",
+            "factor": 0.2
         }
     ],
     "Power": [
         {
-        "id": "01",
-        "unit": "W",
-        "formule": "false",
-        "factor": 1
+            "id": "01",
+            "unit": "W",
+            "description0": "watt",
+            "description1": "vatio",
+            "description2": "watt",
+            "formule": "false",
+            "factor": 1
         },
         {
-        "id": "02",
-        "unit": "kW",
-        "formule": "false",
-        "factor": 1000
+            "id": "02",
+            "unit": "kW",
+            "description0": "kilowatt",
+            "description1": "kilovatio",
+            "description2": "kilowatt",
+            "formule": "false",
+            "factor": 1000
         },
         {
-        "id": "03",
-        "unit": "MW",
-        "formule": "false",
-        "factor": 1000000
+            "id": "03",
+            "unit": "MW",
+            "description0": "megawatt",
+            "description1": "megavatio",
+            "description2": "megawatt",
+            "formule": "false",
+            "factor": 1000000
         },
         {
-        "id": "04",
-        "unit": "kcal\/s",
-        "formule": "false",
-        "factor": 4184
+            "id": "04",
+            "unit": "kcal\/s",
+            "description0": "kilocalories per second",
+            "description1": "kilocalorias por segundo",
+            "description2": "kilokalorien pro sekunde",
+            "formule": "false",
+            "factor": 4186.8
         },
         {
-        "id": "05",
-        "unit": "kcal\/h",
-        "formule": "false",
-        "factor": 1.162222
+            "id": "05",
+            "unit": "kcal\/h",
+            "description0": "kilocalories per hour",
+            "description1": "kilocalorias por hora",
+            "description2": "kilokalorien pro stunde",
+            "formule": "false",
+            "factor": 1.16306
         },
         {
-        "id": "06",
-        "unit": "HP",
-        "formule": "false",
-        "factor": 745.7
+            "id": "06",
+            "unit": "HP",
+            "description0": "horsepower",
+            "description1": "caballo de fuerza",
+            "description2": "amerikanisch pferdestärke",
+            "formule": "false",
+            "factor": 745.7
         },
         {
-        "id": "07",
-        "unit": "cv",
-        "formule": "false",
-        "factor": 735.5
+            "id": "07",
+            "unit": "cv",
+            "description0": "metric horsepower",
+            "description1": "caballo de vapor",
+            "description2": "pferdestärke",
+            "formule": "false",
+            "factor": 735.5
         },
         {
-        "id": "08",
-        "unit": "BTU\/h",
-        "formule": "false",
-        "factor": 0.293071
+            "id": "08",
+            "unit": "BTU\/h",
+            "description0": "british thermal unit \/ hour",
+            "description1": "unidad térmica británica \/ hora",
+            "description2": "british thermal unit \/ stunde",
+            "formule": "false",
+            "factor": 0.293255
         },
         {
-        "id": "09",
-        "unit": "TR",
-        "formule": "false",
-        "factor": 3514.50003
-        },
-        {
-        "id": "10",
-        "unit": "dBm",
-        "formule": "false",
-        "factor": 0.001259
+            "id": "09",
+            "unit": "TR",
+            "description0": "ton of refrigeration",
+            "description1": "tonelada de refrigeración",
+            "description2": "tonne kühlung",
+            "formule": "false",
+            "factor": 3516.85
         }
     ],
     "Pressure": [
         {
-        "id": "01",
-        "unit": "atm",
-        "formule": "false",
-        "factor": 1.01325
+            "id": "01",
+            "unit": "atm",
+            "description0": "standard atmosphere",
+            "description1": "atmósfera",
+            "description2": "physikalische atmosphäre",
+            "formule": "false",
+            "factor": 1.01325
         },
         {
-        "id": "02",
-        "unit": "Pa",
-        "formule": "false",
-        "factor": 1E-05
+            "id": "02",
+            "unit": "kgf\/cm2 (at)",
+            "description0": "technical atmosphere",
+            "description1": "atmósfera técnica",
+            "description2": "technische atmosphäre",
+            "formule": "false",
+            "factor": 0.980665
         },
         {
-        "id": "03",
-        "unit": "hPa (mbar)",
-        "formule": "false",
-        "factor": 0.001
+            "id": "03",
+            "unit": "Pa",
+            "description0": "pascal",
+            "description1": "pascal",
+            "description2": "pascal",
+            "formule": "false",
+            "factor": 1E-05
         },
         {
-        "id": "04",
-        "unit": "kPa (kN\/m2)",
-        "formule": "false",
-        "factor": 0.01
+            "id": "04",
+            "unit": "hPa (mbar)",
+            "description0": "hectopascal",
+            "description1": "hectopascal",
+            "description2": "hectopascal",
+            "formule": "false",
+            "factor": 0.001
         },
         {
-        "id": "05",
-        "unit": "Mpa",
-        "formule": "false",
-        "factor": 10
+            "id": "05",
+            "unit": "kPa (kN\/m2)",
+            "description0": "kilopascal",
+            "description1": "kilopascal",
+            "description2": "kilopascal",
+            "formule": "false",
+            "factor": 0.01
         },
         {
-        "id": "06",
-        "unit": "bar",
-        "formule": "false",
-        "factor": 1
+            "id": "06",
+            "unit": "Mpa",
+            "description0": "megapascal",
+            "description1": "megapascal",
+            "description2": "megapascal",
+            "formule": "false",
+            "factor": 10
         },
         {
-        "id": "07",
-        "unit": "psi (lb\/in2)",
-        "formule": "false",
-        "factor": 0.0689476
+            "id": "07",
+            "unit": "bar",
+            "description0": "bar",
+            "description1": "bar",
+            "description2": "bar",
+            "formule": "false",
+            "factor": 1
         },
         {
-        "id": "08",
-        "unit": "psf (lb\/ft2)",
-        "formule": "false",
-        "factor": 0.0004788
+            "id": "08",
+            "unit": "psi (lb\/in2)",
+            "description0": "pound per square inch",
+            "description1": "libra por pulgada cuadrada",
+            "description2": "pfund pro quadratzoll",
+            "formule": "false",
+            "factor": 0.0689476
         },
         {
-        "id": "09",
-        "unit": "ksi",
-        "formule": "false",
-        "factor": 68.9476
+            "id": "09",
+            "unit": "psf (lb\/ft2)",
+            "description0": "pound per square foot",
+            "description1": "libra por pie cuadrada",
+            "description2": "pfund pro quadratfuß",
+            "formule": "false",
+            "factor": 0.0004788
         },
         {
-        "id": "10",
-        "unit": "(kg\/cm2)",
-        "formule": "false",
-        "factor": 0.980665
+            "id": "10",
+            "unit": "ksi",
+            "description0": "kilopound per square inch",
+            "description1": "kilolibra por pulgada cuadrada",
+            "description2": "kilopfund pro quadratzoll",
+            "formule": "false",
+            "factor": 68.9476
         },
         {
-        "id": "11",
-        "unit": "(kg\/m2)",
-        "formule": "false",
-        "factor": 9.80665E-05
+            "id": "11",
+            "unit": "(kgf\/m2)",
+            "description0": "kg per square meter",
+            "description1": "kg por metro cuadrado",
+            "description2": "kg pro quadratmeter",
+            "formule": "false",
+            "factor": 9.80665E-05
         },
         {
-        "id": "12",
-        "unit": "mmHg (Torr)",
-        "formule": "false",
-        "factor": 0.00133322
+            "id": "12",
+            "unit": "mmHg (Torr)",
+            "description0": "mm of mercury (torr)",
+            "description1": "mm de mercurio (torr)",
+            "description2": "millimeter-quecksilbersäule",
+            "formule": "false",
+            "factor": 0.00133322
         },
         {
-        "id": "13",
-        "unit": "cmHg",
-        "formule": "false",
-        "factor": 0.013332199999999999
+            "id": "13",
+            "unit": "mTorr",
+            "description0": "militorr",
+            "description1": "militorr",
+            "description2": "millitorr",
+            "formule": "false",
+            "factor": 1.33322E-06
         },
         {
-        "id": "14",
-        "unit": "inchHg",
-        "formule": "false",
-        "factor": 0.0338639
+            "id": "14",
+            "unit": "cmHg",
+            "description0": "cm of mercury",
+            "description1": "cm de mercurio",
+            "description2": "zentimeter-quecksilbersäule",
+            "formule": "false",
+            "factor": 0.013332199999999999
         },
         {
-        "id": "15",
-        "unit": "mmH2O",
-        "formule": "false",
-        "factor": 9.80638E-05
+            "id": "15",
+            "unit": "inchHg",
+            "description0": "inch of mercury",
+            "description1": "pulgada de mercurio",
+            "description2": "zoll-quecksilbersäule",
+            "formule": "false",
+            "factor": 0.0338639
         },
         {
-        "id": "16",
-        "unit": "cmH2O",
-        "formule": "false",
-        "factor": 0.000980638
+            "id": "16",
+            "unit": "mmH2O",
+            "description0": "mm of water",
+            "description1": "mm de columna de agua",
+            "description2": "millimeter-wassersäule",
+            "formule": "false",
+            "factor": 9.80638E-05
         },
         {
-        "id": "17",
-        "unit": "inchH2O",
-        "formule": "false",
-        "factor": 0.00249082052
+            "id": "17",
+            "unit": "cmH2O",
+            "description0": "cm of water",
+            "description1": "cm de columna de agua",
+            "description2": "zentimeter-wassersäule",
+            "formule": "false",
+            "factor": 0.000980638
         },
         {
-        "id": "18",
-        "unit": "mTorr",
-        "formule": "false",
-        "factor": 1.33322E-06
+            "id": "18",
+            "unit": "mH2O (mca)",
+            "description0": "m of water",
+            "description1": "m de columna de agua",
+            "description2": "meter-wassersäule",
+            "formule": "false",
+            "factor": 0.0980638
+        },
+        {
+            "id": "19",
+            "unit": "inchH2O",
+            "description0": "inch of water",
+            "description1": "pulgada de columna de agua",
+            "description2": "zoll-wassersäule",
+            "formule": "false",
+            "factor": 0.00249082052
         }
     ],
     "Speed": [
         {
-        "id": "01",
-        "unit": "m\/s",
-        "formule": "false",
-        "factor": 1
+            "id": "01",
+            "unit": "m\/s",
+            "description0": "meter per second",
+            "description1": "metro por segundo",
+            "description2": "meter pro sekunde",
+            "formule": "false",
+            "factor": 1
         },
         {
-        "id": "02",
-        "unit": "km\/s",
-        "formule": "false",
-        "factor": 1000
+            "id": "02",
+            "unit": "km\/s",
+            "description0": "kilometer per second",
+            "description1": "kilometro por segundo",
+            "description2": "kilometer pro sekunde",
+            "formule": "false",
+            "factor": 1000
         },
         {
-        "id": "03",
-        "unit": "km\/h",
-        "formule": "false",
-        "factor": 0.277778
+            "id": "03",
+            "unit": "km\/h",
+            "description0": "kilometer por hour",
+            "description1": "kilometro por hora",
+            "description2": "kilometer pro stunde",
+            "formule": "false",
+            "factor": 0.277778
         },
         {
-        "id": "04",
-        "unit": "m\/min",
-        "formule": "false",
-        "factor": 0.016667
+            "id": "04",
+            "unit": "m\/min",
+            "description0": "meter per minute",
+            "description1": "metro por  minuto",
+            "description2": "meter pro minute",
+            "formule": "false",
+            "factor": 0.016667
         },
         {
-        "id": "05",
-        "unit": "ft\/s",
-        "formule": "false",
-        "factor": 0.3048
+            "id": "05",
+            "unit": "ft\/s",
+            "description0": "foot per second",
+            "description1": "pie por segundo",
+            "description2": "fuß pro sekunde",
+            "formule": "false",
+            "factor": 0.3048
         },
         {
-        "id": "06",
-        "unit": "ft\/min",
-        "formule": "false",
-        "factor": 0.00508
+            "id": "06",
+            "unit": "ft\/min",
+            "description0": "foot per minute",
+            "description1": "pie por minuto",
+            "description2": "fuß pro minute",
+            "formule": "false",
+            "factor": 0.00508
         },
         {
-        "id": "07",
-        "unit": "km\/min",
-        "formule": "false",
-        "factor": 16.666667
+            "id": "07",
+            "unit": "km\/min",
+            "description0": "kilometer per minute",
+            "description1": "kilometro por minuto",
+            "description2": "kilometer pro minute",
+            "formule": "false",
+            "factor": 16.666667
         },
         {
-        "id": "08",
-        "unit": "mph (mi\/h)",
-        "formule": "false",
-        "factor": 0.44704
+            "id": "08",
+            "unit": "mph (mi\/h)",
+            "description0": "mile per hour",
+            "description1": "milla por hora",
+            "description2": "meile pro stunde",
+            "formule": "false",
+            "factor": 0.44704
         },
         {
-        "id": "09",
-        "unit": "knot",
-        "formule": "false",
-        "factor": 0.514444
+            "id": "09",
+            "unit": "knot",
+            "description0": "knot",
+            "description1": "nudo",
+            "description2": "knoten",
+            "formule": "false",
+            "factor": 0.514444
         },
         {
-        "id": "10",
-        "unit": "mach",
-        "formule": "false",
-        "factor": 340
+            "id": "10",
+            "unit": "mach",
+            "description0": "mach",
+            "description1": "mach",
+            "description2": "mach",
+            "formule": "false",
+            "factor": 340
         }
     ],
     "Work-Energy": [
         {
-        "id": "01",
-        "unit": "J",
-        "formule": "false",
-        "factor": 1
+            "id": "01",
+            "unit": "J",
+            "descripption0": "joule",
+            "descripption1": "julio",
+            "descripption2": "joule",
+            "formule": "false",
+            "factor": 1
         },
         {
-        "id": "02",
-        "unit": "kJ",
-        "formule": "false",
-        "factor": 1000
+            "id": "02",
+            "unit": "kJ",
+            "descripption0": "kilojoule",
+            "descripption1": "kilojulio",
+            "descripption2": "kilojoule",
+            "formule": "false",
+            "factor": 1000
         },
         {
-        "id": "03",
-        "unit": "cal",
-        "formule": "false",
-        "factor": 4.184
+            "id": "03",
+            "unit": "cal",
+            "descripption0": "calorie",
+            "descripption1": "caloria",
+            "descripption2": "kalorie",
+            "formule": "false",
+            "factor": 4.184
         },
         {
-        "id": "04",
-        "unit": "kcal (Cal)",
-        "formule": "false",
-        "factor": 4184
+            "id": "04",
+            "unit": "kcal (Cal)",
+            "descripption0": "kilocalorie (large calorie)",
+            "descripption1": "kilocaloria (caloria grande)",
+            "descripption2": "kilokalorie",
+            "formule": "false",
+            "factor": 4184
         },
         {
-        "id": "05",
-        "unit": "kW.h",
-        "formule": "false",
-        "factor": 3600000
+            "id": "05",
+            "unit": "kW.h",
+            "descripption0": "kilowatt hour",
+            "descripption1": "kilowatt hora",
+            "descripption2": "kilowatt stunde",
+            "formule": "false",
+            "factor": 3600000
         },
         {
-        "id": "06",
-        "unit": "kg.m",
-        "formule": "false",
-        "factor": 9.80665
+            "id": "06",
+            "unit": "kg.m",
+            "descripption0": "kilogram meter",
+            "descripption1": "kilogramo metro",
+            "descripption2": "kilogram meter",
+            "formule": "false",
+            "factor": 9.80665
         },
         {
-        "id": "07",
-        "unit": "in.lb",
-        "formule": "false",
-        "factor": 0.112985
+            "id": "07",
+            "unit": "in.lb",
+            "descripption0": "inch pound",
+            "descripption1": "pulgada libra",
+            "descripption2": "zoll pound",
+            "formule": "false",
+            "factor": 0.112985
         },
         {
-        "id": "08",
-        "unit": "ft.lb",
-        "formule": "false",
-        "factor": 1.355818
+            "id": "08",
+            "unit": "ft.lb",
+            "descripption0": "feet pound",
+            "descripption1": "pie libra",
+            "descripption2": "fuß pound",
+            "formule": "false",
+            "factor": 1.355818
         },
         {
-        "id": "09",
-        "unit": "BTU",
-        "formule": "false",
-        "factor": 1055.05585
+            "id": "09",
+            "unit": "BTU",
+            "descripption0": "british thermal unit",
+            "descripption1": "unidad térmica británica",
+            "descripption2": "britische thermische einheit",
+            "formule": "false",
+            "factor": 1055.05585
         },
         {
-        "id": "10",
-        "unit": "toe",
-        "formule": "false",
-        "factor": 41870000000
+            "id": "10",
+            "unit": "toe",
+            "descripption0": "tonne of oil equivalent",
+            "descripption1": "tonelada equivalente de petroleo",
+            "descripption2": "Öleinheit",
+            "formule": "false",
+            "factor": 41868000000
         }
     ],
     "Volume": [
         {
-        "id": "01",
-        "unit": "ml (cm3)",
-        "formule": "false",
-        "factor": 0.001
+            "id": "01",
+            "unit": "ml (cm3)",
+            "description0": "mililiter",
+            "description1": "mililitro",
+            "description2": "milliliter",
+            "formule": "false",
+            "factor": 0.001
         },
         {
-        "id": "02",
-        "unit": "cl",
-        "formule": "false",
-        "factor": 0.01
+            "id": "02",
+            "unit": "cl",
+            "description0": "centiliter",
+            "description1": "centilitro",
+            "description2": "kubikmillimeter",
+            "formule": "false",
+            "factor": 0.01
         },
         {
-        "id": "03",
-        "unit": "dl",
-        "formule": "false",
-        "factor": 0.1
+            "id": "03",
+            "unit": "dl",
+            "description0": "deciliter",
+            "description1": "decilitro",
+            "description2": "deziliter",
+            "formule": "false",
+            "factor": 0.1
         },
         {
-        "id": "04",
-        "unit": "L (dm3)",
-        "formule": "false",
-        "factor": 1
+            "id": "04",
+            "unit": "L (dm3)",
+            "description0": "liter",
+            "description1": "litro",
+            "description2": "liter",
+            "formule": "false",
+            "factor": 1
         },
         {
-        "id": "05",
-        "unit": "mm3",
-        "formule": "false",
-        "factor": 1E-06
+            "id": "05",
+            "unit": "mm3",
+            "description0": "cubic milimeter",
+            "description1": "milimetro cubico",
+            "description2": "kubikmillimeter",
+            "formule": "false",
+            "factor": 1E-06
         },
         {
-        "id": "06",
-        "unit": "m3",
-        "formule": "false",
-        "factor": 10000
+            "id": "06",
+            "unit": "m3",
+            "description0": "cubic meter",
+            "description1": "metro cubico",
+            "description2": "kubikmeter",
+            "formule": "false",
+            "factor": 10000
         },
         {
-        "id": "07",
-        "unit": "in3",
-        "formule": "false",
-        "factor": 0.016387
+            "id": "07",
+            "unit": "in3",
+            "description0": "cubic inch",
+            "description1": "pulgada cubica",
+            "description2": "kubikzoll",
+            "formule": "false",
+            "factor": 0.016387
         },
         {
-        "id": "08",
-        "unit": "ft3",
-        "formule": "false",
-        "factor": 28.316847
+            "id": "08",
+            "unit": "ft3",
+            "description0": "cubic foot",
+            "description1": "pie cubico",
+            "description2": "kubikfuß",
+            "formule": "false",
+            "factor": 28.316847
         },
         {
-        "id": "09",
-        "unit": "yd3",
-        "formule": "false",
-        "factor": 764.554858
+            "id": "09",
+            "unit": "yd3",
+            "description0": "cubic yard",
+            "description1": "yarda cubica",
+            "description2": "kubikhof",
+            "formule": "false",
+            "factor": 764.554858
         },
         {
-        "id": "10",
-        "unit": "gal (UK)",
-        "formule": "false",
-        "factor": 4.54609
+            "id": "10",
+            "unit": "gal (UK)",
+            "description0": "UK gallon",
+            "description1": "galón británico",
+            "description2": "britische gallone",
+            "formule": "false",
+            "factor": 4.54609
         },
         {
-        "id": "11",
-        "unit": "gal (US)",
-        "formule": "false",
-        "factor": 3.785412
+            "id": "11",
+            "unit": "gal (US)",
+            "description0": "US gallon",
+            "description1": "galón americano",
+            "description2": "amerikanische gallone",
+            "formule": "false",
+            "factor": 3.785411784
         },
         {
-        "id": "12",
-        "unit": "bbl",
-        "formule": "false",
-        "factor": 158.987295
+            "id": "12",
+            "unit": "bbl (UK)",
+            "description0": "UK barrel",
+            "description1": "barril británico",
+            "description2": "britische fass",
+            "formule": "false",
+            "factor": 159.11315
         },
         {
-        "id": "13",
-        "unit": "pt (UK)",
-        "formule": "false",
-        "factor": 0.568261
+            "id": "13",
+            "unit": "bbl (US)",
+            "description0": "US barrel",
+            "description1": "barril americano",
+            "description2": "amerikanische fass",
+            "formule": "false",
+            "factor": 158.98729
         },
         {
-        "id": "14",
-        "unit": "pt (US)",
-        "formule": "false",
-        "factor": 0.473176
+            "id": "14",
+            "unit": "pt (UK)",
+            "description0": "UK pint",
+            "description1": "pinta británica",
+            "description2": "britische pint",
+            "formule": "false",
+            "factor": 0.568261
         },
         {
-        "id": "15",
-        "unit": "fl oz (US)",
-        "formule": "false",
-        "factor": 0.029574
+            "id": "15",
+            "unit": "pt (US)",
+            "description0": "US pint",
+            "description1": "pinta americana",
+            "description2": "amerikanische pint",
+            "formule": "false",
+            "factor": 0.473176
+        },
+        {
+            "id": "16",
+            "unit": "fl oz (US)",
+            "description0": "fluid ounce",
+            "description1": "onza liquida",
+            "description2": "flüssigunze",
+            "formule": "false",
+            "factor": 0.029574
         }
     ]
 }

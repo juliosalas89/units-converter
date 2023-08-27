@@ -1,20 +1,21 @@
-import { View, StyleSheet, TouchableOpacity, Text, KeyboardAvoidingView, Platform } from "react-native"
 import UnitsResultList from "./UnitsResultsList.jsx"
 import ValueInput from "./ValueInput.jsx"
 import Header from "./header/Header.jsx"
 import Banner from '../ads/Banner.jsx'
-import { useSelector } from "react-redux"
-import { MaterialCommunityIcons, Octicons, Entypo } from '@expo/vector-icons'
+import UnitsModal from "./UnitsModal.jsx"
 import unitsData from '../../appData/units.json'
-import { setDrowerVisible } from "../../store/slices/generalData.slice"
-import { useDispatch } from "react-redux"
+import { View, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from "react-native"
 import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons'
+import { setDrowerVisible, saveGeneralDataThunk, setSelectedUnitsIds } from "../../store/slices/generalData.slice"
 
 const MainView = ({navigation}) => {
     const [inputValue, setInputValue] = useState(null)
     const [focusInputFlag, setFocusInputFlag] = useState(false)
     const [units, setUnits] = useState(unitsData.Distance)
     const [selectedUnit, setSelectedUnit] = useState(null)
+    const [unitsModalVisible, setUnitsModalVisible] = useState(false)
 
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize)
@@ -33,8 +34,12 @@ const MainView = ({navigation}) => {
         setSelectedUnit(selected)
     }, [selectedUnitsIds, selectedType, units])
     
-    const handleChangeInputValue = input => {
-        !isNaN(input) && setInputValue(input.trim())
+    const handleChangeInputValue = input => !isNaN(input) && setInputValue(input.trim())
+
+    const handelUnitSelected = (unitId)=> {
+        setUnitsModalVisible(false)
+        dispatch(setSelectedUnitsIds({[selectedType]: unitId }))
+        dispatch(saveGeneralDataThunk())
     }
 
     const styles = StyleSheet.create({
@@ -46,7 +51,7 @@ const MainView = ({navigation}) => {
             flex: 1
         },
         footer: {
-            backgroundColor: colors.main1,
+            backgroundColor: colors.prim1,
             height: 60,
             flexDirection: 'row',
             justifyContent: 'space-evenly',
@@ -69,7 +74,8 @@ const MainView = ({navigation}) => {
             >
                 <View style={styles.container}>
                     <Header/>
-                    <ValueInput 
+                    <ValueInput
+                        setUnitsModalVisible={setUnitsModalVisible} 
                         selectedUnit={selectedUnit} 
                         navigation={navigation} 
                         units={units} 
@@ -89,8 +95,8 @@ const MainView = ({navigation}) => {
                 <Banner/>
             </KeyboardAvoidingView>
             <View style={styles.footer}>
-                <TouchableOpacity style={styles.footerButtons}>
-                    <Octicons name='arrow-switch' size={30} color='#ffff'/>
+                <TouchableOpacity style={styles.footerButtons} onPress={() => setUnitsModalVisible(true)}>
+                    <MaterialCommunityIcons name='format-list-bulleted' size={30} color='#ffff'/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.footerButtons} onPress={()=> setFocusInputFlag(!focusInputFlag)}>
                     <MaterialCommunityIcons name='keyboard-outline' size={30} color='#ffff'/>
@@ -99,6 +105,7 @@ const MainView = ({navigation}) => {
                     <Entypo name='grid' size={30} color='#ffff'/>
                 </TouchableOpacity>
             </View>
+            <UnitsModal units={units} unitsModalVisible={unitsModalVisible} setUnitsModalVisible={setUnitsModalVisible} handelUnitSelected={handelUnitSelected}/>
         </>
     )
 }
