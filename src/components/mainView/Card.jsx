@@ -1,11 +1,11 @@
 import FavStar from "../general/FavStar"
+import Decimal from "decimal.js"
 import { Pressable, Text, View, StyleSheet, TouchableOpacity } from "react-native"
 import { useState, useEffect, useRef } from "react"
-import Decimal from "decimal.js"
 import { useSelector, useDispatch } from "react-redux"
-import { setSelectedUnitsIds, setFavUnits, saveGeneralDataThunk } from "../../store/slices/generalData.slice"
+import { setSelectedUnitsIds } from "../../store/slices/generalData.slice"
 
-const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, selected}) => {
+const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, selected, handleSaveFavs}) => {
     const unitPressableRef = useRef(null);
     const [result, setResult] = useState(null)
     const [fillStar, setFillStar] = useState(false)
@@ -52,13 +52,7 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
 
     const handleFavStarPress = () => {
         setFillStar(!fillStar)
-        setTimeout(()=> {
-            const newFavUnits = item && favUnits && favUnits.includes(item.id) ? 
-                favUnits.filter(favId => favId !== item.id) : 
-                [...favUnits, item.id]
-            dispatch(setFavUnits(newFavUnits))
-            dispatch(saveGeneralDataThunk())
-        }, 200)
+        handleSaveFavs(item.id)
     }
 
     const styles = StyleSheet.create({
@@ -121,10 +115,9 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
                     style={styles.unitsSubBox}
                 >
                     <Text style={styles.unitsText}>{`${item.unit} `}</Text>
-                    {/* <Text style={styles.descriptionText}>{`- ${item.descriptionEN}`}</Text> */}
                 </Pressable>
                 <View style={{ paddingTop: 4 }}>
-                    <Pressable hitSlop={5} onPress={() => handleFavStarPress()}>
+                    <Pressable hitSlop={10} onPress={() => handleFavStarPress()}>
                         <FavStar fill={fillStar ? '#ffe040' : 'none'}/>
                     </Pressable>
                 </View>

@@ -1,14 +1,13 @@
 import ThemeModal from './ThemeModal';
 import LanguageModal from './LanguageModal';
+import typesData from '../../../appData/types.json'
+import { View, StyleSheet, Text, TouchableOpacity, Modal, Pressable } from "react-native"
+import { MaterialCommunityIcons, MaterialIcons, Ionicons, SimpleLineIcons } from '@expo/vector-icons'
 import { translate } from '../../../utils/languageUtils';
 import Svg, { Path } from 'react-native-svg';
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { MaterialCommunityIcons, MaterialIcons, Ionicons, SimpleLineIcons } from '@expo/vector-icons'
-import { View, StyleSheet, Text, TouchableOpacity, Modal, Pressable } from "react-native"
-import typesData from '../../../appData/types.json'
+import { useSelector, useDispatch } from 'react-redux';
 import { setDrowerVisible } from '../../../store/slices/generalData.slice';
-import { useDispatch } from 'react-redux';
 
 const Header = () => {
     const [modalVisible, setModalVisible] = useState(false)
@@ -34,11 +33,11 @@ const Header = () => {
         optionsModal: {
             padding: 10,
             borderWidth: 1,
-            borderColor: colors.main1,
+            borderColor: colors.prim1,
             borderRadius: 5,
             width: 200,
             backgroundColor: 'white',
-            color: colors.main1,
+            color: colors.prim1,
             left: windowSize.width - 205,
             top: 5
         },
@@ -54,7 +53,7 @@ const Header = () => {
             paddingRight: 18,
             paddingTop: 7, 
             paddingBottom: 7,
-            backgroundColor: colors.main1
+            backgroundColor: colors.prim1
         },
         modalBackground: {
             position: 'absolute',

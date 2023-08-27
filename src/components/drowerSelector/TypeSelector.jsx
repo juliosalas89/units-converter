@@ -1,11 +1,10 @@
+import CButton from "../general/CButton";
+import typesData from '../../appData/types.json'
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native"
-import {MaterialCommunityIcons, MaterialIcons, Ionicons, SimpleLineIcons } from '@expo/vector-icons'
-import { useSelector } from "react-redux"
+import { MaterialCommunityIcons, MaterialIcons, Ionicons, SimpleLineIcons } from '@expo/vector-icons'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { saveGeneralDataThunk, setDrowerVisible, setSelectedType } from "../../store/slices/generalData.slice";
-import typesData from '../../appData/types.json'
-import { useDispatch } from "react-redux";
-import CButton from "../general/CButton";
+import { useSelector, useDispatch } from "react-redux";
 import { translate } from '../../utils/languageUtils.js'
 
 const TypeOption = ({option}) => {
@@ -36,10 +35,10 @@ const TypeOption = ({option}) => {
                 style={modeStyles.typeOption}
                 onPress={()=> handlePress(option.name)}
             >
-                {option.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={option.icon} size={50} color={colors.main1}/> : null}
-                {option.group === 'MaterialIcons' ? <MaterialIcons name={option.icon} size={50} color={colors.main1}/> : null}
-                {option.group === 'Ionicons' ? <Ionicons name={option.icon} size={50} color={colors.main1}/> : null}
-                {option.group === 'SimpleLineIcons' ? <SimpleLineIcons name={option.icon} size={50} color={colors.main1}/> : null}
+                {option.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={option.icon} size={50} color={colors.prim1}/> : null}
+                {option.group === 'MaterialIcons' ? <MaterialIcons name={option.icon} size={50} color={colors.prim1}/> : null}
+                {option.group === 'Ionicons' ? <Ionicons name={option.icon} size={50} color={colors.prim1}/> : null}
+                {option.group === 'SimpleLineIcons' ? <SimpleLineIcons name={option.icon} size={50} color={colors.prim1}/> : null}
                 <Text>{translate(option.name)}</Text>
             </TouchableOpacity>
         </View>

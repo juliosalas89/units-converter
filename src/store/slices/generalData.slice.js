@@ -8,6 +8,7 @@ const generalDataSlice = createSlice({
         selectedType: 'Distance',
         generalDataFetched: false,
         selectedUnitsIds: {
+            Area: '01',
             Distance: '01',
             Speed: '01',
             Weight: '01',
@@ -17,6 +18,7 @@ const generalDataSlice = createSlice({
             Power: '01'
         },
         favUnits: {
+            Area: [],
             Distance: [],
             Speed: [],
             Weight: [],
@@ -38,13 +40,14 @@ const generalDataSlice = createSlice({
         },
         setSelectedUnitsIds (state, action) {
             const payload = action.payload || {}
-            return {...state, selectedUnitsIds: {...state.selectedUnitsIds, ...payload } }
+            return {...state, selectedUnitsIds: { ...state.selectedUnitsIds, ...payload } }
         },
         setAllFavUnits (state, action) {
-            return !action.payload ? state : {...state, favUnits: action.payload }
+            const payload = action.payload || {}
+            return {...state, favUnits: { ...state.favUnits, ...payload } }
         },
         setFavUnits (state, action) {
-            return {...state, favUnits: {...state.favUnits, [state.selectedType]: action.payload || [] } }
+            return {...state, favUnits: { ...state.favUnits, [state.selectedType]: action.payload || [] } }
         },
     }
 })
