@@ -9,7 +9,8 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { setDrowerVisible } from '../../../store/slices/generalData.slice';
 import { AdsConsent } from 'react-native-google-mobile-ads';
-import { setAndSaveConsentStatusThunk } from '../../../store/slices/localParams.slice';
+import mobileAds from 'react-native-google-mobile-ads';
+import { setConsentStatusThunk } from '../../../store/slices/localParams.slice';
 
 const Header = () => {
     const [modalVisible, setModalVisible] = useState(false)
@@ -29,11 +30,10 @@ const Header = () => {
 
     const obtainConsent = () => {
         AdsConsent.requestInfoUpdate().then(res => {
-            return !res.isConsentFormAvailable ? dispatch(setAndSaveConsentStatusThunk('NOT_REQUIRED')) : 
+            return !res.isConsentFormAvailable ? dispatch(setConsentStatusThunk('NOT_REQUIRED')) : 
             AdsConsent.showForm()
             .then(res => {
-                console.log("RESPONSE", res)
-                dispatch(setAndSaveConsentStatusThunk(res.status))
+                dispatch(setConsentStatusThunk(res.status))
                 res.status === 'OBTAINED' && initializeAds()
             })
         })
@@ -43,10 +43,10 @@ const Header = () => {
     }
 
     const initializeAds = () => {
-        mobileAds().initialize().then(adapterStatuses => {
-            console.log("initialize", adapterStatuses)
-            dispatch(setAdsInitialized(true))
-        });
+        mobileAds().initialize()
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     const styles = StyleSheet.create({

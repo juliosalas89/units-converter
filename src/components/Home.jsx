@@ -6,7 +6,7 @@ import { Drawer } from 'react-native-drawer-layout';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setWindowSize, getUserPreferencesThunk, setAndSaveConsentStatusThunk, setAdsInitialized } from '../store/slices/localParams.slice.js';
+import { getLocalParamsThunk, setConsentStatusThunk, setAdsInitialized, setWindowSizeThunk } from '../store/slices/localParams.slice.js';
 import { getGeneralDataThunk, setDrowerVisible } from '../store/slices/generalData.slice';
 import mobileAds from 'react-native-google-mobile-ads';
 import { AdsConsent } from 'react-native-google-mobile-ads';
@@ -27,26 +27,23 @@ const Home = () => {
   
     useEffect(() => {
         if(isMounted.current) return
-        !generalDataFetched && dispatch(getUserPreferencesThunk())
+        !generalDataFetched && dispatch(getLocalParamsThunk())
         !localParamsFetched && dispatch(getGeneralDataThunk())
         generalDataFetched && localParamsFetched && initializationActions()
     }, [generalDataFetched, localParamsFetched]);
 
     const initializationActions = () => {
-        const window = Dimensions.get('window')
-        dispatch(setWindowSize(window))
-        console.log("STATUS IN STORAGE", consentStatus)
         consentStatus !== 'OBTAINED' ? obtainConsent() : initializeAds()
         isMounted.current = true
     }
 
     const obtainConsent = () => {
         AdsConsent.requestInfoUpdate().then(res => {
-            return !res.isConsentFormAvailable ? dispatch(setAndSaveConsentStatusThunk('NOT_REQUIRED')) : 
+            return !res.isConsentFormAvailable ? dispatch(setConsentStatusThunk('NOT_REQUIRED')) : 
             AdsConsent.showForm()
             .then(res => {
-                console.log("RESPONSE",res)
-                dispatch(setAndSaveConsentStatusThunk(res.status))
+                dispatch(setConsentStatusThunk(res.status))
+                !windowSize && obtainWindowSize()
                 res.status === 'OBTAINED' && initializeAds()
             })
         })
@@ -56,10 +53,18 @@ const Home = () => {
     }
 
     const initializeAds = () => {
+        !windowSize && obtainWindowSize()
         mobileAds().initialize().then(adapterStatuses => {
-            console.log("initialize", adapterStatuses)
             dispatch(setAdsInitialized(true))
-        });
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    const obtainWindowSize = () => {
+        const window = Dimensions.get('window')
+        dispatch(setWindowSizeThunk(window))
     }
 
     const styles = StyleSheet.create({

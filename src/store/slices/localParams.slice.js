@@ -52,58 +52,85 @@ const localParamsSlice = createSlice({
     }
 })
 
-const setAndSaveLanguageThunk = language => {
-    return async (dispatch, getState) => {
-        try {
-            const jsonPayload = JSON.stringify(language)
-            await AsyncStorage.setItem('user-preferences-language', jsonPayload);
-            dispatch(setLanguage(language))
-        } catch (error) {
-            console.log(error)
-        }
+const saveLocalParamsThunk = () => {
+    return (dispatch, getState) => {
+        const localParams = getState().localParams
+        const jsonPayload = JSON.stringify(localParams)
+        
+        AsyncStorage.setItem('local-params', jsonPayload)
+        .catch(err => {
+            console.log(err)
+        })
     }
 }
 
-const saveThemeThunk = theme => {
+const getLocalParamsThunk = () => {
     return async (dispatch, getState) => {
-        try {
-            const jsonPayload = JSON.stringify(theme)
-            await AsyncStorage.setItem('user-preferences-theme', jsonPayload);
-        } catch (error) {
-            console.log(error)
-        }
+            AsyncStorage.getItem('local-params')
+            .then(result => {
+                const value = JSON.parse(result)
+                value && (value.language || value.language === 0) && dispatch(setLanguage(value.language))
+                value && value.consentStatus && dispatch(setConsentStatus(value.consentStatus))
+                value && value.windowSize && dispatch(setWindowSize(value.windowSize))
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            .finally(()=> {
+                dispatch(setLocalParamsFetched(true))
+            })
+
     }
 }
 
-const setAndSaveConsentStatusThunk = status => {
-    return async (dispatch, getState) => {
-        try {
-            dispatch(setConsentStatus(status))
-            const jsonPayload = JSON.stringify(status)
-            await AsyncStorage.setItem('user-consent-status', jsonPayload);
-        } catch (error) {
-            console.log(error)
-        }
+const setLanguageThunk = language => {
+    return (dispatch, getState) => {
+        dispatch(setLanguage(language))
+        dispatch(saveLocalParamsThunk())
     }
 }
 
-const getUserPreferencesThunk = () => {
-    return async (dispatch, getState) => {
-        try {
-            const language = JSON.parse(await AsyncStorage.getItem('user-preferences-language'));
-            const theme = JSON.parse(await AsyncStorage.getItem('user-preferences-theme'));
-            const consentStatus = JSON.parse(await AsyncStorage.getItem('user-consent-status'));
-            
-            (language || language === 0) && dispatch(setLanguage(language))
-            theme && dispatch(setTheme(theme))
-            consentStatus && dispatch(setConsentStatus(consentStatus))
-            dispatch(setLocalParamsFetched(true))
-        } catch (error) {
-            dispatch(setLocalParamsFetched(true))
-            console.log(error)
-        }
+const setThemeThunk = theme => {
+    return (dispatch, getState) => {
+        dispatch(saveLocalParamsThunk())
     }
 }
+
+const setConsentStatusThunk = status => {
+    return (dispatch, getState) => {
+        dispatch(setConsentStatus(status))
+        dispatch(saveLocalParamsThunk())
+    }
+}
+const setWindowSizeThunk = windowSize => {
+    return (dispatch, getState) => {
+        dispatch(setWindowSize(windowSize))
+        dispatch(saveLocalParamsThunk())
+    }
+}
+
+// const getUserPreferencesThunk = () => {
+//     return (dispatch, getState) => {
+//         AsyncStorage.multiGet(['user-preferences-language', 'user-preferences-theme', 'user-consent-status', 'window-size'])
+//         .then(values => {
+//             const language = JSON.parse(values[0][1]);
+//             const theme = JSON.parse(values[1][1]);
+//             const consentStatus = JSON.parse(values[2][1]);
+//             const windowSize = JSON.parse(values[3][1]);
+//             (language || language === 0) && dispatch(setLanguage(language))
+//             // theme && dispatch(setTheme(theme))
+//             consentStatus && dispatch(setConsentStatus(consentStatus))
+//             windowSize && dispatch(setWindowSize(windowSize))
+//             dispatch(setLocalParamsFetched(true))
+//         })
+//         .catch(err => {
+//             dispatch(setLocalParamsFetched(true))
+//             console.log(err)
+//         })
+//     }
+// }
+
+
 
 
 export const { 
@@ -118,10 +145,12 @@ export const {
 } = localParamsSlice.actions
 
 export { 
-    saveThemeThunk,
-    setAndSaveLanguageThunk,
-    setAndSaveConsentStatusThunk,
-    getUserPreferencesThunk
+    getLocalParamsThunk,
+    saveLocalParamsThunk,
+    setThemeThunk,
+    setLanguageThunk,
+    setConsentStatusThunk,
+    setWindowSizeThunk
 }
 
 export default localParamsSlice.reducer

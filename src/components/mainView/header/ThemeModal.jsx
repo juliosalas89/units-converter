@@ -4,7 +4,7 @@ import { View, Text, FlatList, StyleSheet, Pressable } from "react-native"
 import { translate } from "../../../utils/languageUtils"
 import { useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { saveThemeThunk, setTheme } from '../../../store/slices/localParams.slice.js'
+import { setThemeThunk, setTheme } from '../../../store/slices/localParams.slice.js'
 
 const ThemeModal = ({setThemeModalVisible}) => {
     const dispatch = useDispatch()
@@ -15,7 +15,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
     const currentTheme = useRef(theme)
 
     const handleConfirm = ()=> {
-        dispatch(saveThemeThunk(theme))
+        // dispatch(setThemeThunk(theme))
         setThemeModalVisible(false)
     }
     
