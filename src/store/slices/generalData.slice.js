@@ -73,6 +73,7 @@ const getGeneralDataThunk = () => {
             value && value.favUnits && dispatch(setAllFavUnits(value.favUnits))
             dispatch(setGeneralDataFetched(true))
         } catch (error) {
+            dispatch(setGeneralDataFetched(true))
             console.log(error)
         }
     }

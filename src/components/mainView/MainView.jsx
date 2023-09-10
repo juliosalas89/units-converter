@@ -12,7 +12,8 @@ import { setDrowerVisible, saveGeneralDataThunk, setSelectedUnitsIds } from "../
 
 const MainView = ({navigation}) => {
     const [inputValue, setInputValue] = useState(null)
-    const [focusInputFlag, setFocusInputFlag] = useState(false)
+    const [triggerFocusInput, setTriggerFocusInput] = useState(false)
+    const [triggerLocked, setTriggerLocked] = useState(false)
     const [units, setUnits] = useState(unitsData.Distance)
     const [selectedUnit, setSelectedUnit] = useState(null)
     const [unitsModalVisible, setUnitsModalVisible] = useState(false)
@@ -27,12 +28,13 @@ const MainView = ({navigation}) => {
     useEffect(()=> {
         setUnits(unitsData[selectedType])
         setInputValue(null)
+        setTriggerLocked(true)
     }, [selectedType])
 
     useEffect(()=> {
         const selected = units.find(unit => unit.id === selectedUnitsIds[selectedType])
         setSelectedUnit(selected)
-    }, [selectedUnitsIds, selectedType, units])
+    }, [selectedUnitsIds, units])
     
     const handleChangeInputValue = input => !isNaN(input) && setInputValue(input.trim())
 
@@ -79,7 +81,9 @@ const MainView = ({navigation}) => {
                         selectedUnit={selectedUnit} 
                         navigation={navigation} 
                         units={units} 
-                        focusInputFlag={focusInputFlag} 
+                        triggerFocusInput={triggerFocusInput}
+                        triggerLocked={triggerLocked}
+                        unlockTrigger={() => setTriggerLocked(false)}
                         inputValue={inputValue} 
                         handleChangeInputValue={handleChangeInputValue}
                         selectedType={selectedType}
@@ -92,13 +96,13 @@ const MainView = ({navigation}) => {
                         inputValue={inputValue}
                     />
                 </View>
-                <Banner/>
+                {/* <Banner/> */}
             </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => setUnitsModalVisible(true)}>
                     <MaterialCommunityIcons name='format-list-bulleted' size={30} color='#ffff'/>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.footerButtons} onPress={()=> setFocusInputFlag(!focusInputFlag)}>
+                <TouchableOpacity style={styles.footerButtons} onPress={()=> setTriggerFocusInput(!triggerFocusInput)}>
                     <MaterialCommunityIcons name='keyboard-outline' size={30} color='#ffff'/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => dispatch(setDrowerVisible(true))}>

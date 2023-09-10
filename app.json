@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/blue-wood.png",
+      "image": "./assets/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#FEF9B0"
     },
@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/first-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.julio.salas.unitsconverter"
@@ -33,6 +33,16 @@
         "projectId": "2e9a8d4e-9f6e-41de-8ecf-c9ddc908f338"
       }
     },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraProguardRules": "-keep class com.google.android.gms.internal.consent_sdk.** { *; }"
+          }
+        }
+      ]
+    ],
     "owner": "julio.salas"
   },
   "react-native-google-mobile-ads": {

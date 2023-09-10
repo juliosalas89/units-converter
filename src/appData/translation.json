@@ -29,6 +29,7 @@
         "Confirm": ["Confirmar", "Bestätigen"],
         "Cancel": ["Cancelar", "Stornieren"],
         "Close": ["Cerrar", "Zusperren"],
-        "Copied to clipboard": ["Copiado al portapapeles", "In die Zwischenablage kopiert"]
+        "Copied to clipboard": ["Copiado al portapapeles", "In die Zwischenablage kopiert"],
+        "Ads Consent Settings": ["Consentimiento de publicidad", "Einstellungen zur Werbeeinwilligung"]
     }
 }
