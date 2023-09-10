@@ -8,6 +8,9 @@ import Svg, { Path } from 'react-native-svg';
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { setDrowerVisible } from '../../../store/slices/generalData.slice';
+import { AdsConsent } from 'react-native-google-mobile-ads';
+import mobileAds from 'react-native-google-mobile-ads';
+import { setConsentStatusThunk } from '../../../store/slices/localParams.slice';
 
 const Header = () => {
     const [modalVisible, setModalVisible] = useState(false)
@@ -24,6 +27,27 @@ const Header = () => {
     useEffect(()=> {
         setSelectedTypeData(typesData.types.find(type => type.name === selectedType))
     })
+
+    const obtainConsent = () => {
+        AdsConsent.requestInfoUpdate().then(res => {
+            return !res.isConsentFormAvailable ? dispatch(setConsentStatusThunk('NOT_REQUIRED')) : 
+            AdsConsent.showForm()
+            .then(res => {
+                dispatch(setConsentStatusThunk(res.status))
+                res.status === 'OBTAINED' && initializeAds()
+            })
+        })
+        .catch(error => {
+            console.log("error", error)
+        })
+    }
+
+    const initializeAds = () => {
+        mobileAds().initialize()
+        .catch(err => {
+            console.log(err)
+        })
+    }
 
     const styles = StyleSheet.create({
         title: {
@@ -109,17 +133,23 @@ const Header = () => {
             >
                 <Pressable style={styles.modalBackground} onPress={()=> setModalVisible(false)}>
                     <Pressable style={styles.optionsModal}>
-                        <Pressable onPress={() => {
+                        {/* <Pressable onPress={() => {
                             setThemeModalVisible(true)
                             setModalVisible(false)
                         }}>
                             <Text style={styles.optionText}>{translate('Theme')}</Text>
-                        </Pressable>
+                        </Pressable> */}
                         <Pressable onPress={() => {
                             setLanguageModalVisible(true)
                             setModalVisible(false)
                         }}>
                             <Text style={styles.optionText}>{`${translate('Language')}${language ? ' (Language)' : ''}`}</Text>
+                        </Pressable>
+                        <Pressable onPress={() => {
+                            obtainConsent()
+                            setModalVisible(false)
+                        }}>
+                            <Text style={styles.optionText}>{translate('Ads Consent Settings')}</Text>
                         </Pressable>
                     </Pressable>
                 </Pressable>

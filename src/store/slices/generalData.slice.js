@@ -53,28 +53,31 @@ const generalDataSlice = createSlice({
 })
 
 const saveGeneralDataThunk = () => {
-    return async (dispatch, getState) => {
-        try {
+    return (dispatch, getState) => {
             const generalData = getState().generalData
             const jsonPayload = JSON.stringify(generalData)
-            await AsyncStorage.setItem('general-data', jsonPayload);
-        } catch (error) {
-            console.log(error)
-        }
+            AsyncStorage.setItem('general-data', jsonPayload)
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 
 const getGeneralDataThunk = () => {
-    return async (dispatch, getState) => {
-        try {
-            const value = JSON.parse(await AsyncStorage.getItem('general-data'));
-            value && value.selectedUnitsIds && dispatch(setSelectedUnitsIds(value.selectedUnitsIds))
-            value && value.selectedType && dispatch(setSelectedType(value.selectedType))
-            value && value.favUnits && dispatch(setAllFavUnits(value.favUnits))
-            dispatch(setGeneralDataFetched(true))
-        } catch (error) {
-            console.log(error)
-        }
+    return (dispatch, getState) => {
+            AsyncStorage.getItem('general-data')
+            .then(result => {
+                const value = JSON.parse(result)
+                value && value.selectedUnitsIds && dispatch(setSelectedUnitsIds(value.selectedUnitsIds))
+                value && value.selectedType && dispatch(setSelectedType(value.selectedType))
+                value && value.favUnits && dispatch(setAllFavUnits(value.favUnits))
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            .finally(() => {
+                dispatch(setGeneralDataFetched(true))
+            })
     }
 }
 

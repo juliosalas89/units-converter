@@ -4,7 +4,7 @@ import langData from '../../../appData/translation.json'
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native"
 import { translate } from "../../../utils/languageUtils"
 import { useState } from "react"
-import { setAndSaveLanguageThunk } from '../../../store/slices/localParams.slice.js'
+import { setLanguageThunk } from '../../../store/slices/localParams.slice.js'
 import { useSelector, useDispatch } from "react-redux"
 
 const LanguageModal = ({setLanguageModalVisible}) => {
@@ -16,7 +16,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
     const [selectedLanguage, setSelectedLanguage] = useState(language) 
     
     const handleConfirm = ()=> {
-        dispatch(setAndSaveLanguageThunk(selectedLanguage))
+        dispatch(setLanguageThunk(selectedLanguage))
         setLanguageModalVisible(false)
     }
 
@@ -80,9 +80,9 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                 />
             </View>
             <View>
-                <View style={styles.bannerContainer}>
+                {/* <View style={styles.bannerContainer}>
                     <Banner type={'MEDIUM_RECTANGLE'}></Banner>
-                </View>
+                </View> */}
                 <View style={styles.buttonsContainer}>
                     <View style={styles.buttonFrame}>
                         <CButton 

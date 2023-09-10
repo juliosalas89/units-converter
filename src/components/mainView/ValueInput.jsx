@@ -3,22 +3,23 @@ import { TextInput, View, StyleSheet } from "react-native"
 import { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 
-const ValueInput = ({ focusInputFlag, inputValue, setUnitsModalVisible, handleChangeInputValue, selectedUnit }) => {
+const ValueInput = ({ triggerFocusInput, triggerLocked, unlockTrigger, inputValue, setUnitsModalVisible, handleChangeInputValue, selectedUnit }) => {
     const inputRef = useRef(null);
+    const isMounted = useRef(false)
     
     const colors = useSelector(state => state.localParams.theme.colors);
     
     useEffect(()=> {
-        focusInput()
-    }, [focusInputFlag])
+        isMounted.current ? focusInput() : isMounted.current = true
+    }, [triggerFocusInput])
 
     useEffect(()=> {
-        setTimeout(() => focusInput(), 200)
+        !triggerLocked ? setTimeout(() => focusInput(), 200) : unlockTrigger()
     }, [selectedUnit])
     
     const focusInput = ()=> {
-        inputRef.current.blur()
-        inputRef.current.focus()
+        inputRef.current && inputRef.current.blur()
+        inputRef.current && inputRef.current.focus()
     }
 
     const styles = StyleSheet.create({
