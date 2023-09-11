@@ -3,7 +3,7 @@ import typesData from '../../appData/types.json'
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native"
 import { MaterialCommunityIcons, MaterialIcons, Ionicons, SimpleLineIcons } from '@expo/vector-icons'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { saveGeneralDataThunk, setDrowerVisible, setSelectedType } from "../../store/slices/generalData.slice";
+import { setDrowerVisible, setSelectedTypeThunk } from "../../store/slices/generalData.slice";
 import { useSelector, useDispatch } from "react-redux";
 import { translate } from '../../utils/languageUtils.js'
 
@@ -12,8 +12,7 @@ const TypeOption = ({option}) => {
     const colors = useSelector(state => state.localParams.theme.colors);
 
     const handlePress = (typeName) => {
-        typeName && dispatch(setSelectedType(typeName))
-        dispatch(saveGeneralDataThunk(typeName))
+        typeName && dispatch(setSelectedTypeThunk(typeName))
         dispatch(setDrowerVisible(false))
     }
 

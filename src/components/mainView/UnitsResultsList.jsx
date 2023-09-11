@@ -4,7 +4,7 @@ import { FlatList, ToastAndroid } from "react-native"
 import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { translate } from "../../utils/languageUtils"
-import { setFavUnits, saveGeneralDataThunk } from "../../store/slices/generalData.slice"
+import { setFavUnitsThunk } from "../../store/slices/generalData.slice"
   
   const UnitsResultList = ({inputValue, favUnits = [], selectedId, selectedUnit, units}) => {
     const [unitsArray, setUnitsArray] = useState([])
@@ -12,6 +12,7 @@ import { setFavUnits, saveGeneralDataThunk } from "../../store/slices/generalDat
     const timer = useRef(null)
 
     const dispatch = useDispatch()
+
     useEffect(() => {
         const favs = favUnits && units && favUnits.map(unitId => units.find(unit => unitId === unit.id)) || []
         const noFavs = units && units.filter(unit => favUnits.every(value => value !== unit.id)) || []
@@ -31,8 +32,7 @@ import { setFavUnits, saveGeneralDataThunk } from "../../store/slices/generalDat
         setFavsEdited(newFavUnits)
         
         timer.current = setTimeout(() => {
-            dispatch(setFavUnits(newFavUnits))
-            dispatch(saveGeneralDataThunk())
+            dispatch(setFavUnitsThunk(newFavUnits))
         }, 500);
     }
 

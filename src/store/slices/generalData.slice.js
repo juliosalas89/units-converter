@@ -5,6 +5,7 @@ const generalDataSlice = createSlice({
     name: 'generalData',
     initialState: {
         drowerVisible: false,
+        triggerFocus: false,
         selectedType: 'Distance',
         generalDataFetched: false,
         selectedUnitsIds: {
@@ -32,6 +33,9 @@ const generalDataSlice = createSlice({
         setDrowerVisible (state, action) {
             return {...state, drowerVisible: action.payload }
         },
+        setTriggerFocus (state, action) {
+            return {...state, triggerFocus: !state.triggerFocus }
+        },
         setSelectedType (state, action) {
             return {...state, selectedType: action.payload || state.selectedType }
         },
@@ -52,6 +56,25 @@ const generalDataSlice = createSlice({
     }
 })
 
+const setSelectedUnitsIdsThunk = payload => {
+    return (dispatch, getState) => {
+        dispatch(setSelectedUnitsIds(payload))
+        dispatch(saveGeneralDataThunk())
+    }
+}
+const setSelectedTypeThunk = payload => {
+    return (dispatch, getState) => {
+        dispatch(setSelectedType(payload))
+        dispatch(saveGeneralDataThunk())
+    }
+}
+const setFavUnitsThunk = payload => {
+    return (dispatch, getState) => {
+        dispatch(setFavUnits(payload))
+        dispatch(saveGeneralDataThunk())
+    }
+}
+
 const saveGeneralDataThunk = () => {
     return (dispatch, getState) => {
             const generalData = getState().generalData
@@ -65,23 +88,24 @@ const saveGeneralDataThunk = () => {
 
 const getGeneralDataThunk = () => {
     return (dispatch, getState) => {
-            AsyncStorage.getItem('general-data')
-            .then(result => {
-                const value = JSON.parse(result)
-                value && value.selectedUnitsIds && dispatch(setSelectedUnitsIds(value.selectedUnitsIds))
-                value && value.selectedType && dispatch(setSelectedType(value.selectedType))
-                value && value.favUnits && dispatch(setAllFavUnits(value.favUnits))
-            })
-            .catch(err => {
-                console.log(err)
-            })
-            .finally(() => {
-                dispatch(setGeneralDataFetched(true))
-            })
+        AsyncStorage.getItem('general-data')
+        .then(result => {
+            const value = JSON.parse(result)
+            value && value.selectedUnitsIds && dispatch(setSelectedUnitsIds(value.selectedUnitsIds))
+            value && value.selectedType && dispatch(setSelectedType(value.selectedType))
+            value && value.favUnits && dispatch(setAllFavUnits(value.favUnits))
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        .finally(() => {
+            dispatch(setGeneralDataFetched(true))
+        })
     }
 }
 
 export const { 
+    setTriggerFocus,
     setDrowerVisible,
     setSelectedType,
     setGeneralDataFetched,
@@ -92,7 +116,10 @@ export const {
 
 export {
     saveGeneralDataThunk,
-    getGeneralDataThunk
+    getGeneralDataThunk,
+    setSelectedUnitsIdsThunk,
+    setSelectedTypeThunk,
+    setFavUnitsThunk
 }
 
 export default generalDataSlice.reducer

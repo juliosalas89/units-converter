@@ -37,8 +37,8 @@ const Header = () => {
                 res.status === 'OBTAINED' && initializeAds()
             })
         })
-        .catch(error => {
-            console.log("error", error)
+        .catch(err => {
+            console.log(err)
         })
     }
 
@@ -59,10 +59,10 @@ const Header = () => {
             borderWidth: 1,
             borderColor: colors.prim1,
             borderRadius: 5,
-            width: 200,
+            width: 220,
             backgroundColor: 'white',
             color: colors.prim1,
-            left: windowSize.width - 205,
+            left: windowSize.width - 225,
             top: 5
         },
         optionText : {
@@ -101,6 +101,16 @@ const Header = () => {
             paddingTop: 4,
             marginRight: 10
         },
+        itemPressable: {
+            borderBottomColor: colors.prim2,
+            borderBottomWidth: 1,
+            paddingTop: 2,
+            paddingBottom: 2
+        },
+        itemPressableLast: {
+            paddingTop: 2,
+            paddingBottom: 2
+        }
     })
 
 
@@ -133,23 +143,35 @@ const Header = () => {
             >
                 <Pressable style={styles.modalBackground} onPress={()=> setModalVisible(false)}>
                     <Pressable style={styles.optionsModal}>
-                        {/* <Pressable onPress={() => {
-                            setThemeModalVisible(true)
-                            setModalVisible(false)
-                        }}>
+                        <Pressable 
+                            style={styles.itemPressable}
+                            android_ripple={{ color: colors.sec2 }} 
+                            onPress={() => {
+                                setThemeModalVisible(true)
+                                setModalVisible(false)
+                            }}
+                        >
                             <Text style={styles.optionText}>{translate('Theme')}</Text>
-                        </Pressable> */}
-                        <Pressable onPress={() => {
-                            setLanguageModalVisible(true)
-                            setModalVisible(false)
-                        }}>
+                        </Pressable>
+                        <Pressable 
+                            style={styles.itemPressable}
+                            android_ripple={{ color: colors.sec2 }} 
+                            onPress={() => {
+                                setLanguageModalVisible(true)
+                                setModalVisible(false)
+                            }}
+                        >
                             <Text style={styles.optionText}>{`${translate('Language')}${language ? ' (Language)' : ''}`}</Text>
                         </Pressable>
-                        <Pressable onPress={() => {
-                            obtainConsent()
-                            setModalVisible(false)
-                        }}>
-                            <Text style={styles.optionText}>{translate('Ads Consent Settings')}</Text>
+                        <Pressable 
+                            style={styles.itemPressableLast}
+                            android_ripple={{ color: colors.sec2 }} 
+                            onPress={() => {
+                                obtainConsent()
+                                setModalVisible(false)
+                            }}
+                        >
+                            <Text style={styles.optionText}>{translate('Consent Settings')}</Text>
                         </Pressable>
                     </Pressable>
                 </Pressable>

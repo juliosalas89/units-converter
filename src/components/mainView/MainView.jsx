@@ -5,16 +5,15 @@ import Banner from '../ads/Banner.jsx'
 import UnitsModal from "./UnitsModal.jsx"
 import unitsData from '../../appData/units.json'
 import { View, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from "react-native"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons'
-import { setDrowerVisible, saveGeneralDataThunk, setSelectedUnitsIds } from "../../store/slices/generalData.slice"
+import { setDrowerVisible, setSelectedUnitsIdsThunk } from "../../store/slices/generalData.slice"
 
 const MainView = ({navigation}) => {
     const [inputValue, setInputValue] = useState(null)
-    const [triggerFocusInput, setTriggerFocusInput] = useState(false)
-    const [triggerLocked, setTriggerLocked] = useState(false)
     const [units, setUnits] = useState(unitsData.Distance)
+    const [triggerFocus, setTriggerFocus] = useState(false)
     const [selectedUnit, setSelectedUnit] = useState(null)
     const [unitsModalVisible, setUnitsModalVisible] = useState(false)
 
@@ -28,20 +27,24 @@ const MainView = ({navigation}) => {
     useEffect(()=> {
         setUnits(unitsData[selectedType])
         setInputValue(null)
-        setTriggerLocked(true)
     }, [selectedType])
 
     useEffect(()=> {
         const selected = units.find(unit => unit.id === selectedUnitsIds[selectedType])
         setSelectedUnit(selected)
-    }, [selectedUnitsIds, units])
+    }, [units])
+
+    useEffect(()=> {
+        const selected = units.find(unit => unit.id === selectedUnitsIds[selectedType])
+        setSelectedUnit(selected)
+        setTimeout(() => setTriggerFocus(!triggerFocus), 200)
+    }, [selectedUnitsIds])
     
     const handleChangeInputValue = input => !isNaN(input) && setInputValue(input.trim())
 
     const handelUnitSelected = (unitId)=> {
         setUnitsModalVisible(false)
-        dispatch(setSelectedUnitsIds({[selectedType]: unitId }))
-        dispatch(saveGeneralDataThunk())
+        dispatch(setSelectedUnitsIdsThunk({[selectedType]: unitId }))
     }
 
     const styles = StyleSheet.create({
@@ -79,11 +82,9 @@ const MainView = ({navigation}) => {
                     <ValueInput
                         setUnitsModalVisible={setUnitsModalVisible} 
                         selectedUnit={selectedUnit} 
-                        navigation={navigation} 
-                        units={units} 
-                        triggerFocusInput={triggerFocusInput}
-                        triggerLocked={triggerLocked}
-                        unlockTrigger={() => setTriggerLocked(false)}
+                        navigation={navigation}
+                        triggerFocus={triggerFocus}
+                        units={units}
                         inputValue={inputValue} 
                         handleChangeInputValue={handleChangeInputValue}
                         selectedType={selectedType}
@@ -96,13 +97,13 @@ const MainView = ({navigation}) => {
                         inputValue={inputValue}
                     />
                 </View>
-                {/* <Banner/> */}
+                <Banner/>
             </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => setUnitsModalVisible(true)}>
                     <MaterialCommunityIcons name='format-list-bulleted' size={30} color='#ffff'/>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.footerButtons} onPress={()=> setTriggerFocusInput(!triggerFocusInput)}>
+                <TouchableOpacity style={styles.footerButtons} onPress={()=> setTriggerFocus(!triggerFocus)}>
                     <MaterialCommunityIcons name='keyboard-outline' size={30} color='#ffff'/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => dispatch(setDrowerVisible(true))}>

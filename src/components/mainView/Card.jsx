@@ -3,7 +3,7 @@ import Decimal from "decimal.js"
 import { Pressable, Text, View, StyleSheet, TouchableOpacity } from "react-native"
 import { useState, useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { setSelectedUnitsIds } from "../../store/slices/generalData.slice"
+import { setSelectedUnitsIdsThunk } from "../../store/slices/generalData.slice"
 
 const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, selected, handleSaveFavs}) => {
     const unitPressableRef = useRef(null);
@@ -22,7 +22,7 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
     useEffect(()=>{
         favUnits && item && setFillStar(favUnits.includes(item.id))
     }, [favUnits, item])
-
+    
     useEffect(()=>{
         calculateResult()
     }, [inputValue, selectedUnit])
@@ -47,7 +47,7 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
     }
 
     const handleLongPress = ()=> {
-        dispatch(setSelectedUnitsIds({[selectedType]: item.id }))
+        dispatch(setSelectedUnitsIdsThunk({[selectedType]: item.id }))
     }
 
     const handleFavStarPress = () => {

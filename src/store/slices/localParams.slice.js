@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const localParamsSlice = createSlice({
     name: 'localParamas',
     initialState: {
-        language: 0,
+        language: null,
         theme: {
             colors: {
                 prim1: '#394a51',
@@ -108,30 +108,6 @@ const setWindowSizeThunk = windowSize => {
         dispatch(saveLocalParamsThunk())
     }
 }
-
-// const getUserPreferencesThunk = () => {
-//     return (dispatch, getState) => {
-//         AsyncStorage.multiGet(['user-preferences-language', 'user-preferences-theme', 'user-consent-status', 'window-size'])
-//         .then(values => {
-//             const language = JSON.parse(values[0][1]);
-//             const theme = JSON.parse(values[1][1]);
-//             const consentStatus = JSON.parse(values[2][1]);
-//             const windowSize = JSON.parse(values[3][1]);
-//             (language || language === 0) && dispatch(setLanguage(language))
-//             // theme && dispatch(setTheme(theme))
-//             consentStatus && dispatch(setConsentStatus(consentStatus))
-//             windowSize && dispatch(setWindowSize(windowSize))
-//             dispatch(setLocalParamsFetched(true))
-//         })
-//         .catch(err => {
-//             dispatch(setLocalParamsFetched(true))
-//             console.log(err)
-//         })
-//     }
-// }
-
-
-
 
 export const { 
     setLanguage, 
