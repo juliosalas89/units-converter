@@ -16,6 +16,7 @@ const MainView = ({navigation}) => {
     const [triggerFocus, setTriggerFocus] = useState(false)
     const [selectedUnit, setSelectedUnit] = useState(null)
     const [unitsModalVisible, setUnitsModalVisible] = useState(false)
+    const isMounted = useRef(false)
 
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize)
@@ -37,7 +38,8 @@ const MainView = ({navigation}) => {
     useEffect(()=> {
         const selected = units.find(unit => unit.id === selectedUnitsIds[selectedType])
         setSelectedUnit(selected)
-        setTimeout(() => setTriggerFocus(!triggerFocus), 200)
+        isMounted.current && setTimeout(() => setTriggerFocus(!triggerFocus), 200)
+        isMounted.current = true
     }, [selectedUnitsIds])
     
     const handleChangeInputValue = input => !isNaN(input) && setInputValue(input.trim())
@@ -56,7 +58,7 @@ const MainView = ({navigation}) => {
             flex: 1
         },
         footer: {
-            backgroundColor: colors.prim1,
+            backgroundColor: colors.headerBg,
             height: 60,
             flexDirection: 'row',
             justifyContent: 'space-evenly',
@@ -101,13 +103,13 @@ const MainView = ({navigation}) => {
             </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => setUnitsModalVisible(true)}>
-                    <MaterialCommunityIcons name='format-list-bulleted' size={30} color='#ffff'/>
+                    <MaterialCommunityIcons name='format-list-bulleted' size={30} color={colors.headerText}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.footerButtons} onPress={()=> setTriggerFocus(!triggerFocus)}>
-                    <MaterialCommunityIcons name='keyboard-outline' size={30} color='#ffff'/>
+                    <MaterialCommunityIcons name='keyboard-outline' size={30} color={colors.headerText}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => dispatch(setDrowerVisible(true))}>
-                    <Entypo name='grid' size={30} color='#ffff'/>
+                    <Entypo name='grid' size={30} color={colors.headerText}/>
                 </TouchableOpacity>
             </View>
             <UnitsModal units={units} unitsModalVisible={unitsModalVisible} setUnitsModalVisible={setUnitsModalVisible} handelUnitSelected={handelUnitSelected}/>

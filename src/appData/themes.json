@@ -3,52 +3,74 @@
         {
             "name": "Default",
             "colors": {
-                "prim1": "#394a51",
-                "prim2": "#7fa99b",
-                "sec1": "#fdc57b",
-                "sec2": "#fbf2d5"
+                "selectedLanguageBg": "#7fa99b",
+                "selectedLanguageText": "#ffff",
+                "modalBg": "#ffff",
+                "modalText": "#394a51",
+                "modalDescription": "#7fa99b",
+                "modalBorder": "#394a51",
+                "modalLine": "#7fa99b",
+                "modalPressColor": "#7fa99b",
+                "cancelButton": "#fbf2d5",
+                "confirmButton": "#7fa99b",
+                "cancelButtonText": "#7fa99b",
+                "confirmButtonText": "#fbf2d5",
+                "cardText": "#fdc57b",
+                "cardTextSelected": "#fbf2d5",
+                "cardLine": "#fdc57b",
+                "cardBg": "#fbf2d5",
+                "cardBgSelected": "#fdc57b",
+                "favStarFill": "#ffe040",
+                "favStarStroke": "#000000",
+                "unitButton": "#7fa99b",
+                "unitButtonText": "#fbf2d5",
+                "inputText": "#394a51",
+                "inputBorder": "#7fa99b",
+                "headerBg": "#394a51",
+                "headerText": "#ffff",
+                "drowerIcons": "#394a51",
+                "drowerText": "#394a51",
+                "drowerBg": "#ffff",
+                "drowerButton": "#7fa99b",
+                "drowerButtonText": "#fbf2d5"
             },
             "fontName": "Notes-Alarm"
         },
         {
-            "name": "Test",
+            "name": "Dark",
             "colors": {
-                "prim1": "#394a51",
-                "prim2": "#7fa99b",
-                "sec1": "#fdc57b",
-                "sec2": "#fbf2d5"
+                "selectedLanguageBg": "#7fa99b",
+                "selectedLanguageText": "#ffff",
+                "modalBg": "#ffff",
+                "modalText": "#394a51",
+                "modalDescription": "#7fa99b",
+                "modalBorder": "#394a51",
+                "modalLine": "#7fa99b",
+                "modalPressColor": "#7fa99b",
+                "cancelButton": "#fbf2d5",
+                "confirmButton": "#7fa99b",
+                "cancelButtonText": "#7fa99b",
+                "confirmButtonText": "#fbf2d5",
+                "cardText": "#C1C1C1",
+                "cardTextSelected": "#21262d",
+                "cardLine": "#C1C1C1",
+                "cardBg": "#21262d",
+                "cardBgSelected": "#C1C1C1",
+                "favStarFill": "#ffe040",
+                "favStarStroke": "#ffff",
+                "unitButton": "#C1C1C1",
+                "unitButtonText": "#fbf2d5",
+                "inputText": "#ffff",
+                "inputBorder": "#C1C1C1",
+                "headerBg": "#121212",
+                "headerText": "#ffff",
+                "drowerIcons": "#394a51",
+                "drowerText": "#394a51",
+                "drowerBg": "#ffff",
+                "drowerButton": "#7fa99b",
+                "drowerButtonText": "#fbf2d5"
             },
             "fontName": "Notes-Alarm"
-        },
-        {
-            "name": "Blue",
-            "colors": {
-                "prim1": "#183661",
-                "prim2": "#1c4b82",
-                "sec1": "#566683",
-                "sec2": "#dae1e7"
-            },
-            "fontName": "Sans-Serif"
-        },
-        {
-            "name": "Grey Green",
-            "colors": {
-                "prim1": "#475762",
-                "prim2": "#00ad7c",
-                "sec1": "#fdc57b",
-                "sec2": "#eceff4"
-            },
-            "fontName": "Sans-Serif"
-        },
-        {
-            "name": "Orange Green",
-            "colors": {
-                "prim1": "#303841",
-                "prim2": "#3a4750",
-                "sec1": "#e38929",
-                "sec2": "#eeeeee"
-            },
-            "fontName": "Sans-Serif"
         }
     ]
 }

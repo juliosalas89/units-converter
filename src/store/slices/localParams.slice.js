@@ -6,11 +6,38 @@ const localParamsSlice = createSlice({
     initialState: {
         language: null,
         theme: {
+            name: "Default",
             colors: {
-                prim1: '#394a51',
-                prim2: '#7fa99b',
-                sec1: '#fdc57b',
-                sec2: '#fbf2d5'
+                selectedLanguageBg: "#7fa99b",
+                selectedLanguageText: "#ffff",
+                modalBg: "#ffff",
+                modalText: "#394a51",
+                modalDescription: "#7fa99b",
+                modalBorder: "#394a51",
+                modalLine: "#7fa99b",
+                modalPressColor: "#7fa99b",
+                cancelButton: "#fbf2d5",
+                confirmButton: "#7fa99b",
+                cancelButtonText: "#7fa99b",
+                confirmButtonText: "#fbf2d5",
+                cardText: "#fdc57b",
+                cardTextSelected: "#fbf2d5",
+                cardLine: "#fdc57b",
+                cardBg: "#fbf2d5",
+                cardBgSelected: "#fdc57b",
+                favStarFill: "#ffe040",
+                favStarStroke: "#000000",
+                unitButton: "#7fa99b",
+                unitButtonText: "#fbf2d5",
+                inputText: "#394a51",
+                inputBorder: "#7fa99b",
+                headerBg: "#394a51",
+                headerText: "#ffff",
+                drowerIcons: "#394a51",
+                drowerText: "#394a51",
+                drowerBg: "#ffff",
+                drowerButton: "#7fa99b",
+                drowerButtonText: "#fbf2d5"
             },
             fontName: 'Notes-Alarm'
         },
@@ -19,7 +46,6 @@ const localParamsSlice = createSlice({
         drowerPsition: 'right',
         localParamsFetched: false,
         windowSize: null,
-        safeArea: { top: 0, right: 0, bottom: 0, left: 0 }
     },
     reducers: {
         setLanguage (state, action) {
@@ -27,8 +53,16 @@ const localParamsSlice = createSlice({
             return {...state,  language }
         },
         setTheme (state, action) {
-            const theme = action.payload || state.theme
-            return {...state, theme }
+            const newTheme = action.payload || state.theme
+            const theme = state.theme
+            return {
+                ...state, 
+                theme: { 
+                    name: newTheme.name || theme.name, 
+                    colors: { ...theme.colors, ...newTheme.colors },
+                    fontName: newTheme.fontName || theme.fontName,
+                } 
+            }
         },
         setConsentStatus (state, action) {
             return {...state, consentStatus: action.payload}
@@ -44,11 +78,7 @@ const localParamsSlice = createSlice({
         },
         setWindowSize (state, action) {
             return {...state, windowSize: action.payload}
-        },
-        setSafeArea (state, action) {
-            return {...state, safeArea: action.payload}
         }
-
     }
 })
 
@@ -72,6 +102,7 @@ const getLocalParamsThunk = () => {
                 value && (value.language || value.language === 0) && dispatch(setLanguage(value.language))
                 value && value.consentStatus && dispatch(setConsentStatus(value.consentStatus))
                 value && value.windowSize && dispatch(setWindowSize(value.windowSize))
+                value && value.theme && dispatch(setTheme(value.theme))
             })
             .catch(err => {
                 console.log(err)

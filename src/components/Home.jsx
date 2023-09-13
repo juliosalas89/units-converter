@@ -83,7 +83,7 @@ const Home = () => {
         safeView: {
             paddingTop: insets.top,
             paddingBottom: insets.bottom,
-            backgroundColor: colors.sec2, 
+            backgroundColor: colors.cardBg,
             flex: 1
         }
     })
@@ -91,8 +91,8 @@ const Home = () => {
     return !windowSize || !localParamsFetched || !generalDataFetched || !(language || language === 0 ) ? null : (
         <>
             <StatusBar
-                backgroundColor={colors.prim1}
-                barStyle='light-content'
+                backgroundColor={colors.headerBg}
+                barStyle="light-content"
             />
             <Drawer
                 drawerPosition="right"
@@ -104,7 +104,7 @@ const Home = () => {
                 }}
             >
                 <View style={styles.safeView}>
-                    <MainView style={{ height: '100%', fontSize: 30, color: 'white' }}></MainView>
+                    <MainView></MainView>
                 </View>
             </Drawer>
         </>

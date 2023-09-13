@@ -27,28 +27,30 @@ const LanguageModal = ({setLanguageModalVisible}) => {
             justifyContent: 'space-between',
             padding: 10,
             paddingTop: 25,
-            backgroundColor: 'white',
+            backgroundColor: colors.modalBg,
         },
         modalTitle: {
             fontSize: 20,
             textAlign: 'center',
             margin: 5,
-            marginBottom: 20
+            marginBottom: 20,
+            color: colors.modalText
         },
         itemView: {
             padding: 15,
         },
         selectedItemView: {
             padding: 15,
-            backgroundColor: colors.prim2,
+            backgroundColor: colors.selectedLanguageBg,
             borderRadius: 5
         },
         itemText: {
             fontSize: 17,
+            color: colors.modalText
         },
         selectedItemText: {
             fontSize: 17,
-            color: '#ffff'
+            color: colors.selectedLanguageText
         },
         buttonsContainer: {
             flexDirection: 'row',
@@ -92,8 +94,8 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                                 paddingTop: 15, 
                                 paddingBottom: 15, 
                                 fontSize: 17, 
-                                backgroundColor: colors.sec2, 
-                                color: colors.prim2
+                                backgroundColor: colors.cancelButton, 
+                                color: colors.cancelButtonText
                             }} 
                         />
                     </View>
@@ -104,7 +106,9 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                             styles={{ 
                                 paddingTop: 15, 
                                 paddingBottom: 15, 
-                                fontSize: 17 
+                                fontSize: 17,
+                                backgroundColor: colors.confirmButton, 
+                                color: colors.confirmButtonText
                             }} 
                         />
                     </View>

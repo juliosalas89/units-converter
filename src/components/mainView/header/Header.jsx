@@ -50,18 +50,14 @@ const Header = () => {
     }
 
     const styles = StyleSheet.create({
-        title: {
-            color: 'white', 
-            fontSize: 25
-        },
         optionsModal: {
             padding: 10,
             borderWidth: 1,
-            borderColor: colors.prim1,
+            borderColor: colors.modalBorder,
             borderRadius: 5,
             width: 220,
-            backgroundColor: 'white',
-            color: colors.prim1,
+            backgroundColor: colors.modalBg,
+            color: colors.modalText,
             left: windowSize.width - 225,
             top: 5
         },
@@ -77,9 +73,9 @@ const Header = () => {
             paddingRight: 18,
             paddingTop: 7, 
             paddingBottom: 7,
-            backgroundColor: colors.prim1
+            backgroundColor: colors.headerBg
         },
-        modalBackground: {
+        modalBg: {
             position: 'absolute',
             top: 0,
             bottom: 0,
@@ -92,7 +88,7 @@ const Header = () => {
             justifyContent: 'flex-end'
         },
         typeTitle: {
-            color: '#ffff',
+            color: colors.headerText,
             fontSize: 22,
             paddingTop: 4,
             paddingRight: 23
@@ -102,7 +98,7 @@ const Header = () => {
             marginRight: 10
         },
         itemPressable: {
-            borderBottomColor: colors.prim2,
+            borderBottomColor: colors.modalLine,
             borderBottomWidth: 1,
             paddingTop: 2,
             paddingBottom: 2
@@ -118,10 +114,10 @@ const Header = () => {
         <View style={styles.container}>
             <TouchableOpacity onPress={() => dispatch(setDrowerVisible(true))} style={styles.typeTitleContainer}>
                 <View style={styles.typeTitleIconContainer}>
-                    {selectedTypeData.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
-                    {selectedTypeData.group === 'MaterialIcons' ? <MaterialIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
-                    {selectedTypeData.group === 'Ionicons' ? <Ionicons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
-                    {selectedTypeData.group === 'SimpleLineIcons' ? <SimpleLineIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
+                    {selectedTypeData.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={selectedTypeData.icon} size={30} color={colors.headerText}/> : null}
+                    {selectedTypeData.group === 'MaterialIcons' ? <MaterialIcons name={selectedTypeData.icon} size={30} color={colors.headerText}/> : null}
+                    {selectedTypeData.group === 'Ionicons' ? <Ionicons name={selectedTypeData.icon} size={30} color={colors.headerText}/> : null}
+                    {selectedTypeData.group === 'SimpleLineIcons' ? <SimpleLineIcons name={selectedTypeData.icon} size={30} color={colors.headerText}/> : null}
                 </View>
                 <Text style={styles.typeTitle}>{translate(selectedType)}</Text>
             </TouchableOpacity>
@@ -129,7 +125,7 @@ const Header = () => {
                 <Svg width="26" height="40" viewBox="0 0 18 18">
                     <Path
                         d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
-                        fill="#FFFFFF"
+                        fill={colors.headerText}
                     />
                 </Svg>
             </TouchableOpacity>
@@ -141,11 +137,11 @@ const Header = () => {
                     setModalVisible(false);
                 }}
             >
-                <Pressable style={styles.modalBackground} onPress={()=> setModalVisible(false)}>
+                <Pressable style={styles.modalBg} onPress={()=> setModalVisible(false)}>
                     <Pressable style={styles.optionsModal}>
                         <Pressable 
                             style={styles.itemPressable}
-                            android_ripple={{ color: colors.sec2 }} 
+                            android_ripple={{ color: colors.modalPressColor }} 
                             onPress={() => {
                                 setThemeModalVisible(true)
                                 setModalVisible(false)
@@ -155,7 +151,7 @@ const Header = () => {
                         </Pressable>
                         <Pressable 
                             style={styles.itemPressable}
-                            android_ripple={{ color: colors.sec2 }} 
+                            android_ripple={{ color: colors.modalPressColor }} 
                             onPress={() => {
                                 setLanguageModalVisible(true)
                                 setModalVisible(false)
@@ -165,7 +161,7 @@ const Header = () => {
                         </Pressable>
                         <Pressable 
                             style={styles.itemPressableLast}
-                            android_ripple={{ color: colors.sec2 }} 
+                            android_ripple={{ color: colors.modalPressColor }} 
                             onPress={() => {
                                 obtainConsent()
                                 setModalVisible(false)
@@ -184,7 +180,7 @@ const Header = () => {
                     setThemeModalVisible(false);
                 }}
             > 
-                <Pressable style={styles.modalBackground} onPress={()=> setThemeModalVisible(false)}>
+                <Pressable style={styles.modalBg} onPress={()=> setThemeModalVisible(false)}>
                     <ThemeModal setThemeModalVisible={setThemeModalVisible}/>
                 </Pressable>  
             </Modal>

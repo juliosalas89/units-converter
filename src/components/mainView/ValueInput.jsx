@@ -18,11 +18,10 @@ const ValueInput = ({ inputValue, triggerFocus, setUnitsModalVisible, handleChan
     const focusInput = ()=> {
         inputRef.current && inputRef.current.blur()
         inputRef.current && inputRef.current.focus()
-        
     }
 
     const styles = StyleSheet.create({
-        modalBackground: {
+        modalBg: {
             position: 'absolute',
             top: 0,
             bottom: 0,
@@ -42,10 +41,10 @@ const ValueInput = ({ inputValue, triggerFocus, setUnitsModalVisible, handleChan
         measureInput: {
             width: '49%',
             padding: 7,
-            color: colors.prim1,
+            color: colors.inputText,
             fontSize: 20,
             borderWidth: 1,
-            borderColor: colors.prim2,
+            borderColor: colors.inputBorder,
             borderRadius: 3, 
             textAlign: 'right'
         },
@@ -64,8 +63,8 @@ const ValueInput = ({ inputValue, triggerFocus, setUnitsModalVisible, handleChan
             <CButton 
                 styles={{
                     width: '49%',
-                    color: colors.sec2,
-                    backgroundColor: colors.prim2,
+                    color: colors.unitButtonText,
+                    backgroundColor: colors.unitButton,
                     textAlign: 'left'
                 }} 
                 title={selectedUnit.unit} 
