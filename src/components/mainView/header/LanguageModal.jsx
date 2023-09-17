@@ -86,9 +86,9 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                 />
             </View>
             <View>
-                <View style={styles.bannerContainer}>
+                {/* <View style={styles.bannerContainer}>
                     <Banner type={'MEDIUM_RECTANGLE'}></Banner>
-                </View>
+                </View> */}
                 <View style={styles.buttonsContainer}>
                     <View style={styles.buttonFrame}>
                         <CButton 

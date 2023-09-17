@@ -99,7 +99,7 @@ const MainView = ({navigation}) => {
                         inputValue={inputValue}
                     />
                 </View>
-                <Banner/>
+                {/* <Banner/> */}
             </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => setUnitsModalVisible(true)}>
