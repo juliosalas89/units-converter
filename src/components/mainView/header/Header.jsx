@@ -22,6 +22,8 @@ const Header = () => {
     const language = useSelector(state => state.localParams.language);
     const windowSize = useSelector(state => state.localParams.windowSize);
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardLinesWidth = useSelector(state => state.localParams.theme.cardLinesWidth);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
     const selectedType = useSelector(store => store.generalData.selectedType)
     
     useEffect(()=> {
@@ -37,8 +39,8 @@ const Header = () => {
                 res.status === 'OBTAINED' && initializeAds()
             })
         })
-        .catch(error => {
-            console.log("error", error)
+        .catch(err => {
+            console.log(err)
         })
     }
 
@@ -50,22 +52,20 @@ const Header = () => {
     }
 
     const styles = StyleSheet.create({
-        title: {
-            color: 'white', 
-            fontSize: 25
-        },
         optionsModal: {
             padding: 10,
             borderWidth: 1,
-            borderColor: colors.prim1,
+            borderColor: colors.modalBorder,
             borderRadius: 5,
-            width: 200,
-            backgroundColor: 'white',
-            color: colors.prim1,
-            left: windowSize.width - 205,
+            width: 220,
+            backgroundColor: colors.modalBg,
+            color: colors.modalText,
+            left: windowSize.width - 225,
             top: 5
         },
         optionText : {
+            color: colors.modalText,
+            fontWeight: cardFontWeight,
             margin: 10,
             fontSize: 17,
         },
@@ -77,9 +77,9 @@ const Header = () => {
             paddingRight: 18,
             paddingTop: 7, 
             paddingBottom: 7,
-            backgroundColor: colors.prim1
+            backgroundColor: colors.headerBg
         },
-        modalBackground: {
+        modalBg: {
             position: 'absolute',
             top: 0,
             bottom: 0,
@@ -92,7 +92,8 @@ const Header = () => {
             justifyContent: 'flex-end'
         },
         typeTitle: {
-            color: '#ffff',
+            color: colors.headerText,
+            fontWeight: cardFontWeight,
             fontSize: 22,
             paddingTop: 4,
             paddingRight: 23
@@ -101,6 +102,16 @@ const Header = () => {
             paddingTop: 4,
             marginRight: 10
         },
+        itemPressable: {
+            borderBottomColor: colors.modalLine,
+            borderBottomWidth: cardLinesWidth,
+            paddingTop: 2,
+            paddingBottom: 2
+        },
+        itemPressableLast: {
+            paddingTop: 2,
+            paddingBottom: 2
+        }
     })
 
 
@@ -108,10 +119,10 @@ const Header = () => {
         <View style={styles.container}>
             <TouchableOpacity onPress={() => dispatch(setDrowerVisible(true))} style={styles.typeTitleContainer}>
                 <View style={styles.typeTitleIconContainer}>
-                    {selectedTypeData.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
-                    {selectedTypeData.group === 'MaterialIcons' ? <MaterialIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
-                    {selectedTypeData.group === 'Ionicons' ? <Ionicons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
-                    {selectedTypeData.group === 'SimpleLineIcons' ? <SimpleLineIcons name={selectedTypeData.icon} size={30} color='#ffff'/> : null}
+                    {selectedTypeData.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={selectedTypeData.icon} size={30} color={colors.headerIcons || '#ffff'}/> : null}
+                    {selectedTypeData.group === 'MaterialIcons' ? <MaterialIcons name={selectedTypeData.icon} size={30} color={colors.headerIcons || '#ffff'}/> : null}
+                    {selectedTypeData.group === 'Ionicons' ? <Ionicons name={selectedTypeData.icon} size={30} color={colors.headerIcons || '#ffff'}/> : null}
+                    {selectedTypeData.group === 'SimpleLineIcons' ? <SimpleLineIcons name={selectedTypeData.icon} size={30} color={colors.headerIcons || '#ffff'}/> : null}
                 </View>
                 <Text style={styles.typeTitle}>{translate(selectedType)}</Text>
             </TouchableOpacity>
@@ -119,7 +130,7 @@ const Header = () => {
                 <Svg width="26" height="40" viewBox="0 0 18 18">
                     <Path
                         d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
-                        fill="#FFFFFF"
+                        fill={colors.headerIcons || '#ffff'}
                     />
                 </Svg>
             </TouchableOpacity>
@@ -131,25 +142,37 @@ const Header = () => {
                     setModalVisible(false);
                 }}
             >
-                <Pressable style={styles.modalBackground} onPress={()=> setModalVisible(false)}>
+                <Pressable style={styles.modalBg} onPress={()=> setModalVisible(false)}>
                     <Pressable style={styles.optionsModal}>
-                        {/* <Pressable onPress={() => {
-                            setThemeModalVisible(true)
-                            setModalVisible(false)
-                        }}>
+                        <Pressable 
+                            style={styles.itemPressable}
+                            android_ripple={{ color: colors.modalPressColor }} 
+                            onPress={() => {
+                                setThemeModalVisible(true)
+                                setModalVisible(false)
+                            }}
+                        >
                             <Text style={styles.optionText}>{translate('Theme')}</Text>
-                        </Pressable> */}
-                        <Pressable onPress={() => {
-                            setLanguageModalVisible(true)
-                            setModalVisible(false)
-                        }}>
+                        </Pressable>
+                        <Pressable 
+                            style={styles.itemPressable}
+                            android_ripple={{ color: colors.modalPressColor }} 
+                            onPress={() => {
+                                setLanguageModalVisible(true)
+                                setModalVisible(false)
+                            }}
+                        >
                             <Text style={styles.optionText}>{`${translate('Language')}${language ? ' (Language)' : ''}`}</Text>
                         </Pressable>
-                        <Pressable onPress={() => {
-                            obtainConsent()
-                            setModalVisible(false)
-                        }}>
-                            <Text style={styles.optionText}>{translate('Ads Consent Settings')}</Text>
+                        <Pressable 
+                            style={styles.itemPressableLast}
+                            android_ripple={{ color: colors.modalPressColor }} 
+                            onPress={() => {
+                                obtainConsent()
+                                setModalVisible(false)
+                            }}
+                        >
+                            <Text style={styles.optionText}>{translate('Consent Settings')}</Text>
                         </Pressable>
                     </Pressable>
                 </Pressable>
@@ -162,7 +185,7 @@ const Header = () => {
                     setThemeModalVisible(false);
                 }}
             > 
-                <Pressable style={styles.modalBackground} onPress={()=> setThemeModalVisible(false)}>
+                <Pressable style={styles.modalBg} onPress={()=> setThemeModalVisible(false)}>
                     <ThemeModal setThemeModalVisible={setThemeModalVisible}/>
                 </Pressable>  
             </Modal>

@@ -4,9 +4,11 @@ import { useSelector } from "react-redux";
 const UnitsModal = ({setUnitsModalVisible, unitsModalVisible, units, handelUnitSelected}) => {
     const windowSize = useSelector(state => state.localParams.windowSize);
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardLinesWidth = useSelector(state => state.localParams.theme.cardLinesWidth);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
 
     const styles = StyleSheet.create({
-        modalBackground: {
+        modalBg: {
             position: 'absolute',
             top: 0,
             bottom: 0,
@@ -17,27 +19,28 @@ const UnitsModal = ({setUnitsModalVisible, unitsModalVisible, units, handelUnitS
         unitsModal: {
             padding: 10,
             borderWidth: 1,
-            borderColor: colors.prim1,
+            borderColor: colors.modalBorder,
             borderRadius: 5,
             width: 300,
             maxHeight: 500,
-            backgroundColor: 'white',
-            color: colors.prim1,
+            backgroundColor: colors.modalBg,
             left: (windowSize.width - 300)/2,
             top: 150
         },
         itemPressable: {
-            borderBottomColor: colors.prim2,
-            borderBottomWidth: 1,
+            borderBottomColor: colors.modalLine,
+            borderBottomWidth: cardLinesWidth,
             paddingTop: 2,
             paddingBottom: 2,
         },
         itemMainText: {
-            color: colors.prim1,
+            fontWeight: cardFontWeight,
+            color: colors.modalText,
             fontSize: 20,
         },
         itemDescriptionText: {
-            color: colors.prim2,
+            fontWeight: cardFontWeight,
+            color: colors.modalDescription,
             fontSize: 13
         }
     })
@@ -52,7 +55,7 @@ const UnitsModal = ({setUnitsModalVisible, unitsModalVisible, units, handelUnitS
                 setUnitsModalVisible(false);
             }}
         >   
-            <Pressable style={styles.modalBackground} onPress={()=> setUnitsModalVisible(false)}>
+            <Pressable style={styles.modalBg} onPress={()=> setUnitsModalVisible(false)}>
                 <Pressable style={styles.unitsModal}>
                     <FlatList
                         data={units}
@@ -61,7 +64,7 @@ const UnitsModal = ({setUnitsModalVisible, unitsModalVisible, units, handelUnitS
                             <Pressable 
                                 style={styles.itemPressable} 
                                 onPress={() =>  handelUnitSelected(item.id)}
-                                android_ripple={{ color: colors.sec2 }}    
+                                android_ripple={{ color: colors.modalPressColor }}    
                             >
                                 <Text style={styles.itemMainText}>{item.unit}</Text>
                                 <Text style={styles.itemDescriptionText}>{item[`description${language}`]}</Text>

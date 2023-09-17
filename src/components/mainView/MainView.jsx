@@ -5,18 +5,18 @@ import Banner from '../ads/Banner.jsx'
 import UnitsModal from "./UnitsModal.jsx"
 import unitsData from '../../appData/units.json'
 import { View, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from "react-native"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons'
-import { setDrowerVisible, saveGeneralDataThunk, setSelectedUnitsIds } from "../../store/slices/generalData.slice"
+import { setDrowerVisible, setSelectedUnitsIdsThunk } from "../../store/slices/generalData.slice"
 
 const MainView = ({navigation}) => {
     const [inputValue, setInputValue] = useState(null)
-    const [triggerFocusInput, setTriggerFocusInput] = useState(false)
-    const [triggerLocked, setTriggerLocked] = useState(false)
     const [units, setUnits] = useState(unitsData.Distance)
+    const [triggerFocus, setTriggerFocus] = useState(false)
     const [selectedUnit, setSelectedUnit] = useState(null)
     const [unitsModalVisible, setUnitsModalVisible] = useState(false)
+    const isMounted = useRef(false)
 
     const dispatch = useDispatch()
     const windowSize = useSelector(state => state.localParams.windowSize)
@@ -28,20 +28,25 @@ const MainView = ({navigation}) => {
     useEffect(()=> {
         setUnits(unitsData[selectedType])
         setInputValue(null)
-        setTriggerLocked(true)
     }, [selectedType])
 
     useEffect(()=> {
         const selected = units.find(unit => unit.id === selectedUnitsIds[selectedType])
         setSelectedUnit(selected)
-    }, [selectedUnitsIds, units])
+    }, [units])
+
+    useEffect(()=> {
+        const selected = units.find(unit => unit.id === selectedUnitsIds[selectedType])
+        setSelectedUnit(selected)
+        isMounted.current && setTimeout(() => setTriggerFocus(!triggerFocus), 200)
+        isMounted.current = true
+    }, [selectedUnitsIds])
     
     const handleChangeInputValue = input => !isNaN(input) && setInputValue(input.trim())
 
     const handelUnitSelected = (unitId)=> {
         setUnitsModalVisible(false)
-        dispatch(setSelectedUnitsIds({[selectedType]: unitId }))
-        dispatch(saveGeneralDataThunk())
+        dispatch(setSelectedUnitsIdsThunk({[selectedType]: unitId }))
     }
 
     const styles = StyleSheet.create({
@@ -53,7 +58,7 @@ const MainView = ({navigation}) => {
             flex: 1
         },
         footer: {
-            backgroundColor: colors.prim1,
+            backgroundColor: colors.headerBg,
             height: 60,
             flexDirection: 'row',
             justifyContent: 'space-evenly',
@@ -79,11 +84,9 @@ const MainView = ({navigation}) => {
                     <ValueInput
                         setUnitsModalVisible={setUnitsModalVisible} 
                         selectedUnit={selectedUnit} 
-                        navigation={navigation} 
-                        units={units} 
-                        triggerFocusInput={triggerFocusInput}
-                        triggerLocked={triggerLocked}
-                        unlockTrigger={() => setTriggerLocked(false)}
+                        navigation={navigation}
+                        triggerFocus={triggerFocus}
+                        units={units}
                         inputValue={inputValue} 
                         handleChangeInputValue={handleChangeInputValue}
                         selectedType={selectedType}
@@ -96,17 +99,17 @@ const MainView = ({navigation}) => {
                         inputValue={inputValue}
                     />
                 </View>
-                {/* <Banner/> */}
+                <Banner/>
             </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => setUnitsModalVisible(true)}>
-                    <MaterialCommunityIcons name='format-list-bulleted' size={30} color='#ffff'/>
+                    <MaterialCommunityIcons name='format-list-bulleted' size={30} color={colors.headerIcons || '#ffff'}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.footerButtons} onPress={()=> setTriggerFocusInput(!triggerFocusInput)}>
-                    <MaterialCommunityIcons name='keyboard-outline' size={30} color='#ffff'/>
+                <TouchableOpacity style={styles.footerButtons} onPress={()=> setTriggerFocus(!triggerFocus)}>
+                    <MaterialCommunityIcons name='keyboard-outline' size={30} color={colors.headerIcons || '#ffff'}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => dispatch(setDrowerVisible(true))}>
-                    <Entypo name='grid' size={30} color='#ffff'/>
+                    <Entypo name='grid' size={30} color={colors.headerIcons || '#ffff'}/>
                 </TouchableOpacity>
             </View>
             <UnitsModal units={units} unitsModalVisible={unitsModalVisible} setUnitsModalVisible={setUnitsModalVisible} handelUnitSelected={handelUnitSelected}/>

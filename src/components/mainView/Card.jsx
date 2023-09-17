@@ -3,7 +3,7 @@ import Decimal from "decimal.js"
 import { Pressable, Text, View, StyleSheet, TouchableOpacity } from "react-native"
 import { useState, useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { setSelectedUnitsIds } from "../../store/slices/generalData.slice"
+import { setSelectedUnitsIdsThunk } from "../../store/slices/generalData.slice"
 
 const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, selected, handleSaveFavs}) => {
     const unitPressableRef = useRef(null);
@@ -12,6 +12,8 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
     
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardLinesWidth = useSelector(state => state.localParams.theme.cardLinesWidth);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
     const selectedType = useSelector(state => state.generalData.selectedType);
     const windowSize = useSelector(state => state.localParams.windowSize)
 
@@ -22,7 +24,7 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
     useEffect(()=>{
         favUnits && item && setFillStar(favUnits.includes(item.id))
     }, [favUnits, item])
-
+    
     useEffect(()=>{
         calculateResult()
     }, [inputValue, selectedUnit])
@@ -47,7 +49,7 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
     }
 
     const handleLongPress = ()=> {
-        dispatch(setSelectedUnitsIds({[selectedType]: item.id }))
+        dispatch(setSelectedUnitsIdsThunk({[selectedType]: item.id }))
     }
 
     const handleFavStarPress = () => {
@@ -57,16 +59,18 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
 
     const styles = StyleSheet.create({
         unitsLine: {
-            borderBottomWidth: 1,
-            borderBottomColor: colors.sec1,
+            marginTop: 0.1,
+            marginBottom: 0.1,
+            borderBottomWidth: cardLinesWidth || 0.5,
+            borderBottomColor: colors.cardLine,
             flexDirection: 'row',
             padding: 5,
-            backgroundColor: selected ? colors.sec1 : colors.sec2,
+            backgroundColor: selected ? colors.cardBgSelected : colors.cardBg,
         },
         valuesBox: {
             paddingRight: 5,
-            borderRightWidth: 1,
-            borderRightColor: colors.sec1,
+            borderRightWidth: cardLinesWidth || 0.5,
+            borderRightColor: colors.cardLine,
             flex: 0.5,
         },
         unitsBox: {
@@ -83,16 +87,14 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
             alignItems: 'flex-end'
         },
         unitsText: {
+            fontWeight: cardFontWeight,
             fontSize: 20,
-            color: selected ? colors.sec2 : colors.sec1,
-        },
-        descriptionText: {
-            color: colors.sec1,
-            marginBottom: 2
+            color: selected ? colors.cardTextSelected : colors.cardText,
         },
         valuesText: {
+            fontWeight: cardFontWeight,
             fontSize: 20,
-            color: selected ? colors.sec2 : colors.sec1,
+            color: selected ? colors.cardTextSelected : colors.cardText,
             textAlign: 'right'
         }
     })
@@ -111,14 +113,14 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
                     ref={unitPressableRef}
                     onLongPress={() => handleLongPress()} 
                     delayLongPress={200}
-                    android_ripple={{ color: colors.sec1 }}
+                    android_ripple={{ color: colors.cardBgSelected }}
                     style={styles.unitsSubBox}
                 >
                     <Text style={styles.unitsText}>{`${item.unit} `}</Text>
                 </Pressable>
                 <View style={{ paddingTop: 4 }}>
                     <Pressable hitSlop={10} onPress={() => handleFavStarPress()}>
-                        <FavStar fill={fillStar ? '#ffe040' : 'none'}/>
+                        <FavStar fill={fillStar ? colors.favStarFill : 'none'} stroke={colors.favStarStroke}/>
                     </Pressable>
                 </View>
             </View>

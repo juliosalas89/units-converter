@@ -3,19 +3,18 @@ import { TextInput, View, StyleSheet } from "react-native"
 import { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 
-const ValueInput = ({ triggerFocusInput, triggerLocked, unlockTrigger, inputValue, setUnitsModalVisible, handleChangeInputValue, selectedUnit }) => {
+const ValueInput = ({ inputValue, triggerFocus, setUnitsModalVisible, handleChangeInputValue, selectedUnit }) => {
     const inputRef = useRef(null);
     const isMounted = useRef(false)
     
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
+    const cardLinesWidth = useSelector(state => state.localParams.theme.cardLinesWidth);
     
     useEffect(()=> {
-        isMounted.current ? focusInput() : isMounted.current = true
-    }, [triggerFocusInput])
-
-    useEffect(()=> {
-        !triggerLocked ? setTimeout(() => focusInput(), 200) : unlockTrigger()
-    }, [selectedUnit])
+        isMounted.current && focusInput()
+        isMounted.current = true
+    }, [triggerFocus])
     
     const focusInput = ()=> {
         inputRef.current && inputRef.current.blur()
@@ -23,7 +22,7 @@ const ValueInput = ({ triggerFocusInput, triggerLocked, unlockTrigger, inputValu
     }
 
     const styles = StyleSheet.create({
-        modalBackground: {
+        modalBg: {
             position: 'absolute',
             top: 0,
             bottom: 0,
@@ -43,10 +42,11 @@ const ValueInput = ({ triggerFocusInput, triggerLocked, unlockTrigger, inputValu
         measureInput: {
             width: '49%',
             padding: 7,
-            color: colors.prim1,
+            color: colors.inputText,
             fontSize: 20,
-            borderWidth: 1,
-            borderColor: colors.prim2,
+            borderWidth: cardLinesWidth || 0.5,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
+            borderColor: colors.inputBorder,
             borderRadius: 3, 
             textAlign: 'right'
         },
@@ -65,9 +65,10 @@ const ValueInput = ({ triggerFocusInput, triggerLocked, unlockTrigger, inputValu
             <CButton 
                 styles={{
                     width: '49%',
-                    color: colors.sec2,
-                    backgroundColor: colors.prim2,
-                    textAlign: 'left'
+                    color: colors.unitButtonText,
+                    backgroundColor: colors.unitButton,
+                    textAlign: 'left',
+                    fontWeight: cardFontWeight
                 }} 
                 title={selectedUnit.unit} 
                 onPress={()=> setUnitsModalVisible(true)}

@@ -9,13 +9,14 @@ import { setThemeThunk, setTheme } from '../../../store/slices/localParams.slice
 const ThemeModal = ({setThemeModalVisible}) => {
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
     const theme = useSelector(state => state.localParams.theme);
     const windowSize = useSelector(state => state.localParams.windowSize);
 
     const currentTheme = useRef(theme)
 
     const handleConfirm = ()=> {
-        // dispatch(setThemeThunk(theme))
+        dispatch(setThemeThunk(theme))
         setThemeModalVisible(false)
     }
     
@@ -30,12 +31,11 @@ const ThemeModal = ({setThemeModalVisible}) => {
             justifyContent: 'space-between',
             padding: 10,
             borderWidth: 1,
-            borderColor: colors.prim1,
+            borderColor: colors.modalBorder,
             borderRadius: 5,
             width: 300,
             height: 450,
-            backgroundColor: 'white',
-            color: colors.prim1,
+            backgroundColor: colors.modalBg,
             left: (windowSize.width - 300)/2,
             top: 150
         },
@@ -47,22 +47,26 @@ const ThemeModal = ({setThemeModalVisible}) => {
             fontSize: 20,
             textAlign: 'center',
             marginTop: 10,
-            marginBottom: 25
+            marginBottom: 25,
+            color: colors.modalText
         },
         itemView: {
             padding: 15,
         },
         selectedItemView: {
             padding: 15,
-            backgroundColor: colors.prim2,
+            backgroundColor: colors.selectedLanguageBg,
             borderRadius: 5
         },
         itemText: {
+            fontWeight: cardFontWeight,
             fontSize: 17,
+            color: colors.modalText
         },
         selectedItemText: {
+            fontWeight: cardFontWeight,
             fontSize: 17,
-            color: '#ffff'
+            color: colors.selectedLanguageText
         },
         buttonsContainer: {
             flexDirection: 'row',
@@ -74,7 +78,7 @@ const ThemeModal = ({setThemeModalVisible}) => {
         }
     })
 
-    return (
+    return !theme ? null : (
         <Pressable style={styles.themeModal}>
             <View style={styles.scrollView}>
                 <Text style={styles.modalTitle}>{translate('Choose Theme') + ':'}</Text>
@@ -97,8 +101,8 @@ const ThemeModal = ({setThemeModalVisible}) => {
                             paddingTop: 15, 
                             paddingBottom: 15, 
                             fontSize: 17, 
-                            backgroundColor: colors.sec2, 
-                            color: colors.prim2
+                            backgroundColor: colors.cancelButton, 
+                            color: colors.cancelButtonText
                         }} 
                     />
                 </View>
@@ -109,7 +113,9 @@ const ThemeModal = ({setThemeModalVisible}) => {
                         styles={{ 
                             paddingTop: 15, 
                             paddingBottom: 15, 
-                            fontSize: 17 
+                            fontSize: 17,
+                            backgroundColor: colors.confirmButton, 
+                            color: colors.confirmButtonText
                         }} 
                     />
                 </View>

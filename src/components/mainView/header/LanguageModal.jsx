@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux"
 const LanguageModal = ({setLanguageModalVisible}) => {
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
     const language = useSelector(state => state.localParams.language);
     const windowSize = useSelector(state => state.localParams.windowSize);
 
@@ -27,28 +28,33 @@ const LanguageModal = ({setLanguageModalVisible}) => {
             justifyContent: 'space-between',
             padding: 10,
             paddingTop: 25,
-            backgroundColor: 'white',
+            backgroundColor: colors.modalBg,
         },
         modalTitle: {
             fontSize: 20,
+            fontWeight: cardFontWeight,
             textAlign: 'center',
             margin: 5,
-            marginBottom: 20
+            marginBottom: 20,
+            color: colors.modalText
         },
         itemView: {
             padding: 15,
         },
         selectedItemView: {
             padding: 15,
-            backgroundColor: colors.prim2,
+            backgroundColor: colors.selectedLanguageBg,
             borderRadius: 5
         },
         itemText: {
+            fontWeight: cardFontWeight,
             fontSize: 17,
+            color: colors.modalText
         },
         selectedItemText: {
+            fontWeight: cardFontWeight,
             fontSize: 17,
-            color: '#ffff'
+            color: colors.selectedLanguageText
         },
         buttonsContainer: {
             flexDirection: 'row',
@@ -80,9 +86,9 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                 />
             </View>
             <View>
-                {/* <View style={styles.bannerContainer}>
+                <View style={styles.bannerContainer}>
                     <Banner type={'MEDIUM_RECTANGLE'}></Banner>
-                </View> */}
+                </View>
                 <View style={styles.buttonsContainer}>
                     <View style={styles.buttonFrame}>
                         <CButton 
@@ -92,8 +98,8 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                                 paddingTop: 15, 
                                 paddingBottom: 15, 
                                 fontSize: 17, 
-                                backgroundColor: colors.sec2, 
-                                color: colors.prim2
+                                backgroundColor: colors.cancelButton, 
+                                color: colors.cancelButtonText
                             }} 
                         />
                     </View>
@@ -104,7 +110,9 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                             styles={{ 
                                 paddingTop: 15, 
                                 paddingBottom: 15, 
-                                fontSize: 17 
+                                fontSize: 17,
+                                backgroundColor: colors.confirmButton, 
+                                color: colors.confirmButtonText
                             }} 
                         />
                     </View>

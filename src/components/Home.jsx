@@ -6,10 +6,11 @@ import { Drawer } from 'react-native-drawer-layout';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getLocalParamsThunk, setConsentStatusThunk, setAdsInitialized, setWindowSizeThunk } from '../store/slices/localParams.slice.js';
+import { getLocalParamsThunk, setConsentStatusThunk, setAdsInitialized, setWindowSizeThunk, setLanguageThunk } from '../store/slices/localParams.slice.js';
 import { getGeneralDataThunk, setDrowerVisible } from '../store/slices/generalData.slice';
 import mobileAds from 'react-native-google-mobile-ads';
 import { AdsConsent } from 'react-native-google-mobile-ads';
+import { NativeModules } from 'react-native'
 
 const Home = () => {
     const isMounted = useRef(false)
@@ -18,6 +19,7 @@ const Home = () => {
     const drowerVisible = useSelector(state => state.generalData.drowerVisible);
     const windowSize = useSelector(state => state.localParams.windowSize);
     const localParamsFetched = useSelector(state => state.localParams.localParamsFetched);
+    const language = useSelector(state => state.localParams.language);
     const colors = useSelector(state => state.localParams.theme.colors);
     const generalDataFetched = useSelector(state => state.generalData.generalDataFetched);
     const consentStatus = useSelector(state => state.localParams.consentStatus);
@@ -29,11 +31,11 @@ const Home = () => {
         if(isMounted.current) return
         !generalDataFetched && dispatch(getLocalParamsThunk())
         !localParamsFetched && dispatch(getGeneralDataThunk())
-        generalDataFetched && localParamsFetched && initializationActions()
+        generalDataFetched && localParamsFetched && handleInitialize()
     }, [generalDataFetched, localParamsFetched]);
 
-    const initializationActions = () => {
-        consentStatus !== 'OBTAINED' ? obtainConsent() : initializeAds()
+    const handleInitialize = () => {
+        consentStatus !== 'OBTAINED' ? obtainConsent() : initialize()
         isMounted.current = true
     }
 
@@ -43,17 +45,21 @@ const Home = () => {
             AdsConsent.showForm()
             .then(res => {
                 dispatch(setConsentStatusThunk(res.status))
-                !windowSize && obtainWindowSize()
-                res.status === 'OBTAINED' && initializeAds()
+                res.status === 'OBTAINED' && initialize()
             })
         })
-        .catch(error => {
-            console.log("error", error)
+        .catch(err => {
+            console.log(err)
         })
     }
 
-    const initializeAds = () => {
+    const initialize = () => {
+        !(language || language === 0) && obtainDeviceLanguage()
         !windowSize && obtainWindowSize()
+        initializeAds()
+    }
+
+    const initializeAds = () => {
         mobileAds().initialize().then(adapterStatuses => {
             dispatch(setAdsInitialized(true))
         })
@@ -66,21 +72,27 @@ const Home = () => {
         const window = Dimensions.get('window')
         dispatch(setWindowSizeThunk(window))
     }
+    const obtainDeviceLanguage = () => {
+        const deviceLanguage = NativeModules.I18nManager.localeIdentifier
+        const languageValues = [ 'en', 'es', 'de' ]
+        const languageIndex = deviceLanguage ? languageValues.indexOf(deviceLanguage.slice(0,2)) : null
+        !languageIndex || languageIndex < 0 ? dispatch(setLanguageThunk(0)) : dispatch(setLanguageThunk(languageIndex))
+    }
 
     const styles = StyleSheet.create({
         safeView: {
             paddingTop: insets.top,
             paddingBottom: insets.bottom,
-            backgroundColor: colors.sec2, 
+            backgroundColor: colors.cardBg,
             flex: 1
         }
     })
 
-    return !windowSize || !localParamsFetched || !generalDataFetched ? null : (
+    return !windowSize || !localParamsFetched || !generalDataFetched || !(language || language === 0 ) ? null : (
         <>
             <StatusBar
-                backgroundColor={colors.prim1}
-                barStyle='light-content'
+                backgroundColor={colors.headerBg}
+                barStyle="light-content"
             />
             <Drawer
                 drawerPosition="right"
@@ -92,7 +104,7 @@ const Home = () => {
                 }}
             >
                 <View style={styles.safeView}>
-                    <MainView style={{ height: '100%', fontSize: 30, color: 'white' }}></MainView>
+                    <MainView></MainView>
                 </View>
             </Drawer>
         </>
