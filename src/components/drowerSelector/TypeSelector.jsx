@@ -10,6 +10,7 @@ import { translate } from '../../utils/languageUtils.js'
 const TypeOption = ({option}) => {
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
 
     const handlePress = (typeName) => {
         typeName && dispatch(setSelectedTypeThunk(typeName))
@@ -23,6 +24,7 @@ const TypeOption = ({option}) => {
             alignItems: 'center'
         },
         typeText: {
+            fontWeight: cardFontWeight,
             color: colors.drowerText
         },
         modeContainer: {

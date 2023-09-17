@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 const CButton = ({styles = {}, pressedColor, onPress, title })=> {
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
 
     const st = StyleSheet.create({
         styles: {
@@ -14,7 +15,8 @@ const CButton = ({styles = {}, pressedColor, onPress, title })=> {
         textStyle: {
             textAlign: styles.textAlign || 'center', 
             color: styles.color || colors.cancelButtonText,
-            fontSize: styles.fontSize || 20
+            fontSize: styles.fontSize || 20,
+            fontWeight: cardFontWeight
         }
     })
     

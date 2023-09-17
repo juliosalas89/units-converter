@@ -103,13 +103,13 @@ const MainView = ({navigation}) => {
             </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => setUnitsModalVisible(true)}>
-                    <MaterialCommunityIcons name='format-list-bulleted' size={30} color={colors.headerText}/>
+                    <MaterialCommunityIcons name='format-list-bulleted' size={30} color={colors.headerIcons || '#ffff'}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.footerButtons} onPress={()=> setTriggerFocus(!triggerFocus)}>
-                    <MaterialCommunityIcons name='keyboard-outline' size={30} color={colors.headerText}/>
+                    <MaterialCommunityIcons name='keyboard-outline' size={30} color={colors.headerIcons || '#ffff'}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => dispatch(setDrowerVisible(true))}>
-                    <Entypo name='grid' size={30} color={colors.headerText}/>
+                    <Entypo name='grid' size={30} color={colors.headerIcons || '#ffff'}/>
                 </TouchableOpacity>
             </View>
             <UnitsModal units={units} unitsModalVisible={unitsModalVisible} setUnitsModalVisible={setUnitsModalVisible} handelUnitSelected={handelUnitSelected}/>

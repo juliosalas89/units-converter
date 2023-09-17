@@ -8,7 +8,8 @@ const ValueInput = ({ inputValue, triggerFocus, setUnitsModalVisible, handleChan
     const isMounted = useRef(false)
     
     const colors = useSelector(state => state.localParams.theme.colors);
-    // const triggerFocus = useSelector(state => state.generalData.triggerFocus);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
+    const cardLinesWidth = useSelector(state => state.localParams.theme.cardLinesWidth);
     
     useEffect(()=> {
         isMounted.current && focusInput()
@@ -43,7 +44,8 @@ const ValueInput = ({ inputValue, triggerFocus, setUnitsModalVisible, handleChan
             padding: 7,
             color: colors.inputText,
             fontSize: 20,
-            borderWidth: 1,
+            borderWidth: cardLinesWidth || 0.5,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             borderColor: colors.inputBorder,
             borderRadius: 3, 
             textAlign: 'right'
@@ -65,7 +67,8 @@ const ValueInput = ({ inputValue, triggerFocus, setUnitsModalVisible, handleChan
                     width: '49%',
                     color: colors.unitButtonText,
                     backgroundColor: colors.unitButton,
-                    textAlign: 'left'
+                    textAlign: 'left',
+                    fontWeight: cardFontWeight
                 }} 
                 title={selectedUnit.unit} 
                 onPress={()=> setUnitsModalVisible(true)}

@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux"
 const LanguageModal = ({setLanguageModalVisible}) => {
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
     const language = useSelector(state => state.localParams.language);
     const windowSize = useSelector(state => state.localParams.windowSize);
 
@@ -31,6 +32,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
         },
         modalTitle: {
             fontSize: 20,
+            fontWeight: cardFontWeight,
             textAlign: 'center',
             margin: 5,
             marginBottom: 20,
@@ -45,10 +47,12 @@ const LanguageModal = ({setLanguageModalVisible}) => {
             borderRadius: 5
         },
         itemText: {
+            fontWeight: cardFontWeight,
             fontSize: 17,
             color: colors.modalText
         },
         selectedItemText: {
+            fontWeight: cardFontWeight,
             fontSize: 17,
             color: colors.selectedLanguageText
         },

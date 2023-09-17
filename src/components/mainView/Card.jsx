@@ -12,6 +12,8 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
     
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardLinesWidth = useSelector(state => state.localParams.theme.cardLinesWidth);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
     const selectedType = useSelector(state => state.generalData.selectedType);
     const windowSize = useSelector(state => state.localParams.windowSize)
 
@@ -57,7 +59,9 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
 
     const styles = StyleSheet.create({
         unitsLine: {
-            borderBottomWidth: 1,
+            marginTop: 0.1,
+            marginBottom: 0.1,
+            borderBottomWidth: cardLinesWidth || 0.5,
             borderBottomColor: colors.cardLine,
             flexDirection: 'row',
             padding: 5,
@@ -65,7 +69,7 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
         },
         valuesBox: {
             paddingRight: 5,
-            borderRightWidth: 1,
+            borderRightWidth: cardLinesWidth || 0.5,
             borderRightColor: colors.cardLine,
             flex: 0.5,
         },
@@ -83,10 +87,12 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
             alignItems: 'flex-end'
         },
         unitsText: {
+            fontWeight: cardFontWeight,
             fontSize: 20,
             color: selected ? colors.cardTextSelected : colors.cardText,
         },
         valuesText: {
+            fontWeight: cardFontWeight,
             fontSize: 20,
             color: selected ? colors.cardTextSelected : colors.cardText,
             textAlign: 'right'

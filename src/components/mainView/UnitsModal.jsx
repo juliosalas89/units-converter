@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 const UnitsModal = ({setUnitsModalVisible, unitsModalVisible, units, handelUnitSelected}) => {
     const windowSize = useSelector(state => state.localParams.windowSize);
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardLinesWidth = useSelector(state => state.localParams.theme.cardLinesWidth);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
 
     const styles = StyleSheet.create({
         modalBg: {
@@ -27,15 +29,17 @@ const UnitsModal = ({setUnitsModalVisible, unitsModalVisible, units, handelUnitS
         },
         itemPressable: {
             borderBottomColor: colors.modalLine,
-            borderBottomWidth: 1,
+            borderBottomWidth: cardLinesWidth,
             paddingTop: 2,
             paddingBottom: 2,
         },
         itemMainText: {
+            fontWeight: cardFontWeight,
             color: colors.modalText,
             fontSize: 20,
         },
         itemDescriptionText: {
+            fontWeight: cardFontWeight,
             color: colors.modalDescription,
             fontSize: 13
         }

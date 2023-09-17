@@ -9,6 +9,7 @@ import { setThemeThunk, setTheme } from '../../../store/slices/localParams.slice
 const ThemeModal = ({setThemeModalVisible}) => {
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
+    const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
     const theme = useSelector(state => state.localParams.theme);
     const windowSize = useSelector(state => state.localParams.windowSize);
 
@@ -58,10 +59,12 @@ const ThemeModal = ({setThemeModalVisible}) => {
             borderRadius: 5
         },
         itemText: {
+            fontWeight: cardFontWeight,
             fontSize: 17,
             color: colors.modalText
         },
         selectedItemText: {
+            fontWeight: cardFontWeight,
             fontSize: 17,
             color: colors.selectedLanguageText
         },
