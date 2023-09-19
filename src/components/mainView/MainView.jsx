@@ -9,6 +9,7 @@ import { useState, useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons'
 import { setDrowerVisible, setSelectedUnitsIdsThunk } from "../../store/slices/generalData.slice"
+import AppRating from "../appRating/AppRating.jsx"
 
 const MainView = ({navigation}) => {
     const [inputValue, setInputValue] = useState(null)
@@ -99,7 +100,8 @@ const MainView = ({navigation}) => {
                         inputValue={inputValue}
                     />
                 </View>
-                {/* <Banner/> */}
+                <AppRating/>
+                <Banner/>
             </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => setUnitsModalVisible(true)}>

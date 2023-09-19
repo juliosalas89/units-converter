@@ -101,21 +101,20 @@ const saveLocalParamsThunk = () => {
 
 const getLocalParamsThunk = () => {
     return async (dispatch, getState) => {
-            AsyncStorage.getItem('local-params')
-            .then(result => {
-                const value = JSON.parse(result)
-                value && (value.language || value.language === 0) && dispatch(setLanguage(value.language))
-                value && value.consentStatus && dispatch(setConsentStatus(value.consentStatus))
-                value && value.windowSize && dispatch(setWindowSize(value.windowSize))
-                value && value.theme && dispatch(setTheme(value.theme))
-            })
-            .catch(err => {
-                console.log(err)
-            })
-            .finally(()=> {
-                dispatch(setLocalParamsFetched(true))
-            })
-
+        AsyncStorage.getItem('local-params')
+        .then(result => {
+            const value = JSON.parse(result)
+            value && (value.language || value.language === 0) && dispatch(setLanguage(value.language))
+            value && value.consentStatus && dispatch(setConsentStatus(value.consentStatus))
+            value && value.windowSize && dispatch(setWindowSize(value.windowSize))
+            value && value.theme && dispatch(setTheme(value.theme))
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        .finally(()=> {
+            dispatch(setLocalParamsFetched(true))
+        })
     }
 }
 

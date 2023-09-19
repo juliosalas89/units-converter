@@ -14,8 +14,8 @@ import { setFavUnitsThunk } from "../../store/slices/generalData.slice"
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const favs = favUnits && units && favUnits.map(favUnitId => units.find(unit => favUnitId === unit.id)) || []
-        const noFavs = units && units.filter(unit => favUnits.every(value => value !== unit.id)) || []
+        const favs = favUnits && units && favUnits.map(favUnitId => units.find(unit => unit && unit.id === favUnitId)) || []
+        const noFavs = units && units.filter(unit => unit && favUnits.every(value => value !== unit.id)) || []
         setUnitsArray([...favs, ...noFavs])
         setFavsEdited(favUnits)
     }, [favUnits, units])
@@ -40,14 +40,14 @@ import { setFavUnitsThunk } from "../../store/slices/generalData.slice"
         <FlatList
             data={unitsArray}
             keyExtractor={(item) => item && item.id}
-            renderItem={({ item }) => (
+            renderItem={({ item }) => !item ? null : (
                 <Card
                     handleSaveFavs={handleSaveFavs}
                     copyToClipboard={(result) => copyToClipboard(result)}
                     item={item}
                     inputValue={inputValue}
                     favUnits={favUnits}
-                    selected={item.id === selectedId}
+                    selected={item && item.id === selectedId}
                     selectedUnit={selectedUnit}
                 ></Card>
             )}
