@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { translate } from "../../utils/languageUtils"
 import { setFavUnitsThunk } from "../../store/slices/generalData.slice"
   
-  const UnitsResultList = ({inputValue, favUnits = [], selectedId, selectedUnit, units}) => {
+  const UnitsResultList = ({inputValue, favUnits = [], selectedId, selectedUnit, units = []}) => {
     const [unitsArray, setUnitsArray] = useState([])
     const [favsEdited, setFavsEdited] = useState([])
     const timer = useRef(null)
@@ -14,8 +14,8 @@ import { setFavUnitsThunk } from "../../store/slices/generalData.slice"
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const favs = favUnits && units && favUnits.map(unitId => units.find(unit => unitId === unit.id)) || []
-        const noFavs = units && units.filter(unit => favUnits.every(value => value !== unit.id)) || []
+        const favs = favUnits && units && favUnits.map(favUnitId => units.find(unit => unit && unit.id === favUnitId)) || []
+        const noFavs = units && units.filter(unit => unit && favUnits.every(value => value !== unit.id)) || []
         setUnitsArray([...favs, ...noFavs])
         setFavsEdited(favUnits)
     }, [favUnits, units])
@@ -39,15 +39,15 @@ import { setFavUnitsThunk } from "../../store/slices/generalData.slice"
     return !unitsArray.length ? null : (
         <FlatList
             data={unitsArray}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
+            keyExtractor={(item) => item && item.id}
+            renderItem={({ item }) => !item ? null : (
                 <Card
                     handleSaveFavs={handleSaveFavs}
                     copyToClipboard={(result) => copyToClipboard(result)}
                     item={item}
                     inputValue={inputValue}
                     favUnits={favUnits}
-                    selected={item.id === selectedId}
+                    selected={item && item.id === selectedId}
                     selectedUnit={selectedUnit}
                 ></Card>
             )}

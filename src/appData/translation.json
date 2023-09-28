@@ -26,10 +26,16 @@
         "Theme": ["Tema", "Thema"],
         "Choose Language": ["Seleccionar Idioma", "Sprache wählen"],
         "Choose Theme": ["Seleccionar Tema", "Thema wählen"],
+        "Consent Settings": ["Admin. consent.", "Einwilligung Einstellungen"],
+        "Rate this App": ["Calificar esta App", "Bewerte diese App"],
         "Confirm": ["Confirmar", "Bestätigen"],
         "Cancel": ["Cancelar", "Stornieren"],
         "Close": ["Cerrar", "Zusperren"],
         "Copied to clipboard": ["Copiado al portapapeles", "In die Zwischenablage kopiert"],
-        "Consent Settings": ["Admin. consent.", "Einwilligung Einstellungen"]
+        "Hello! I'm Julio.": ["¡Hola! Soy Julio.", "Hallo! Ich bin Julio."],
+        "I developed this app for you. Your support and your opinion are very important.": ["Desarrollé esta aplicación para ti. Tu apoyo y tu opinión son muy importantes.", "Ich habe diese Anwendung für Sie entwickelt. Ihre Unterstützung und Meinung sind wichtig."],
+        "Help me keep doing what I love.": ["Ayúdame a seguir haciendo lo que amo.", "Hilf mir, weiterhin das zu tun, was ich liebe."],
+        "Sure! Rate this app": ["Claro! Calificar app", "Sicher! Bewerte diese App"],
+        "Maybe later...": ["Quizas luego...", "Vielleicht später..."]
     }
 }

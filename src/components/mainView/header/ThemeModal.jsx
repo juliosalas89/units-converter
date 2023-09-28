@@ -102,7 +102,8 @@ const ThemeModal = ({setThemeModalVisible}) => {
                             paddingBottom: 15, 
                             fontSize: 17, 
                             backgroundColor: colors.cancelButton, 
-                            color: colors.cancelButtonText
+                            color: colors.cancelButtonText,
+                            ...(theme.name !== "Default-Light" ? {} : { borderWidth: 0.8, borderColor: colors.cancelButtonText })
                         }} 
                     />
                 </View>

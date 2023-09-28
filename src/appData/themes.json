@@ -14,10 +14,10 @@
                 "modalBorder": "#394a51",
                 "modalLine": "#7fa99b",
                 "modalPressColor": "#7fa99b",
-                "cancelButton": "#fbf2d5",
+                "cancelButton": "#ffff",
                 "confirmButton": "#7fa99b",
                 "cancelButtonText": "#7fa99b",
-                "confirmButtonText": "#fbf2d5",
+                "confirmButtonText": "#ffff",
                 "cardText": "#fdc57b",
                 "cardTextSelected": "#fbf2d5",
                 "cardLine": "#fdc57b",
@@ -36,7 +36,7 @@
                 "drowerText": "#394a51",
                 "drowerBg": "#ffff",
                 "drowerButton": "#7fa99b",
-                "drowerButtonText": "#fbf2d5"
+                "drowerButtonText": "#ffff"
             }
         },
         {
