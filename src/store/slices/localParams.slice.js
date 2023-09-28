@@ -106,7 +106,6 @@ const getLocalParamsThunk = () => {
             const value = JSON.parse(result)
             value && (value.language || value.language === 0) && dispatch(setLanguage(value.language))
             value && value.consentStatus && dispatch(setConsentStatus(value.consentStatus))
-            value && value.windowSize && dispatch(setWindowSize(value.windowSize))
             value && value.theme && dispatch(setTheme(value.theme))
         })
         .catch(err => {

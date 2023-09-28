@@ -8,7 +8,8 @@ const appRatingSlice = createSlice({
         timesAppUsed: 0,
         appRated: false,
         remindMeDate: null,
-        appRatingFetched: false
+        appRatingFetched: false,
+        ratingModalVisible: false
     },
     reducers: {
         setInstallDate (state, action) {
@@ -25,6 +26,9 @@ const appRatingSlice = createSlice({
         },
         setAppRatingFetched (state, action) {
             return {...state, appRatingFetched: action.payload }
+        },
+        setRatingModalVisible (state, action) {
+            return {...state, ratingModalVisible: action.payload }
         }
     }
 })
@@ -91,7 +95,8 @@ export const {
     setAppRated,
     setRemindMeDate,
     setTimesAppUsed,
-    setAppRatingFetched
+    setAppRatingFetched,
+    setRatingModalVisible
 } = appRatingSlice.actions
 
 export { 

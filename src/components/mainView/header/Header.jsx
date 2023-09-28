@@ -11,6 +11,7 @@ import { setDrowerVisible } from '../../../store/slices/generalData.slice';
 import { AdsConsent } from 'react-native-google-mobile-ads';
 import mobileAds from 'react-native-google-mobile-ads';
 import { setConsentStatusThunk } from '../../../store/slices/localParams.slice';
+import { setRatingModalVisible } from '../../../store/slices/appRating.slice';
 
 const Header = () => {
     const [modalVisible, setModalVisible] = useState(false)
@@ -165,7 +166,7 @@ const Header = () => {
                             <Text style={styles.optionText}>{`${translate('Language')}${language ? ' (Language)' : ''}`}</Text>
                         </Pressable>
                         <Pressable 
-                            style={styles.itemPressableLast}
+                            style={styles.itemPressable}
                             android_ripple={{ color: colors.modalPressColor }} 
                             onPress={() => {
                                 obtainConsent()
@@ -173,6 +174,16 @@ const Header = () => {
                             }}
                         >
                             <Text style={styles.optionText}>{translate('Consent Settings')}</Text>
+                        </Pressable>
+                        <Pressable 
+                            style={styles.itemPressableLast}
+                            android_ripple={{ color: colors.modalPressColor }} 
+                            onPress={() => {
+                                dispatch(setRatingModalVisible(true))
+                                setModalVisible(false)
+                            }}
+                        >
+                            <Text style={styles.optionText}>{translate('Rate this App')}</Text>
                         </Pressable>
                     </Pressable>
                 </Pressable>

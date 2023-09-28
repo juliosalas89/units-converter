@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux"
 const LanguageModal = ({setLanguageModalVisible}) => {
     const dispatch = useDispatch()
     const colors = useSelector(state => state.localParams.theme.colors);
+    const themeName = useSelector(state => state.localParams.theme.name);
     const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
     const language = useSelector(state => state.localParams.language);
     const windowSize = useSelector(state => state.localParams.windowSize);
@@ -99,7 +100,8 @@ const LanguageModal = ({setLanguageModalVisible}) => {
                                 paddingBottom: 15, 
                                 fontSize: 17, 
                                 backgroundColor: colors.cancelButton, 
-                                color: colors.cancelButtonText
+                                color: colors.cancelButtonText,
+                                ...(themeName !== "Default-Light" ? {} : { borderWidth: 0.8, borderColor: colors.cancelButtonText })
                             }} 
                         />
                     </View>
