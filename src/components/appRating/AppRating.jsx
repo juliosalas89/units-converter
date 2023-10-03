@@ -130,8 +130,8 @@ const AppRating = () => {
             <Pressable style={styles.modalBg} onPress={()=> dispatch(setRatingModalVisible(false))}>
                 <Pressable style={styles.ratingModal}>
                     <Text style={styles.modalTitle}>{translate("Hello! I'm Julio.")}</Text>
-                    <Text style={styles.modalContent}>{translate("Help me keep doing what I love.")}</Text>
                     <Text style={styles.modalContent}>{translate("I developed this app for you. Your support and your opinion are very important.")}</Text>
+                    <Text style={styles.modalContent}>{translate("Help me keep doing what I love.")}</Text>
                     <View style={styles.buttonsContainer}>
                         <View style={styles.buttonView}>
                             <CButton 

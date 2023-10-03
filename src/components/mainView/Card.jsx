@@ -4,6 +4,14 @@ import { Pressable, Text, View, StyleSheet, TouchableOpacity } from "react-nativ
 import { useState, useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { setSelectedUnitsIdsThunk } from "../../store/slices/generalData.slice"
+import formules from '../../utils/formules.js'
+
+/*
+    How it works: Every type of units (e.g. Speed) has it's own BaseUnit, is the one with factor = 1. 
+    Every unit in the group can be transformed to the BaseUnit by multipliyin it by its oun factor. 
+    So to convert from {unit: A, factor: factorA } to {unit: B, factor: factorB } we firt multiply A by factorA, this will give as the value in BaseUnit units, 
+    then we took the result and divide it by facotrB to get the unit expresed in B units.
+*/
 
 const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, selected, handleSaveFavs}) => {
     const unitPressableRef = useRef(null);
@@ -32,10 +40,18 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
     const calculateResult = () => {
         if(!inputValue || !selectedUnit) return setResult(null)
 
-        const newResult =  new Decimal(inputValue.toString()).times(selectedUnit.factor.toString()).dividedBy(item.factor.toString())
+        const valueInBaseUnits =  selectedUnit.formule ? 
+            formules[selectedUnit.formule].toBase(inputValue) : 
+            new Decimal(inputValue.toString()).times(selectedUnit.factor.toString())
+
+        const newResult =  item.formule ? 
+            formules[item.formule].toThis(valueInBaseUnits) : 
+            new Decimal(valueInBaseUnits.toString()).dividedBy(item.factor.toString())
+
+        // const newResult2 =  new Decimal(inputValue.toString()).times(selectedUnit.factor.toString()).dividedBy(item.factor.toString())
 
         //Too big or too small numbers need exponential notation
-        const expCondition = newResult.greaterThan(new Decimal('9999999999')) || newResult.lessThan(new Decimal('0.000000001'))
+        const expCondition = !newResult.equals('0') && ( newResult.greaterThan(new Decimal('9999999999')) || newResult.lessThan(new Decimal('0.000000001')) )
 
         //Long numbers (with several decimal positions) need to be trimmed
         const decimals = newResult.decimalPlaces()

@@ -13,25 +13,25 @@
             "group": "MaterialCommunityIcons"
         },
         {
-            "id": "010",
+            "id": "003",
             "icon": "square-outline",
             "name": "Area",
             "group": "Ionicons"
         },
         {
-            "id": "005",
+            "id": "004",
             "icon": "cube-outline",
             "name": "Volume",
             "group": "Ionicons"
         },
         {
-            "id": "003",
+            "id": "005",
             "icon": "weight-kilogram",
             "name": "Weight",
             "group": "MaterialCommunityIcons"
         },
         {
-            "id": "004",
+            "id": "006",
             "icon": "compress",
             "name": "Pressure",
             "group": "MaterialIcons"
@@ -46,6 +46,24 @@
             "id": "008",
             "icon": "engine-outline",
             "name": "Power",
+            "group": "MaterialCommunityIcons"
+        },
+        {
+            "id": "009",
+            "icon": "slope-uphill",
+            "name": "Force",
+            "group": "MaterialCommunityIcons"
+        },
+        {
+            "id": "011",
+            "icon": "thermometer-outline",
+            "name": "Temperature",
+            "group": "Ionicons"
+        },
+        {
+            "id": "010",
+            "icon": "fuel",
+            "name": "Fuel",
             "group": "MaterialCommunityIcons"
         }
     ]
