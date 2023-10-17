@@ -1,10 +1,10 @@
 import CButton from '../../general/CButton.jsx'
 import themesData from '../../../appData/themes.json'
-import { View, Text, FlatList, StyleSheet, Pressable } from "react-native"
+import { View, Text, FlatList, StyleSheet, Pressable, Switch } from "react-native"
 import { translate } from "../../../utils/languageUtils"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setThemeThunk, setTheme } from '../../../store/slices/localParams.slice.js'
+import { setThemeThunk, setTheme, setDrawerPositionThunk } from '../../../store/slices/localParams.slice.js'
 
 const ThemeModal = ({setThemeModalVisible}) => {
     const dispatch = useDispatch()
@@ -12,10 +12,14 @@ const ThemeModal = ({setThemeModalVisible}) => {
     const cardFontWeight = useSelector(state => state.localParams.theme.cardFontWeight);
     const theme = useSelector(state => state.localParams.theme);
     const windowSize = useSelector(state => state.localParams.windowSize);
+    const drawerPosition = useSelector(state => state.localParams.drawerPosition);
+
+    const [selectedPosition, setSelectedPosition] = useState(drawerPosition)
 
     const currentTheme = useRef(theme)
 
     const handleConfirm = ()=> {
+        dispatch(setDrawerPositionThunk(selectedPosition))
         dispatch(setThemeThunk(theme))
         setThemeModalVisible(false)
     }
@@ -40,15 +44,66 @@ const ThemeModal = ({setThemeModalVisible}) => {
             top: 150
         },
         scrollView: {
-            height: 350,
+            height: 250,
             overflow: 'scroll' 
+        },
+        drowerPosition: {
+            marginBottom: 10,
+            flexDirection: 'row',
+            justifyContent: 'center'
         },
         modalTitle: {
             fontSize: 20,
             textAlign: 'center',
-            marginTop: 10,
-            marginBottom: 25,
+            marginTop: 15,
+            marginBottom: 10,
             color: colors.modalText
+        },
+        positionViewRight: {
+            width: 100,
+            paddingTop: 8,
+            paddingBottom: 8,
+            borderTopRightRadius: 5,
+            borderBottomEndRadius: 5,
+            borderWidth: 0.8,
+            borderColor: colors.selectedLanguageBg
+        },
+        selectedPositionViewRight: {
+            width: 100,
+            paddingTop: 8,
+            paddingBottom: 8,
+            backgroundColor: colors.selectedLanguageBg,
+            borderTopRightRadius: 5,
+            borderBottomEndRadius: 5,
+        },
+        positionViewLeft: {
+            width: 100,
+            paddingTop: 8,
+            paddingBottom: 8,
+            borderTopStartRadius: 5,
+            borderBottomStartRadius: 5,
+            borderWidth: 0.8,
+            borderColor: colors.selectedLanguageBg
+        },
+        selectedPositionViewLeft: {
+            width: 100,
+            paddingTop: 8,
+            paddingBottom: 8,
+            backgroundColor: colors.selectedLanguageBg,
+            borderTopStartRadius: 5,
+            borderBottomStartRadius: 5,
+        },
+        drowerPositionText: {
+            textAlign: 'center',
+            fontWeight: cardFontWeight,
+            fontSize: 17,
+            color: colors.modalText
+        },
+        selectedDrowerPositionText: {
+            textAlign: 'center',
+            fontWeight: cardFontWeight,
+            fontSize: 17,
+            color: colors.selectedLanguageText
         },
         itemView: {
             padding: 15,
@@ -80,6 +135,16 @@ const ThemeModal = ({setThemeModalVisible}) => {
 
     return !theme ? null : (
         <Pressable style={styles.themeModal}>
+            <Text style={styles.modalTitle}>{translate('Menu Position') + ':'}</Text>
+            <View style={styles.drowerPosition}>
+                <Pressable onPress={()=> setSelectedPosition('left')} style={selectedPosition === 'left' ? styles.selectedPositionViewLeft : styles.positionViewLeft}>
+                    <Text style={selectedPosition === 'left' ? styles.selectedDrowerPositionText : styles.drowerPositionText}>{translate('Left')}</Text>
+                </Pressable>
+                <Pressable onPress={()=> setSelectedPosition('right')} style={selectedPosition === 'right' ? styles.selectedPositionViewRight : styles.positionViewRight}>
+                    <Text style={selectedPosition === 'right' ? styles.selectedDrowerPositionText : styles.drowerPositionText}>{translate('Right')}</Text>
+                </Pressable>
+
+            </View>
             <View style={styles.scrollView}>
                 <Text style={styles.modalTitle}>{translate('Choose Theme') + ':'}</Text>
                 <FlatList

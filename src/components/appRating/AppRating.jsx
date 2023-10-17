@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import CButton from '../general/CButton.jsx'
 import { 
@@ -18,6 +18,7 @@ import { StyleSheet } from "react-native";
 
 const AppRating = () => {
     const dispatch = useDispatch()
+    const [autoOpen, setAutoOpen] = useState(false)
     const installDate = useSelector(state => state.appRating.installDate);
     const appRatingFetched = useSelector(state => state.appRating.appRatingFetched);
     const timesAppUsed = useSelector(state => state.appRating.timesAppUsed);
@@ -35,8 +36,10 @@ const AppRating = () => {
     }, [appRatingFetched])
 
     const initAppRatingRequest = () => {
-        !installDate ? firstTimeOpened() : (!appRated && handleShowModal())
-        timesAppUsed <= 4 && dispatch(adTimesAppUsedThunk())
+        setTimeout(() => {
+            !installDate ? firstTimeOpened() : (!appRated && handleShowModal())
+            timesAppUsed <= 4 && dispatch(adTimesAppUsedThunk())
+        }, 30000)
     }
 
     const firstTimeOpened = () => dispatch(setInstallDate(new Date().toISOString()))
@@ -45,7 +48,10 @@ const AppRating = () => {
         const tenDaysAfterInstall = new Date(installDate).getTime() < Date.now() - 10 * 24 * 60 * 60 * 1000
         const showFirstTime = !remindMeDate && tenDaysAfterInstall && timesAppUsed > 4
         const showRemind = remindMeDate && new Date(remindMeDate).getTime() < Date.now()
-        (showFirstTime || showRemind) && dispatch(setRatingModalVisible(true))
+        if (showFirstTime || showRemind) {
+            setAutoOpen(true)
+            dispatch(setRatingModalVisible(true))
+        }
     }
 
     const handleRateApp = () => {
@@ -61,14 +67,17 @@ const AppRating = () => {
         Rate.rate(options, (success, error) => {
             if (success) {
                 dispatch(setAppRatedThunk(true))
+                dispatch(setRatingModalVisible(false))
+                setAutoOpen(false)
             }
             if (error) {
-              if (Platform.OS === 'android') {
-                openURL(
-                  'https://play.google.com/store/apps/details?id=leofs.android.free'
-                );
-              }
-              console.error(error);
+                dispatch(setRatingModalVisible(false))
+                if (Platform.OS === 'android') {
+                    openURL(
+                    'https://play.google.com/store/apps/details?id=leofs.android.free'
+                    );
+                }
+                console.error(error);
             }
           });
     }
@@ -77,6 +86,13 @@ const AppRating = () => {
         const fourWeeksFromNow = Date.now() + 28 * 24 * 60 * 60 * 1000;
         dispatch(setRemindMeDateThunk(new Date(fourWeeksFromNow).toISOString()));
         dispatch(setRatingModalVisible(false))
+        setAutoOpen(false)
+    }
+
+    const handleDontAskMeAgain = () => {
+        dispatch(setAppRatedThunk(true))
+        dispatch(setRatingModalVisible(false))
+        setAutoOpen(false)
     }
 
     const styles = StyleSheet.create({
@@ -96,7 +112,7 @@ const AppRating = () => {
             width: 300,
             backgroundColor: colors.modalBg,
             left: (windowSize.width - 300)/2,
-            top: (windowSize.height - 350)/2
+            top: (windowSize.height - 450)/2
         },
         modalTitle: {
             fontSize: 20,
@@ -127,11 +143,11 @@ const AppRating = () => {
                 dispatch(setRatingModalVisible(false))
             }}
         > 
-            <Pressable style={styles.modalBg} onPress={()=> dispatch(setRatingModalVisible(false))}>
+            <Pressable style={styles.modalBg}>
                 <Pressable style={styles.ratingModal}>
                     <Text style={styles.modalTitle}>{translate("Hello! I'm Julio.")}</Text>
-                    <Text style={styles.modalContent}>{translate("Help me keep doing what I love.")}</Text>
                     <Text style={styles.modalContent}>{translate("I developed this app for you. Your support and your opinion are very important.")}</Text>
+                    <Text style={styles.modalContent}>{translate("Help me keep doing what I love.")}</Text>
                     <View style={styles.buttonsContainer}>
                         <View style={styles.buttonView}>
                             <CButton 
@@ -156,6 +172,22 @@ const AppRating = () => {
                                 title={translate('Maybe later...')}
                             />
                         </View>
+                        {
+                            !autoOpen ? null : (
+                                <View style={styles.buttonView}>
+                                    <CButton
+                                        styles={{
+                                            padding: 15, 
+                                            backgroundColor: colors.cancelButton, 
+                                            color: colors.cancelButtonText,
+                                            ...(themeName !== "Default-Light" ? {} : { borderWidth: 0.8, borderColor: colors.cancelButtonText })
+                                        }}
+                                        onPress={handleDontAskMeAgain}
+                                        title={translate("Don't ask me again")}
+                                    />
+                                </View> 
+                            )
+                        }
                     </View>
                 </Pressable>
             </Pressable> 

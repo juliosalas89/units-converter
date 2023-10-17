@@ -100,7 +100,7 @@ const MainView = ({navigation}) => {
                         inputValue={inputValue}
                     />
                 </View>
-                <AppRating/>
+                {/* <AppRating/> */}
                 <Banner/>
             </KeyboardAvoidingView>
             <View style={styles.footer}>

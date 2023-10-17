@@ -16,7 +16,10 @@ const generalDataSlice = createSlice({
             Pressure: '01',
             Volume: '01',
             "Work-Energy": '01',
-            Power: '01'
+            Power: '01',
+            Force: '01',
+            Fuel: '01',
+            Temperature: '01'
         },
         favUnits: {
             Area: [],
@@ -26,7 +29,10 @@ const generalDataSlice = createSlice({
             Pressure: [],
             Volume: [],
             "Work-Energy": [],
-            Power: []
+            Power: [],
+            Force: [],
+            Fuel: [],
+            Temperature: []
         }
     },
     reducers: {

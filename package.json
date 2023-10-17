@@ -1,7 +1,8 @@
 {
   "name": "units-converter",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
+  "author": "Julio Salas <julio.a.salas89@gmail.com> (https://julio-salas.com/)",
   "scripts": {
     "start-dev": "set NODE_ENV=development&& expo start --dev-client",
     "build-dev:android": "eas build --profile development --platform android",

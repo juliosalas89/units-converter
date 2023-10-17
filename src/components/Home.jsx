@@ -10,7 +10,7 @@ import { getLocalParamsThunk, setConsentStatusThunk, setAdsInitialized, setWindo
 import { getGeneralDataThunk, setDrowerVisible } from '../store/slices/generalData.slice';
 import mobileAds from 'react-native-google-mobile-ads';
 import { AdsConsent } from 'react-native-google-mobile-ads';
-import { NativeModules } from 'react-native'
+import { NativeModules, BackHandler } from 'react-native'
 
 const Home = () => {
     const isMounted = useRef(false)
@@ -19,6 +19,7 @@ const Home = () => {
     const drowerVisible = useSelector(state => state.generalData.drowerVisible);
     const windowSize = useSelector(state => state.localParams.windowSize);
     const localParamsFetched = useSelector(state => state.localParams.localParamsFetched);
+    const drawerPosition = useSelector(state => state.localParams.drawerPosition);
     const language = useSelector(state => state.localParams.language);
     const colors = useSelector(state => state.localParams.theme.colors);
     const generalDataFetched = useSelector(state => state.generalData.generalDataFetched);
@@ -26,6 +27,10 @@ const Home = () => {
     // const [fontsLoaded] = useFonts({
     //   'Main-Font': require('./assets/fonts/SheilaCrayon-1vWg.ttf'),
     // })
+
+    useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', backEventHandler)
+    })
   
     useEffect(() => {
         if(isMounted.current) return
@@ -79,6 +84,8 @@ const Home = () => {
         !languageIndex || languageIndex < 0 ? dispatch(setLanguageThunk(0)) : dispatch(setLanguageThunk(languageIndex))
     }
 
+    const backEventHandler = () => drowerVisible ? dispatch(setDrowerVisible(false)) : BackHandler.exitApp()
+
     const styles = StyleSheet.create({
         safeView: {
             paddingTop: insets.top,
@@ -95,7 +102,7 @@ const Home = () => {
                 barStyle="light-content"
             />
             <Drawer
-                drawerPosition="right"
+                drawerPosition={drawerPosition}
                 open={drowerVisible}
                 onOpen={() => dispatch(setDrowerVisible(true))}
                 onClose={() => dispatch(setDrowerVisible(false))}

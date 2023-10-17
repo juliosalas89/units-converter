@@ -153,7 +153,7 @@ const Header = () => {
                                 setModalVisible(false)
                             }}
                         >
-                            <Text style={styles.optionText}>{translate('Theme')}</Text>
+                            <Text style={styles.optionText}>{translate('Settings')}</Text>
                         </Pressable>
                         <Pressable 
                             style={styles.itemPressable}
@@ -166,7 +166,7 @@ const Header = () => {
                             <Text style={styles.optionText}>{`${translate('Language')}${language ? ' (Language)' : ''}`}</Text>
                         </Pressable>
                         <Pressable 
-                            style={styles.itemPressable}
+                            style={styles.itemPressableLast}
                             android_ripple={{ color: colors.modalPressColor }} 
                             onPress={() => {
                                 obtainConsent()
@@ -175,7 +175,7 @@ const Header = () => {
                         >
                             <Text style={styles.optionText}>{translate('Consent Settings')}</Text>
                         </Pressable>
-                        <Pressable 
+                        {/* <Pressable 
                             style={styles.itemPressableLast}
                             android_ripple={{ color: colors.modalPressColor }} 
                             onPress={() => {
@@ -184,7 +184,7 @@ const Header = () => {
                             }}
                         >
                             <Text style={styles.optionText}>{translate('Rate this App')}</Text>
-                        </Pressable>
+                        </Pressable> */}
                     </Pressable>
                 </Pressable>
             </Modal>
