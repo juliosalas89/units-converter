@@ -45,7 +45,7 @@ const localParamsSlice = createSlice({
         },
         adsInitialized: false,
         consentStatus: 'NOT_REQUIRED',
-        drowerPsition: 'right',
+        drawerPosition: 'right',
         localParamsFetched: false,
         windowSize: null,
     },
@@ -72,8 +72,8 @@ const localParamsSlice = createSlice({
         setConsentStatus (state, action) {
             return {...state, consentStatus: action.payload}
         },
-        setDrowerPosition (state, action) {
-            return {...state, drowerPsition: action.payload}
+        setDrawerPosition (state, action) {
+            return {...state, drawerPosition: action.payload}
         },
         setAdsInitialized (state, action) {
             return {...state, adsInitialized: action.payload}
@@ -136,6 +136,14 @@ const setConsentStatusThunk = status => {
         dispatch(saveLocalParamsThunk())
     }
 }
+
+const setDrawerPositionThunk = drowerPosition => {
+    return (dispatch, getState) => {
+        dispatch(setDrawerPosition(drowerPosition))
+        dispatch(saveLocalParamsThunk())
+    }
+}
+
 const setWindowSizeThunk = windowSize => {
     return (dispatch, getState) => {
         dispatch(setWindowSize(windowSize))
@@ -150,7 +158,7 @@ export const {
     setConsentStatus, 
     setWindowSize,
     setAdsInitialized,
-    setDrowerPosition,
+    setDrawerPosition,
     setSafeArea
 } = localParamsSlice.actions
 
@@ -159,6 +167,7 @@ export {
     saveLocalParamsThunk,
     setThemeThunk,
     setLanguageThunk,
+    setDrawerPositionThunk,
     setConsentStatusThunk,
     setWindowSizeThunk
 }

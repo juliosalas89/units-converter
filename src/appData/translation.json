@@ -14,6 +14,10 @@
         }
     ],
     "phrases": {
+        "Settings": ["Ajustes", "Einstellungen"],
+        "Left": ["Izquierda", "Links"],
+        "Right": ["Derecha", "Rechts"],
+        "Menu Position": ["Posición del menú", "Menüposition"],
         "Distance": ["Distancia", "Distanz"],
         "Speed": ["Velocidad", "Geschwindigkeit"],
         "Area": ["Area", "Bereich"],
@@ -39,6 +43,7 @@
         "I developed this app for you. Your support and your opinion are very important.": ["Desarrollé esta aplicación para ti. Tu apoyo y tu opinión son muy importantes.", "Ich habe diese Anwendung für Sie entwickelt. Ihre Unterstützung und Meinung sind wichtig."],
         "Help me keep doing what I love.": ["Ayúdame a seguir haciendo lo que amo.", "Hilf mir, weiterhin das zu tun, was ich liebe."],
         "Sure! Rate this app": ["Claro! Calificar app", "Sicher! Bewerte diese App"],
-        "Maybe later...": ["Quizas luego...", "Vielleicht später..."]
+        "Maybe later...": ["Quizas luego...", "Vielleicht später..."],
+        "Don't ask me again": ["No preguntar de nuevo", "Frag nicht noch einmal"]
     }
 }

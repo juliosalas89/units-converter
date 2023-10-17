@@ -48,8 +48,6 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
             formules[item.formule].toThis(valueInBaseUnits) : 
             new Decimal(valueInBaseUnits.toString()).dividedBy(item.factor.toString())
 
-        // const newResult2 =  new Decimal(inputValue.toString()).times(selectedUnit.factor.toString()).dividedBy(item.factor.toString())
-
         //Too big or too small numbers need exponential notation
         const expCondition = !newResult.equals('0') && ( newResult.greaterThan(new Decimal('9999999999')) || newResult.lessThan(new Decimal('0.000000001')) )
 
