@@ -8,7 +8,7 @@ const localParamsSlice = createSlice({
         theme: {
             name: "Default",
             cardLinesWidth: 0.8,
-            cardFontWeight: null,
+            cardFontWeight: "normal",
             colors: {
                 selectedLanguageBg: "#7fa99b",
                 selectedLanguageText: "#ffff",

@@ -34,12 +34,12 @@ const UnitsModal = ({setUnitsModalVisible, unitsModalVisible, units, handelUnitS
             paddingBottom: 2,
         },
         itemMainText: {
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             color: colors.modalText,
             fontSize: 20,
         },
         itemDescriptionText: {
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             color: colors.modalDescription,
             fontSize: 13
         }

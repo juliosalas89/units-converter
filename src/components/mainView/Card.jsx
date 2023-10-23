@@ -101,12 +101,12 @@ const Card = ({item, inputValue, favUnits, selectedUnit, copyToClipboard, select
             alignItems: 'flex-end'
         },
         unitsText: {
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             fontSize: 20,
             color: selected ? colors.cardTextSelected : colors.cardText,
         },
         valuesText: {
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             fontSize: 20,
             color: selected ? colors.cardTextSelected : colors.cardText,
             textAlign: 'right'

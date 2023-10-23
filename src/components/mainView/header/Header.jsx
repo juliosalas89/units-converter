@@ -66,7 +66,7 @@ const Header = () => {
         },
         optionText : {
             color: colors.modalText,
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             margin: 10,
             fontSize: 17,
         },
@@ -94,7 +94,7 @@ const Header = () => {
         },
         typeTitle: {
             color: colors.headerText,
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             fontSize: 22,
             paddingTop: 4,
             paddingRight: 23

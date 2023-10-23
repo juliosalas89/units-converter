@@ -68,7 +68,7 @@ const ValueInput = ({ inputValue, triggerFocus, setUnitsModalVisible, handleChan
                     color: colors.unitButtonText,
                     backgroundColor: colors.unitButton,
                     textAlign: 'left',
-                    fontWeight: cardFontWeight
+                    fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal'
                 }} 
                 title={selectedUnit.unit} 
                 onPress={()=> setUnitsModalVisible(true)}
