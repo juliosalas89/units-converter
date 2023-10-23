@@ -3,7 +3,7 @@
         {
             "name": "Default-Light",
             "cardLinesWidth": 0.8,
-            "cardFontWeight": null,
+            "cardFontWeight": "normal",
             "fontName": "Notes-Alarm",
             "colors": {
                 "selectedLanguageBg": "#7fa99b",

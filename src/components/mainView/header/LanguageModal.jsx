@@ -33,7 +33,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
         },
         modalTitle: {
             fontSize: 20,
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             textAlign: 'center',
             margin: 5,
             marginBottom: 20,
@@ -48,12 +48,12 @@ const LanguageModal = ({setLanguageModalVisible}) => {
             borderRadius: 5
         },
         itemText: {
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             fontSize: 17,
             color: colors.modalText
         },
         selectedItemText: {
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             fontSize: 17,
             color: colors.selectedLanguageText
         },

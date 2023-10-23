@@ -95,13 +95,13 @@ const ThemeModal = ({setThemeModalVisible}) => {
         },
         drowerPositionText: {
             textAlign: 'center',
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             fontSize: 17,
             color: colors.modalText
         },
         selectedDrowerPositionText: {
             textAlign: 'center',
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             fontSize: 17,
             color: colors.selectedLanguageText
         },
@@ -114,12 +114,12 @@ const ThemeModal = ({setThemeModalVisible}) => {
             borderRadius: 5
         },
         itemText: {
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             fontSize: 17,
             color: colors.modalText
         },
         selectedItemText: {
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             fontSize: 17,
             color: colors.selectedLanguageText
         },

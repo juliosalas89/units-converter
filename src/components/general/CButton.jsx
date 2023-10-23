@@ -16,7 +16,7 @@ const CButton = ({styles = {}, pressedColor, onPress, title })=> {
             textAlign: styles.textAlign || 'center', 
             color: styles.color || colors.cancelButtonText,
             fontSize: styles.fontSize || 20,
-            fontWeight: cardFontWeight
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal'
         }
     })
     

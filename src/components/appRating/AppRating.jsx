@@ -122,7 +122,7 @@ const AppRating = () => {
             color: colors.modalText
         },
         modalContent: {
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             fontSize: 19,
             color: colors.modalText
         },

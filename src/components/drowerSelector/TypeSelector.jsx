@@ -24,7 +24,7 @@ const TypeOption = ({option}) => {
             alignItems: 'center'
         },
         typeText: {
-            fontWeight: cardFontWeight,
+            fontWeight: cardFontWeight ? cardFontWeight.toString() : 'normal',
             color: colors.drowerText
         },
         modeContainer: {
