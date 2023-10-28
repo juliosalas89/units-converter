@@ -1,6 +1,6 @@
 {
   "name": "units-converter",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "node_modules/expo/AppEntry.js",
   "author": "Julio Salas <julio.a.salas89@gmail.com> (https://julio-salas.com/)",
   "scripts": {
