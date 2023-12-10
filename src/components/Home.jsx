@@ -37,7 +37,7 @@ const Home = () => {
     useEffect(() => {
         Animated.timing(slideAnimation, {
           toValue: showDrawer ? 1 : 0,
-          duration: 200,
+          duration: showDrawer ? 200 : 100,
           useNativeDriver: false,
         }).start(() => {
             setShowDrawer(!showDrawer)
@@ -103,11 +103,6 @@ const Home = () => {
         !showDrawer ? dispatch(setTriggerDrawer()) : BackHandler.exitApp()
         return true
     }
-    
-    const drawerTranslateX = slideAnimation.interpolate({
-        inputRange: [0, 1],
-        outputRange: drawerPosition === 'right' && windowSize ? [windowSize.width, windowSize.width-270] : [-270, 0],
-    });
 
     const styles = StyleSheet.create({
         safeView: {
