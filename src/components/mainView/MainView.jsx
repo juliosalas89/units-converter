@@ -8,7 +8,7 @@ import { View, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } fr
 import { useState, useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons'
-import { setDrowerVisible, setSelectedUnitsIdsThunk } from "../../store/slices/generalData.slice"
+import { setTriggerDrawer, setSelectedUnitsIdsThunk } from "../../store/slices/generalData.slice"
 import AppRating from "../appRating/AppRating.jsx"
 
 const MainView = ({navigation}) => {
@@ -30,12 +30,12 @@ const MainView = ({navigation}) => {
         setUnits(unitsData[selectedType])
         setInputValue(null)
     }, [selectedType])
-
+    
     useEffect(()=> {
         const selected = units.find(unit => unit.id === selectedUnitsIds[selectedType])
         setSelectedUnit(selected)
     }, [units])
-
+    
     useEffect(()=> {
         const selected = units.find(unit => unit.id === selectedUnitsIds[selectedType])
         setSelectedUnit(selected)
@@ -110,7 +110,7 @@ const MainView = ({navigation}) => {
                 <TouchableOpacity style={styles.footerButtons} onPress={()=> setTriggerFocus(!triggerFocus)}>
                     <MaterialCommunityIcons name='keyboard-outline' size={30} color={colors.headerIcons || '#ffff'}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.footerButtons} onPress={() => dispatch(setDrowerVisible(true))}>
+                <TouchableOpacity style={styles.footerButtons} onPress={() => dispatch(setTriggerDrawer())}>
                     <Entypo name='grid' size={30} color={colors.headerIcons || '#ffff'}/>
                 </TouchableOpacity>
             </View>

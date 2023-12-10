@@ -7,7 +7,7 @@ import { translate } from '../../../utils/languageUtils';
 import Svg, { Path } from 'react-native-svg';
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { setDrowerVisible } from '../../../store/slices/generalData.slice';
+import { setTriggerDrawer } from '../../../store/slices/generalData.slice';
 import { AdsConsent } from 'react-native-google-mobile-ads';
 import mobileAds from 'react-native-google-mobile-ads';
 import { setConsentStatusThunk } from '../../../store/slices/localParams.slice';
@@ -118,7 +118,7 @@ const Header = () => {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => dispatch(setDrowerVisible(true))} style={styles.typeTitleContainer}>
+            <TouchableOpacity onPress={() => dispatch(setTriggerDrawer())} style={styles.typeTitleContainer}>
                 <View style={styles.typeTitleIconContainer}>
                     {selectedTypeData.group === 'MaterialCommunityIcons' ? <MaterialCommunityIcons name={selectedTypeData.icon} size={30} color={colors.headerIcons || '#ffff'}/> : null}
                     {selectedTypeData.group === 'MaterialIcons' ? <MaterialIcons name={selectedTypeData.icon} size={30} color={colors.headerIcons || '#ffff'}/> : null}
