@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const generalDataSlice = createSlice({
     name: 'generalData',
     initialState: {
-        drowerVisible: false,
+        triggerDrawer: false,
         triggerFocus: false,
         selectedType: 'Distance',
         generalDataFetched: false,
@@ -36,10 +36,10 @@ const generalDataSlice = createSlice({
         }
     },
     reducers: {
-        setDrowerVisible (state, action) {
-            return {...state, drowerVisible: action.payload }
+        setTriggerDrawer (state) {
+            return {...state, triggerDrawer: !state.triggerDrawer }
         },
-        setTriggerFocus (state, action) {
+        setTriggerFocus (state) {
             return {...state, triggerFocus: !state.triggerFocus }
         },
         setSelectedType (state, action) {
@@ -112,7 +112,7 @@ const getGeneralDataThunk = () => {
 
 export const { 
     setTriggerFocus,
-    setDrowerVisible,
+    setTriggerDrawer,
     setSelectedType,
     setGeneralDataFetched,
     setSelectedUnitsIds,
