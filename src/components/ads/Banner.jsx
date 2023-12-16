@@ -7,7 +7,7 @@ function Banner({type = 'ANCHORED_ADAPTIVE_BANNER'}) {
   const adsInitialized = useSelector(state => state.localParams.adsInitialized)
   const [adUnitId] = useState(process.env.NODE_ENV === 'development' ? TestIds.BANNER : 'ca-app-pub-1084528575297610~4722773949')
 
-  return consentStatus !== 'OBTAINED' || !adUnitId || !adsInitialized ? null : (
+  return !(consentStatus === 'OBTAINED' || consentStatus === 'NOT_NEEDED') || !adUnitId || !adsInitialized ? null : (
     <BannerAd
       unitId={adUnitId}
       size={BannerAdSize[type]}
