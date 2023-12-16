@@ -52,13 +52,13 @@ const Home = () => {
     }, [generalDataFetched, localParamsFetched]);
 
     const handleInitialize = () => {
-        consentStatus !== 'OBTAINED' ? obtainConsent() : initialize()
+        consentStatus === 'OBTAINED' || consentStatus === 'NOT_NEEDED' ?  initialize() : obtainConsent()
         isMounted.current = true
     }
 
     const obtainConsent = () => {
         AdsConsent.requestInfoUpdate().then(res => {
-            return !res.isConsentFormAvailable ? dispatch(setConsentStatusThunk('NOT_REQUIRED')) : 
+            return !res.isConsentFormAvailable ? dispatch(setConsentStatusThunk('NOT_NEEDED')) : 
             AdsConsent.showForm()
             .then(res => {
                 dispatch(setConsentStatusThunk(res.status))

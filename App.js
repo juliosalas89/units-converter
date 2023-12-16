@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler'; //This import must remain at the top of the file
+import 'expo-dev-client';
 import store from './src/store/store';
 import { Provider } from 'react-redux';
 import Home from './src/components/Home.jsx'
