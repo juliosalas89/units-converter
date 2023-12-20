@@ -88,7 +88,7 @@ const LanguageModal = ({setLanguageModalVisible}) => {
             </View>
             <View>
                 <View style={styles.bannerContainer}>
-                    <Banner type={'MEDIUM_RECTANGLE'}></Banner>
+                    <Banner type={'MEDIUM_RECTANGLE'} adMobUnitId={'ca-app-pub-1084528575297610/3883714152'}></Banner>
                 </View>
                 <View style={styles.buttonsContainer}>
                     <View style={styles.buttonFrame}>
