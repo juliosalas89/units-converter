@@ -101,7 +101,7 @@ const MainView = ({navigation}) => {
                     />
                 </View>
                 {/* <AppRating/> */}
-                <Banner/>
+                <Banner adMobUnitId={'ca-app-pub-1084528575297610/4096818214'}/>
             </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.footerButtons} onPress={() => setUnitsModalVisible(true)}>
